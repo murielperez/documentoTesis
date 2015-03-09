@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{Clasificación de Series de Tiempo Astronómicas}
+\author{Muriel Pérez\\ 201011755}
+\begin{document}
+\maketitle
+\tableofcontents 
+\chapter{Introducción}
+
+Con los avances en técnicas de observación astronómica que han sucedido en los últimos años, hay grandes cantidades de datos disponibles. Estudios como la misión Kepler de la \textit{National Aeronautics and Space Administration} (NASA), o el \textit{VISTA Variables in the Via Lactea} (VVV) del \textit{European Southern Observatory} (ESO) tienen como productos gran cantidad de curvas  de luz \footnote{\label{nota:curvasDeLuz} La curva de luz de una estrella es el resultado de medir su magnitud como función del tiempo. La magnitud de una estrella es el flujo de energía observado en una parte del espectro electromagnético en escala logarítmica (ver el capítulo 4 de \cite{karttunen_fundamental_2007}).}(necesito información sobre más estudios y dar números sobre la cantidad de estrellas observadas) de alta calidad.
+
+Para que estos datos sean útiles en la comunidad científica es necesario clasificarlos y extraer sus características. Si se quiere lograr esto en poco tiempo, es necesario utilizar técnicas de minería de datos debido a los volúmenes que deben ser procesados. (este párrafo necesita más palabras)
+
+En este trabajo abordamos el problema de clasificar curvas de luz de estrellas variables por su tipo de variabilidad \footnote{Las estrellas variables son estrellas cuya magnitud cambia en el tiempo (ver nota \ref{nota:curvasDeLuz}). Pueden ser periódicas o no periódicas y se pueden clasificar como pulsantes, eruptivas o variables eclipsantes aunque existen subclases de variabilidad estelar. Una estrella puede ser clasificada en estas subclases conociendo su curva de luz (ver el capítulo 13 de \cite{karttunen_fundamental_2007}).} como un problema de aprendizaje supervisado \footnote{Se busca, a partir de los datos, inferir una regla que le asigne a cada curva de luz un tipo de variabilidad. Esta regla debe poder aplicarse a curvas de luz que estén fuera de la muestra y la probabilidad de errror es estimada utilizando la muestra original. (ver capítulo \ref{cap:problemaAprendizaje})}. Para esto utilizamos una parte de los resultados de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III) que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (¿De dónde vienen estos datos de las Be?)(ver capítulo \ref{cap:losDatos}) (¿Por qué elegimos este conjunto de datos?) (ver cuadro \ref{cuadro:datosUsados}). Estas curvas de luz fueron clasificadas por personas y tomaremos esta clasificación como verdadera.
+
+\begin{table}
+  \centering
+  \begin{tabular}{rr}
+    \hline
+    \hline
+    Tipo de variabilidad y origen & \shortstack{Número \\de Objetos}\\
+    \hline
+    \hline
+    RR Lyrae - Bulbo Galáctico\cite{soszynski_optical_2011-2} & 16836\\
+    RR Lyrae - Nube Menor de Magallanes \cite{soszynski_optical_2010}& 2475\\
+    RR Lyrae - Nube Mayor de Magallanes \cite{soszynski_optical_2009-1}& 24906\\
+    \hline
+    Cefeidas - Bulbo Galáctico \cite{soszynski_optical_2011}& 32\\%El título del paper es classical and type2 cepheids
+    Cefeidas - Nube Menor de Magallanes \cite{soszynski_optical_2010-2}& 4630\\
+    Cefeidas - Nube Mayor de Magallanes \cite{soszynski_optical_2008-1}& 3361\\
+    \hline
+    Variables de Largo Periodo - Bulbo Galáctico \cite{soszynski_optical_2013-1}& 232406\\
+    Variables de Largo Periodo - Nube Menor de Magallanes \cite{soszynski_optical_2011-1}& 19384\\
+    Variables de Largo Periodo - Nube Mayor de Magallanes \cite{soszynski_optical_2009}& 91995\\
+    \hline
+    Binaria Eclipsante - Nube Menor de Magallanes \cite{pawlak_eclipsing_2013}& 6138\\
+    Binaria Eclipsante - Nube Mayor de Magallanes \cite{graczyk_optical_2011}& 26121\\
+    \hline
+    $\delta$-Scuti - Nube Mayor de Magallanes\cite{poleski_optical_2010} & 2786\\
+    \hline
+    Cefeidas Tipo II - Bulbo Galáctico \cite{soszynski_optical_2013}& 335\\
+    Cefeidas Tipo II - Nube Menor de Magallanes \cite{soszynski_optical_2010-1}& 43\\
+    Cefeidas Tiplo II - Nube Mayor de Magallanes \cite{soszynski_optical_2008}& 197\\
+    \hline
+    BeSC -  Vía Láctea (cita!) & 475\\
+    \hline
+    \hline 
+  \end{tabular}
+  \caption{Conjunto de datos utilizados (faltan las citas de los catálogos)}
+  \label{cuadro:datosUsados}
+\end{table}
+
+Para abordar el problema de clasificación adoptamos el siguiente punto de vista. Cada curva de luz $c_i = \{(m_{n}^{i}, t_{n}^{i})\}_{n}$ es una sucesión de parejas donde la primera es el tiempo y la segunda es la magnitud medida en ese instante.  Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de matenimiento de los instrumentos utilizados y el hecho de que no todas las regiones del cielo son observables durante todo el año y solo se puede observar una región limitada en cada oportunidad, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares ($t_{k} - t_{k+1}$ no es constante). Una forma de hacer frente a esto es asignarle a cada curva de luz $c_i$ un vector de atributos $\vec{x_{i}} = \vec{x_{i}}(c_i)\in\mathbb{R}^{n}$ calculados a partir de de $c_i$ (ver sección \ref{sec:atributos}) que intenten describir los tipos de variabilidad. Como los elementos de la muestra han sido clasificados previamente, le asignamos a cada curva de luz $c_i$ una etiqueta $j_i\in J=\{\text{RR Lyr}, \dots, \text{BeSC}\}$ (ver tabla \ref{cuadro:datosUsados}) que corresponde al tipo de variabilidad estelar de la estrella observada.  Dicha etiqueta, a su vez, es heredada por el vector de atributos $\vec{x}_i$.
+
+Si nuestra elección de atributos es acertada, podremos utilizar el vector de atributos para clasificar curvas de luz, esto es, existirá una función $g:\mathbb{R}^n\rightarrow J$ que de alcanzar la mejor tasa de clasificación correcta posible para esos atributos, le asigna a cada curva de luz el tipo de variabilidad correcto con probabilidad alta (ver capítulo \ref{cap:problemaAprendizaje}). De esto se sigue que la elección de atributos es crucial para lograr una buena clasificación. Si con los atributos seleccionados no se pueden diferenciar las clases de variabilidad estelar, incluso con el mejor clasificador la probabilidad de equivocarse será alta.
+
+El siguiente problema será el de inferir de los datos una función $\hat{g}:\mathbb{R}^n\rightarrow J$ que se aproxime tanto como sea posible a la mejor regla posible en cuanto a que maximice la probabilidad de clasificación correcta. En el capítulo \ref{cap:aprendizaje} utilizamos k vecinos más cercanos, arboles de clasificación y regresión y maquinas de soporte vectorial para inferir esta regla. Asímismo analizamos los estimados de la probabilidad de error y comentamos las ventajas comparativas de cada algorítmo. Estos tres métodos son muy diferentes en su naturaleza y tienen la ventaja de ser no paramétricos y no lineales, por lo que han mostrado ser efectivos en aplicaciones en las cuales la distribución de los atributos es desconocida. 
+
+De esta forma, si queremos clasificar una curva de luz que no está en nuestra muestra seguiremos un proceso de dos partes. Primero calcularemos el vector de atributos correspondiente a la curva y seguidamente utilizaremos la regla de descición $\hat{g}$ inferida de los datos para asignarle una clase de variabilidad estelar.
+
+
+\chapter{El conjunto de Datos de OGLE III\label{cap:losDatos}}
+\section{Descripción de los Datos}
+\section{Atributos Seleccionados \label{sec:atributos}}
+
+\chapter{El Problema del Aprendizaje\label{cap:problemaAprendizaje}}
+
+Ya hemos visto cómo cada curva de luz 
+
+\chapter{Aprendizaje Supervisado\label{cap:aprendizaje}}
+
+\section{K Vecinos Más cercanos}
+
+\section{Árboles de Clasificación y Regresión}
+
+\section{Bosques Aleatorios}
+
+
+\bibliographystyle{plain}
+\bibliography{tesisMatematicas}
+
+\end{document}
