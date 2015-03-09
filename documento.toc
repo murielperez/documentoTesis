@@ -1,0 +1,10 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{5}
+\contentsline {chapter}{\numberline {2}El conjunto de Datos de OGLE III}{9}
+\contentsline {section}{\numberline {2.1}Descripci\IeC {\'o}n de los Datos}{9}
+\contentsline {section}{\numberline {2.2}Atributos Seleccionados }{9}
+\contentsline {chapter}{\numberline {3}El Problema del Aprendizaje}{11}
+\contentsline {chapter}{\numberline {4}Aprendizaje Supervisado}{13}
+\contentsline {section}{\numberline {4.1}K Vecinos M\IeC {\'a}s cercanos}{13}
+\contentsline {section}{\numberline {4.2}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{13}
+\contentsline {section}{\numberline {4.3}Bosques Aleatorios}{13}
