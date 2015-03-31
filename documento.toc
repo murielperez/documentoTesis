@@ -2,10 +2,14 @@
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{5}
 \contentsline {chapter}{\numberline {2}El conjunto de Datos de OGLE III}{9}
 \contentsline {section}{\numberline {2.1}Descripci\IeC {\'o}n de los Datos}{9}
-\contentsline {section}{\numberline {2.2}Atributos Seleccionados }{9}
-\contentsline {chapter}{\numberline {3}El Problema del Aprendizaje}{11}
-\contentsline {section}{\numberline {3.1}Estimaci\IeC {\'o}n del Error de Clasificaci\IeC {\'o}n}{11}
-\contentsline {chapter}{\numberline {4}Aprendizaje Supervisado}{13}
-\contentsline {section}{\numberline {4.1}K Vecinos M\IeC {\'a}s cercanos}{13}
-\contentsline {section}{\numberline {4.2}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{13}
-\contentsline {section}{\numberline {4.3}Bosques Aleatorios}{13}
+\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{11}
+\contentsline {section}{\numberline {3.1}Atributos Seleccionados }{11}
+\contentsline {chapter}{\numberline {4}Ap\IeC {\'e}ndices}{13}
+\contentsline {section}{\numberline {4.1}El Problema del Aprendizaje}{13}
+\contentsline {section}{\numberline {4.2}K Vecinos M\IeC {\'a}s cercanos}{13}
+\contentsline {section}{\numberline {4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{13}
+\contentsline {section}{\numberline {4.4}M\IeC {\'a}quinas de Soporte Vectorial}{13}
+\contentsline {section}{\numberline {4.5}Bosques Aleatorios}{13}
+\contentsline {section}{\numberline {4.6}Estimaci\IeC {\'o}n del Error de Clasificaci\IeC {\'o}n}{13}
+\contentsline {chapter}{\numberline {5}Cosas que la evoluci\IeC {\'o}n se llev\IeC {\'o}}{15}
+\contentsline {section}{\numberline {5.1}vieja introducci\IeC {\'o}n}{15}
