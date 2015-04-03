@@ -3,6 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{hyperref}
 \title{Clasificación de Series de Tiempo Astronómicas}
 \author{Muriel Pérez\\ 201011755}
 \begin{document}
@@ -12,15 +13,27 @@
 
 Con los avances en técnicas de observación astronómica que han sucedido en los últimos años, hay grandes cantidades de datos disponibles. Por ejemplo se espera que el \textit{VISTA Variables in the Via Lactea} (VVV) del \textit{European Southern Observatory} (ESO) produzca del orden de $10^{9}$ curvas de luz\footnote{\label{nota:curvasDeLuz} La curva de luz de una estrella es el resultado de medir su magnitud como función del tiempo. La magnitud de una estrella es el flujo de energía observado en una parte del espectro electromagnético en escala logarítmica (ver el capítulo 4 de \cite{karttunen_fundamental_2007}).} de fuentes puntuales en el infrarojo cercano con hasta 100 observaciones en diferentes épocas de alta calidad. De la misma forma estudios como la misión Kepler de la \textit{National Aeronautics and Space Administration} (NASA), cuyo objetivo principal es la detección de exoplanetas,  tienen como subproductos gran cantidad de curvas  de luz. 
 
-Para que estos datos sean útiles para la comunidad científica es necesario clasificarlos y extraer sus características; y dado el volumen de datos disponible, es necesario utilizar técnicas de minería de datos. Este interés se manifiesta en proyectos como el \textit{VVV Templates Project} que tiene como objetivo consolidar una base bien definida de curvas de luz de estrellas variables en el infrarojo cercano para ser utilzadas como referencia para la clasificación automatizada de futuras curvas de luz.
+Para que estos datos sean útiles para la comunidad científica es necesario clasificarlos y extraer sus características; y dado el volumen de datos disponible, es necesario utilizar técnicas de minería de datos. Este interés se manifiesta en proyectos como el \textit{VVV Templates Project} que tiene como objetivo consolidar una base bien definida de curvas de luz de estrellas variables en el infrarojo cercano para ser utilzadas como referencia para la clasificación automática de curvas de luz.
 
 Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de matenimiento de los instrumentos utilizados y la imposibilidad de abservar todas las regiones del cielo durante todo el año, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares. Como el tiempo durante el cual cada estrella no es observada no es predecible y en ellos no se observan características importantes de las curvas de luz,  estas no pueden ser analizadas con técnicas clásicas de análisis de series de tiempo.
 
-En estudios previos(citas!) se le ha asignado a cada curva de luz un vector de características y, basado en este vector, se ha hecho la clasificación automática. Usualmente este vector de características está conformado por coeficientes de Fourier de la curva de luz, que son calculados mediante métodos como el periodograma de  Lomb-Scargle (cita) o minimización de entropía bla (cita). 
+En estudios previos(citas!) se le ha asignado a cada curva de luz un vector de características y, basado en este vector, se ha hecho la clasificación automática. La escogencia de el vector de características es crucial para el proceso de clasificación porque con él se debe poder clasificar cada curva de luz, es decir, debe capturar la información que hace a cada clase de variabilidad diferente de las demás. Usualmente este vector de características está conformado por coeficientes de Fourier de la curva de luz, que son calculados mediante métodos como el periodograma de  Lomb-Scargle (cita) o minimización de entropía (cita). 
 
-Esta elección de caracterísicas no es del todo conveniente porque presenta problemas computacionales y limita el tipo de objetos que pueden ser clasificados. El cálculo del periodogramas como el de Lomb-Scargle para curvas de luz, y en general el de todos los métodos existentes, requiere de intentar una gran cantidad de periodos candidatos a ser el periodo de la curva de luz para luego elegir el mejor. Por un lado este proceso es computacionalmente intensivo y requiere de gran poder computacional en conjuntos grandes de curvas de luz; y por otro lado no es seguro que dé como resultado el periodo real de una curva de luz, por lo que a menudo éste debe ser revisado manualmente. Además el resultado de la clasificación puede ser sensible a la calidad de las curvas de luz que sean elegidas como muestra de entrenamiento (citar) y limita el estudio a fuentes periódicas.  
+Esta elección de caracterísicas no es del todo conveniente porque presenta problemas computacionales y limita el tipo de objetos que pueden ser clasificados. El cálculo del periodogramas como el de Lomb-Scargle para curvas de luz, y en general el de todos los métodos utilizados en la literatura, requiere de intentar una gran cantidad de periodos candidatos a ser el periodo de la curva de luz para luego elegir el mejor. Por un lado estos proceso es computacionalmente intensivo, lo que limita su uso en conjuntos grandes de curvas de luz; y por otro lado no es seguro que dé como resultado el periodo real de una curva de luz, por lo que a menudo éste debe ser revisado manualmente. Además el resultado de la clasificación puede ser sensible a la calidad de las curvas de luz que sean elegidas como muestra de entrenamiento (citar) y limita el estudio a fuentes periódicas.  
 
-En (cita Bayron) los autores se dieron cuenta de que algunas variables descriptivas de la serie de magnitudes de una curva de luz (como su sesgo o su curtosis) servían para clasificar ciertos tipos de estrellas con clasificadores lineales. En este trabajo retomamos esa idea y construimos un vector de características basadas en variables descriptivas. El uso de este tipo de variables tiene las ventajas de que se pueden calcular de manera rápida y da como resultado un vector de caracterísicas que sive para realizar clasificación con una taza de éxito alta. Para evaluar esta aproximación al problema utilizamos una parte de los resultados de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III) que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver cuadro \ref{cuadro:datosUsados}).
+En (cita Bayron) los autores notaron que algunas variables descriptivas de la serie de magnitudes de una curva de luz (como su sesgo o su curtosis) servían para clasificar ciertos tipos de estrellas con clasificadores lineales. En este trabajo retomamos esa idea y construimos un vector de características basadas en variables descriptivas. El uso de este tipo de variables tiene las ventajas de que se pueden calcular de manera rápida y da como resultado un vector de caracterísicas que sive para realizar clasificación con una taza de éxito alta. Para evaluar esta aproximación al problema utilizamos una parte de los resultados de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III) que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver cuadro \ref{cuadro:datosUsados}).
+
+
+En este trabajo utilizamos k-vecinos más cercanos, árboles de clasificación, máquinas de soporte vectorial y bosques aleatorios para realizar la clasificación automática de las curvas de luz basada en nuestra elección de atributos. Estos clasificadores fueron elegidos porque representan aproximaciones muy distintas al problema de clasificación, por su naturaleza no lineal y no paramétrica; y por el hecho de que han mostrado ser efectivos en gran cantidad de aplicaciones prácticas. 
+
+Este documento está organizado de la siguiente forma. En el capítulo \ref{cap:losDatos} damos una descripción del conjunto de datos utilizado en este trabajo. En el capítulo \ref{cap:clasificacion} presentamos y discutimos los resultados de la clasificación automática utilizando los diferentes algorítmos así como la elección de atributos. En los apéndices damos una descripción matemática del problema de aprendizaje en general y una descripción de cada uno de los algorítmos utilizados en el trabajo.
+
+
+
+
+\chapter{El conjunto de Datos de OGLE III\label{cap:losDatos}}
+
+Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE-III). OGLE es un proyecto de larga duración cuyo objetivo principal es la búsqueda de materia oscura mediante el aprovechamiento de lentes gravitacionales. La tercera fase del protecto comenzó en 2001 y hace uso de un telescopio de $1.3$m de diámetro localizado en observatorio de Las Campanas, Chile\cite{udalski_optical_2004}. Uno de los principales resultados de OGLE-III es la reducción\cite{udalski_optical_2008} y publicación de las curvas de luz de objetos en el bulbo de la Galaxia, la Gran Nube de Magallanes y la Pequeña Nube de Magallanes. En este trabajo utilizamos las curvas de luz de $431 653$ objetos del catálogo de estrellas variables de OGLE-III de seis tipos de variabilidad(ver tabla \ref{cuadro:datosUsados}) al cual se puede acceder en la página del proyecto \footnote{\url{http://ogle.astrouw.edu.pl/}} y $475$ curvas de luz de estrellas candidatas a ser clasificadas como Be (ESCRIBIR DE DÓNDE FUERON TOMADAS ESTAS).
 
 \begin{table}
   \centering
@@ -59,18 +72,12 @@ En (cita Bayron) los autores se dieron cuenta de que algunas variables descripti
   \label{cuadro:datosUsados}   
 \end{table}
 
-En este trabajo utilizamos k-vecinos más cercanos, Árboles de Clasificación y Regresión (CART), Máquinas de soporte vectorial (SVM) y bosques aleatorios para realizar la clasificación automática de las curvas de luz basada en nuestra elección de atributos. Estos clasificadores fueron elegidos por su naturaleza no lineal y no paramétrica; y por el hecho de que han mostrado ser efectivos en gran cantidad de aplicaciones práctivas. 
-
-Este documento está organizado de la siguiente forma. En el capítulo \ref{cap:losDatos} damos una descripción del conjunto de datos utilizado en este trabajo. En el capítulo \ref{cap:clasificacion} presentamos y discutimos los resultados de la clasificación automática utilizando los diferentes algorítmos así como la elección de atributos. En el apéndice damos una descripción del problema de aprendizaje en general y damos una descripción de cada uno de los algorítmos utilizados en el trabajo.
-
-
-
-
-\chapter{El conjunto de Datos de OGLE III\label{cap:losDatos}}
-
-\section{Descripción de los Datos}
+Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fueron clasificadas por tipo de variabilidad estelar en un porceso que que involucró la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}). También se encuentra disponible información adicional sobre las curvas de luz como sus periodos o algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}) pero dado que para futuras bases de datos sin clasificar el cálculo de estas cantidades es computacionalmente intensivo y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva, no utilizamos esta información. En este trabajo utilizamos las curvas de luz registradas en el filtro I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El sistema UBVRI (\textit{Ultraviolet, Blue, Visual, Red, Infrared)}  }  
 
 \chapter{Clasificación}\label{cap:clasificacion}
+
+
+
 \section{Atributos Seleccionados \label{sec:atributos}}
 
 
