@@ -2,12 +2,15 @@
 \BOOKMARK [0][-]{chapter.2}{El conjunto de Datos de OGLE III}{}% 2
 \BOOKMARK [0][-]{chapter.3}{Clasificaci\363n}{}% 3
 \BOOKMARK [1][-]{section.3.1}{Atributos Seleccionados }{chapter.3}% 4
-\BOOKMARK [0][-]{chapter.4}{Ap\351ndices}{}% 5
-\BOOKMARK [1][-]{section.4.1}{El Problema del Aprendizaje}{chapter.4}% 6
-\BOOKMARK [1][-]{section.4.2}{K Vecinos M\341s cercanos}{chapter.4}% 7
-\BOOKMARK [1][-]{section.4.3}{\301rboles de Clasificaci\363n y Regresi\363n}{chapter.4}% 8
-\BOOKMARK [1][-]{section.4.4}{M\341quinas de Soporte Vectorial}{chapter.4}% 9
-\BOOKMARK [1][-]{section.4.5}{Bosques Aleatorios}{chapter.4}% 10
-\BOOKMARK [1][-]{section.4.6}{Estimaci\363n del Error de Clasificaci\363n}{chapter.4}% 11
-\BOOKMARK [0][-]{chapter.5}{Cosas que la evoluci\363n se llev\363}{}% 12
-\BOOKMARK [1][-]{section.5.1}{vieja introducci\363n}{chapter.5}% 13
+\BOOKMARK [1][-]{section.3.2}{K Vecinos M\341s Cercanos}{chapter.3}% 5
+\BOOKMARK [1][-]{section.3.3}{\301rboles de clasificaci\363n y regresi\363n}{chapter.3}% 6
+\BOOKMARK [1][-]{section.3.4}{M\341quinas de Soporte Vectorial}{chapter.3}% 7
+\BOOKMARK [0][-]{chapter.4}{Ap\351ndices}{}% 8
+\BOOKMARK [1][-]{section.4.1}{El Problema del Aprendizaje}{chapter.4}% 9
+\BOOKMARK [1][-]{section.4.2}{K Vecinos M\341s cercanos}{chapter.4}% 10
+\BOOKMARK [1][-]{section.4.3}{\301rboles de Clasificaci\363n y Regresi\363n}{chapter.4}% 11
+\BOOKMARK [1][-]{section.4.4}{M\341quinas de Soporte Vectorial}{chapter.4}% 12
+\BOOKMARK [1][-]{section.4.5}{Bosques Aleatorios}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.6}{Estimaci\363n del Error de Clasificaci\363n}{chapter.4}% 14
+\BOOKMARK [0][-]{chapter.5}{Cosas que la evoluci\363n se llev\363}{}% 15
+\BOOKMARK [1][-]{section.5.1}{vieja introducci\363n}{chapter.5}% 16
