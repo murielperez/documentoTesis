@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{graphicx}
 \title{Clasificación de Series de Tiempo Astronómicas}
 \author{Muriel Pérez\\ 201011755}
 \begin{document}
@@ -11,9 +12,11 @@
 \tableofcontents 
 \chapter{Introducción}
 
-Con los avances en técnicas de observación astronómica que han sucedido en los últimos años, hay grandes cantidades de datos disponibles. Por ejemplo se espera que el \textit{VISTA Variables in the Via Lactea} (VVV) del \textit{European Southern Observatory} (ESO) produzca del orden de $10^{9}$ curvas de luz\footnote{\label{nota:curvasDeLuz} La curva de luz de una estrella es el resultado de medir su magnitud como función del tiempo. La magnitud de una estrella es el flujo de energía observado en una parte del espectro electromagnético en escala logarítmica (ver el capítulo 4 de \cite{karttunen_fundamental_2007}).} de fuentes puntuales en el infrarojo cercano con hasta 100 observaciones en diferentes épocas de alta calidad. De la misma forma estudios como la misión Kepler de la \textit{National Aeronautics and Space Administration} (NASA), cuyo objetivo principal es la detección de exoplanetas,  tienen como subproductos gran cantidad de curvas  de luz. 
+Con los avances en técnicas de observación astronómica que han sucedido en los últimos años, hay grandes cantidades de datos disponibles. Por ejemplo se espera que el \textit{VISTA Variables in the Via Lactea} (VVV) del \textit{European Southern Observatory} (ESO) produzca del orden de $10^{9}$ curvas de luz\footnote{\label{nota:curvasDeLuz} La curva de luz de una estrella es el resultado de medir su magnitud como función del tiempo. La magnitud de una estrella es el flujo de energía observado en una parte del espectro electromagnético (una banda), delimitada por un filtro, en escala logarítmica (ver el capítulo 4 de \cite{karttunen_fundamental_2007}).} de fuentes puntuales en el infrarojo cercano con hasta 100 observaciones en diferentes épocas de alta calidad. De la misma forma estudios como la misión Kepler de la \textit{National Aeronautics and Space Administration} (NASA), cuyo objetivo principal es la detección de exoplanetas,  tienen como subproductos gran cantidad de curvas  de luz. 
 
-Para que estos datos sean útiles para la comunidad científica es necesario clasificarlos y extraer sus características; y dado el volumen de datos disponible, es necesario utilizar técnicas de minería de datos. Este interés se manifiesta en proyectos como el \textit{VVV Templates Project} que tiene como objetivo consolidar una base bien definida de curvas de luz de estrellas variables en el infrarojo cercano para ser utilzadas como referencia para la clasificación automática de curvas de luz.
+Para que estos datos sean útiles para la comunidad científica es necesario clasificarlos y extraer sus características. Aunque los métodos automáticos muchas veces no pueden igualar la inspección manual por parte de un experto, la cantidad de datos disponible hace que esta tarea no sea posible en escalas de tiempo razonables y hace necesario utilizar técnicas de minería de datos. Este interés se manifiesta en proyectos como el \textit{VVV Templates Project} que tiene como objetivo consolidar una base bien definida de curvas de luz de estrellas variables en el infrarojo cercano para ser utilzadas como referencia para la clasificación automática de curvas de luz.
+
+%poner un parrafo que diga que se puede hacer la clasificacion de una estrella solo con su curva de luz
 
 Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de matenimiento de los instrumentos utilizados y la imposibilidad de abservar todas las regiones del cielo durante todo el año, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares. Como el tiempo durante el cual cada estrella no es observada no es predecible y en ellos no se observan características importantes de las curvas de luz,  estas no pueden ser analizadas con técnicas clásicas de análisis de series de tiempo.
 
@@ -55,8 +58,8 @@ Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Op
     Variables de Largo Periodo - Nube Menor de Magallanes \cite{soszynski_optical_2011-1}& 19384\\
     Variables de Largo Periodo - Nube Mayor de Magallanes \cite{soszynski_optical_2009}& 91995\\
     \hline
-    Binaria Eclipsante - Nube Menor de Magallanes \cite{pawlak_eclipsing_2013}& 6138\\
-    Binaria Eclipsante - Nube Mayor de Magallanes \cite{graczyk_optical_2011}& 26121\\
+    Sistema Binario Eclipsante - Nube Menor de Magallanes \cite{pawlak_eclipsing_2013}& 6138\\
+    Sistema Binario Eclipsante - Nube Mayor de Magallanes \cite{graczyk_optical_2011}& 26121\\
     \hline
     $\delta$-Scuti - Nube Mayor de Magallanes\cite{poleski_optical_2010} & 2786\\
     \hline
@@ -64,7 +67,7 @@ Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Op
     Cefeidas Tipo II - Nube Menor de Magallanes \cite{soszynski_optical_2010-1}& 43\\
     Cefeidas Tiplo II - Nube Mayor de Magallanes \cite{soszynski_optical_2008}& 197\\
     \hline
-    BeSC -  Vía Láctea (cita!) & 475\\
+    Cadidata a Be -  Vía Láctea (cita!) & 475\\
     \hline
     \hline 
   \end{tabular}
@@ -72,7 +75,38 @@ Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Op
   \label{cuadro:datosUsados}   
 \end{table}
 
-Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fueron clasificadas por tipo de variabilidad estelar en un porceso que que involucró la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}). También se encuentra disponible información adicional sobre las curvas de luz como sus periodos o algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}) pero dado que para futuras bases de datos sin clasificar el cálculo de estas cantidades es computacionalmente intensivo y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva, no utilizamos esta información. En este trabajo utilizamos las curvas de luz registradas en el filtro I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El sistema UBVRI (\textit{Ultraviolet, Blue, Visual, Red, Infrared)}  }  
+
+Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fueron originalmente clasificadas por tipo de variabilidad estelar en un porceso que que involucró, en una etapa, la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}) por lo cual tomaremos esta clasificación como verdadera. También se encuentra disponible información adicional sobre las curvas de luz como sus periodos y algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}) pero dado que para futuras bases de datos sin clasificar el cálculo de estas cantidades es computacionalmente intensivo y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva, no utilizamos esta información. En este trabajo utilizamos las curvas de luz registradas en el filtro I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El filtro I (infrarojo) tiene un ancho de banda de 149nm y una longitud de onda efectiva de 797nm (ver \cite{karttunen_fundamental_2007})} (¿POR QUÉ ELEGIMOS ESTA BANDA?)
+
+\begin{table}[ht]
+  \centering
+  \caption{Cantidad de datos por tipo de variabilidad}
+  \label{cuadro:cantidadDatos}
+  \begin{tabular}{rrr}
+    \hline
+    Tipo de Variabilidad & Cantidad \\
+    \hline
+    Variables de Largo Periodo (VLP) & 343782 \\
+    RR Lyrae (RRLyr) & 44217\\
+    Cefeida (Cef)& 8004\\
+    Sistema Binario Eclipsante (SBE)&32259 \\
+    $\delta$-Scuti ($\delta$Sct)& 2788\\
+    Cefeida Tipo II (CEPT2)& 603\\
+    Candidata a Be (BeEC)& 475\\
+    \hline
+    Total & 432128\\
+    \hline
+  \end{tabular}
+\end{table}
+
+Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estelar (ver tabla\ref{cuadro:cantidadDatos}). Esta elección de clases puede ser refinada puesto que en cada una de estas clases existen subclases. Por ejemplo entre las Cefeidas se puede distinguir entre aquellas que pulsan en su modo fundamental, en su primer sobretono (segundo armónico) o en su segundo sobretono (tercer armónico)  (ver figura \ref{fig:tiposCefeidas}). Sin embargo conocer a qué clase de variabilidad estelar pertence un objeto facilita considerablemente su clasificación en subclases y análisis subsecuentes. 
+
+
+\begin{figure}
+  \includegraphics[width = \textwidth]{./img/C2Datos/tiposCefeidas.png}
+  \label{fig:tiposCefeidas}
+  \caption{Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los números pequeños a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite{soszynski_optical_2011}}
+\end{figure}
 
 \chapter{Clasificación}\label{cap:clasificacion}
 
@@ -83,6 +117,8 @@ Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fuero
 \section{K Vecinos Más Cercanos}
 \begin{table}[ht]
 \centering
+\caption{k = 1} 
+\label{table:cmknn}
 \begin{tabular}{rrrrrrrr}
   \hline
  & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
@@ -96,12 +132,12 @@ becand & 381 &   1 &   0 &  50 &  41 &   0 &   0 \\
   t2cep &   0 &  59 &   0 &  29 &  53 & 130 & 112 \\ 
    \hline
 \end{tabular}
-\caption{k = 1} 
-\label{table:cmknn}
 \end{table}
 
 \begin{table}[ht]
 \centering
+\caption{k=1, validación cruzada de 10 iteraciones} 
+\label{table:cmCvKnn}
 \begin{tabular}{rrrrrrrr}
   \hline
  & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
@@ -115,14 +151,14 @@ becand & 0.80 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
   t2cep & 0.00 & 0.01 & 0.00 & 0.00 & 0.00 & 0.00 & 0.19 \\ 
    \hline
 \end{tabular}
-\caption{k=1, validación cruzada de 10 iteraciones} 
-\label{table:cmCvKnn}
 \end{table}
 
 \section{Árboles de clasificación y regresión}
 %Matriz de confusión para Cart
 \begin{table}[ht]
 \centering
+\caption{Matriz de confusión para CART} 
+\label{cuadro:cmCart}
 \begin{tabular}{rrrrrrrr}
   \hline
  & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
@@ -136,13 +172,13 @@ becand & 470 &  12 &   6 & 1039 & 8906 &  47 &  18 \\
   t2cep &   0 & 991 &   5 & 2004 & 15429 & 4980 & 396 \\ 
    \hline
 \end{tabular}
-\caption{Matriz de confusión para CART} 
-\label{cuadro:cmCart}
 \end{table}
 
 %Errores de validación cruzada para cart
 \begin{table}[ht]
 \centering
+\caption{Tasas de clasificación estimadas por validación cruzada de 10 iteraciones} 
+\label{table:cmCvart}
 \begin{tabular}{rrrrrrrr}
   \hline
  & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
@@ -156,14 +192,14 @@ becand & 0.99 & 0.00 & 0.00 & 0.03 & 0.03 & 0.00 & 0.03 \\
   t2cep & 0.00 & 0.12 & 0.00 & 0.06 & 0.04 & 0.11 & 0.66 \\ 
    \hline
 \end{tabular}
-\caption{Tasas de clasificación estimadas por validación cruzada de 10 iteraciones} 
-\label{table:cmCvart}
 \end{table}
 
 \section{Máquinas de Soporte Vectorial}
 
 \begin{table}[ht]
 \centering
+\caption{$\gamma = 0.1$, costo = $16$} 
+\label{table:cmSvm}
 \begin{tabular}{rrrrrrrr}
   \hline
  & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
@@ -177,12 +213,12 @@ becand & 297 &   0 &   2 &  26 &  16 &   0 &   0 \\
   t2cep &   0 &   0 &   0 &   0 &   0 &   0 &   0 \\ 
    \hline
 \end{tabular}
-\caption{$\gamma = 0.1$, costo = $16$} 
-\label{table:cmSvm}
 \end{table}
 
 \begin{table}[ht]
 \centering
+\caption{$\gamma = 0.1$, costo = $16$, validación cruzada de 10 iteraciones} 
+\label{table:cmCvSvm}
 \begin{tabular}{rrrrrrrr}
   \hline
  & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
@@ -196,9 +232,11 @@ becand & 0.63 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
   t2cep & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
    \hline
 \end{tabular}
-\caption{$\gamma = 0.1$, costo = $16$, validación cruzada de 10 iteraciones} 
-\label{table:cmCvSvm}
 \end{table}
+
+\section{Bosques Aleatorios}
+
+
 \chapter{Apéndices}
 
 \section{El Problema del Aprendizaje\label{cap:problemaAprendizaje}}
