@@ -16,8 +16,6 @@ Con los avances en técnicas de observación astronómica que han sucedido en lo
 
 Para que estos datos sean útiles para la comunidad científica es necesario clasificarlos y extraer sus características. Aunque los métodos automáticos muchas veces no pueden igualar la inspección manual por parte de un experto, la cantidad de datos disponible hace que esta tarea no sea posible en escalas de tiempo razonables y hace necesario utilizar técnicas de minería de datos. Este interés se manifiesta en proyectos como el \textit{VVV Templates Project} que tiene como objetivo consolidar una base bien definida de curvas de luz de estrellas variables en el infrarojo cercano para ser utilzadas como referencia para la clasificación automática de curvas de luz.
 
-%poner un parrafo que diga que se puede hacer la clasificacion de una estrella solo con su curva de luz
-
 Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de matenimiento de los instrumentos utilizados y la imposibilidad de abservar todas las regiones del cielo durante todo el año, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares. Como el tiempo durante el cual cada estrella no es observada no es predecible y en ellos no se observan características importantes de las curvas de luz,  estas no pueden ser analizadas con técnicas clásicas de análisis de series de tiempo.
 
 En estudios previos(citas!) se le ha asignado a cada curva de luz un vector de características y, basado en este vector, se ha hecho la clasificación automática. La escogencia de el vector de características es crucial para el proceso de clasificación porque con él se debe poder clasificar cada curva de luz, es decir, debe capturar la información que hace a cada clase de variabilidad diferente de las demás. Usualmente este vector de características está conformado por coeficientes de Fourier de la curva de luz, que son calculados mediante métodos como el periodograma de  Lomb-Scargle (cita) o minimización de entropía (cita). 
@@ -34,49 +32,51 @@ Este documento está organizado de la siguiente forma. En el capítulo \ref{cap:
 
 
 
-\chapter{El conjunto de Datos de OGLE III\label{cap:losDatos}}
+\chapter{El conjunto de Datos\label{cap:losDatos}}
 
 Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE-III). OGLE es un proyecto de larga duración cuyo objetivo principal es la búsqueda de materia oscura mediante el aprovechamiento de lentes gravitacionales. La tercera fase del protecto comenzó en 2001 y hace uso de un telescopio de $1.3$m de diámetro localizado en observatorio de Las Campanas, Chile\cite{udalski_optical_2004}. Uno de los principales resultados de OGLE-III es la reducción\cite{udalski_optical_2008} y publicación de las curvas de luz de objetos en el bulbo de la Galaxia, la Gran Nube de Magallanes y la Pequeña Nube de Magallanes. En este trabajo utilizamos las curvas de luz de $431 653$ objetos del catálogo de estrellas variables de OGLE-III de seis tipos de variabilidad(ver tabla \ref{cuadro:datosUsados}) al cual se puede acceder en la página del proyecto \footnote{\url{http://ogle.astrouw.edu.pl/}} y $475$ curvas de luz de estrellas candidatas a ser clasificadas como Be (ESCRIBIR DE DÓNDE FUERON TOMADAS ESTAS).
 
+Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fueron originalmente clasificadas por tipo de variabilidad estelar en un porceso que que involucró, en una etapa, la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}) por lo cual tomaremos esta clasificación como verdadera. También se encuentra disponible información adicional sobre las curvas de luz como sus periodos y algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}) pero dado que para futuras bases de datos sin clasificar el cálculo de estas cantidades es computacionalmente intensivo y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva, no utilizamos esta información. En este trabajo utilizamos las curvas de luz registradas en el filtro I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El filtro I (infrarojo) tiene un ancho de banda de 149nm y una longitud de onda efectiva de 797nm (ver \cite{karttunen_fundamental_2007})} (¿POR QUÉ ELEGIMOS ESTA BANDA?)
+
 \begin{table}
   \centering
+  \caption{Conjunto de datos utilizados (faltan las citas de los catálogos). BG hace referencia al Bulbo Galáctico; PNM, a la Pequeña Nube de Magallanes; y GNM, a la Gran Nube de Magallanes. }
+  \label{cuadro:datosUsados}  
   \begin{tabular}{rr}
     \hline
     \hline
     Tipo de variabilidad y origen & \shortstack{Número \\de Objetos}\\
     \hline
     \hline
-    RR Lyrae - Bulbo Galáctico\cite{soszynski_optical_2011-2} & 16836\\
-    RR Lyrae - Nube Menor de Magallanes \cite{soszynski_optical_2010}& 2475\\
-    RR Lyrae - Nube Mayor de Magallanes \cite{soszynski_optical_2009-1}& 24906\\
+    RR Lyrae - BG\cite{soszynski_optical_2011-2} & 16836\\
+    RR Lyrae - PNM \cite{soszynski_optical_2010}& 2475\\
+    RR Lyrae - GNM \cite{soszynski_optical_2009-1}& 24906\\
     \hline
-    Cefeidas - Bulbo Galáctico \cite{soszynski_optical_2011}& 32\\%El título del paper es classical and type2 cepheids
-    Cefeidas - Nube Menor de Magallanes \cite{soszynski_optical_2010-2}& 4630\\
-    Cefeidas - Nube Mayor de Magallanes \cite{soszynski_optical_2008-1}& 3361\\
+    Cefeidas - BG \cite{soszynski_optical_2011}& 32\\%El título del paper es classical and type2 cepheids
+    Cefeidas - PNM \cite{soszynski_optical_2010-2}& 4630\\
+    Cefeidas - GNM \cite{soszynski_optical_2008-1}& 3361\\
     \hline
-    Variables de Largo Periodo - Bulbo Galáctico \cite{soszynski_optical_2013-1}& 232406\\
-    Variables de Largo Periodo - Nube Menor de Magallanes \cite{soszynski_optical_2011-1}& 19384\\
-    Variables de Largo Periodo - Nube Mayor de Magallanes \cite{soszynski_optical_2009}& 91995\\
+    Variables de Largo Periodo - BG \cite{soszynski_optical_2013-1}& 232406\\
+    Variables de Largo Periodo - PNM \cite{soszynski_optical_2011-1}& 19384\\
+    Variables de Largo Periodo - GNM \cite{soszynski_optical_2009}& 91995\\
     \hline
-    Sistema Binario Eclipsante - Nube Menor de Magallanes \cite{pawlak_eclipsing_2013}& 6138\\
-    Sistema Binario Eclipsante - Nube Mayor de Magallanes \cite{graczyk_optical_2011}& 26121\\
+    Sistema Binario Eclipsante - PNM \cite{pawlak_eclipsing_2013}& 6138\\
+    Sistema Binario Eclipsante - GNM \cite{graczyk_optical_2011}& 26121\\
     \hline
     $\delta$-Scuti - Nube Mayor de Magallanes\cite{poleski_optical_2010} & 2786\\
     \hline
-    Cefeidas Tipo II - Bulbo Galáctico \cite{soszynski_optical_2013}& 335\\
-    Cefeidas Tipo II - Nube Menor de Magallanes \cite{soszynski_optical_2010-1}& 43\\
-    Cefeidas Tiplo II - Nube Mayor de Magallanes \cite{soszynski_optical_2008}& 197\\
+    Cefeidas Tipo II - BG \cite{soszynski_optical_2013}& 335\\
+    Cefeidas Tipo II - PNM \cite{soszynski_optical_2010-1}& 43\\
+    Cefeidas Tiplo II - GNM \cite{soszynski_optical_2008}& 197\\
     \hline
     Cadidata a Be -  Vía Láctea (cita!) & 475\\
     \hline
     \hline 
-  \end{tabular}
-  \caption{Conjunto de datos utilizados (faltan las citas de los catálogos)}
-  \label{cuadro:datosUsados}   
+  \end{tabular} 
 \end{table}
 
 
-Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fueron originalmente clasificadas por tipo de variabilidad estelar en un porceso que que involucró, en una etapa, la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}) por lo cual tomaremos esta clasificación como verdadera. También se encuentra disponible información adicional sobre las curvas de luz como sus periodos y algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}) pero dado que para futuras bases de datos sin clasificar el cálculo de estas cantidades es computacionalmente intensivo y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva, no utilizamos esta información. En este trabajo utilizamos las curvas de luz registradas en el filtro I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El filtro I (infrarojo) tiene un ancho de banda de 149nm y una longitud de onda efectiva de 797nm (ver \cite{karttunen_fundamental_2007})} (¿POR QUÉ ELEGIMOS ESTA BANDA?)
+Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estelar (ver tabla\ref{cuadro:cantidadDatos}). Esta elección de clases puede ser refinada puesto que en cada una de estas clases existen subclases. Por ejemplo entre las Cefeidas se puede distinguir entre aquellas que pulsan en su modo fundamental, en su primer sobretono (segundo armónico) o en su segundo sobretono (tercer armónico)  (ver figura \ref{fig:tiposCefeidas}). Sin embargo conocer a qué clase de variabilidad estelar pertence un objeto facilita considerablemente su clasificación en subclases y análisis subsecuentes. 
 
 \begin{table}[ht]
   \centering
@@ -91,7 +91,7 @@ Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fuero
     Cefeida (Cef)& 8004\\
     Sistema Binario Eclipsante (SBE)&32259 \\
     $\delta$-Scuti ($\delta$Sct)& 2788\\
-    Cefeida Tipo II (CEPT2)& 603\\
+    Cefeida Tipo II (CefT2)& 603\\
     Candidata a Be (BeEC)& 475\\
     \hline
     Total & 432128\\
@@ -99,13 +99,21 @@ Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III fuero
   \end{tabular}
 \end{table}
 
-Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estelar (ver tabla\ref{cuadro:cantidadDatos}). Esta elección de clases puede ser refinada puesto que en cada una de estas clases existen subclases. Por ejemplo entre las Cefeidas se puede distinguir entre aquellas que pulsan en su modo fundamental, en su primer sobretono (segundo armónico) o en su segundo sobretono (tercer armónico)  (ver figura \ref{fig:tiposCefeidas}). Sin embargo conocer a qué clase de variabilidad estelar pertence un objeto facilita considerablemente su clasificación en subclases y análisis subsecuentes. 
+
 
 
 \begin{figure}
   \includegraphics[width = \textwidth]{./img/C2Datos/tiposCefeidas.png}
   \label{fig:tiposCefeidas}
   \caption{Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los números pequeños a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite{soszynski_optical_2011}}
+\end{figure}
+
+Cada curva de luz está guarada en un archivo que contiene tres columnas con los valores de magnitud, fecha juliana en la que fue tomada cada medida y error en la medida de la magnitud. El número de medidas para cada objeto y la separación temporal varía ampliamente. La separación mínima dos mediciones en toda la muestra es de 0.00147d, la máxima es 2156.9d y en promedio están separadas por 5.1d; por su parte el número promedio de observaciones por objeto es 759; el máximo, 5173; y el mínimo,  11 y el 75\% de los objetos cuenta con más de 386 observaciones. Para todos los objetos estas observaciones están repartidas en los (número de años) años en que estuvo activa la tercera fase de OGLE. En la figura (figura pendiente) se puede observar una curva de luz del catálogo de estrellas variables de OGLE-III.    
+
+\begin{figure}
+  %\includegraphics[width = \textwidth]{./img/C2Datos/tiposCefeidas.png}
+  \label{fig:curvaDeLuz}
+  \caption{(figura pendiente de imagen) Curva de luz (nombre del archivo) del catálogo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del año en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posición relativa entre el Sol y la Tierra.}
 \end{figure}
 
 \chapter{Clasificación}\label{cap:clasificacion}
@@ -255,18 +263,18 @@ becand & 0.63 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
 \chapter{Cosas que la evolución se llevó}
 
 \section{vieja introducción}
-En este trabajo abordamos el problema de clasificar curvas de luz de estrellas variables por su tipo de variabilidad \footnote{Las estrellas variables son estrellas cuya magnitud cambia en el tiempo (ver nota \ref{nota:curvasDeLuz}). Pueden ser periódicas o no periódicas y se pueden clasificar como pulsantes, eruptivas o variables eclipsantes aunque existen subclases de variabilidad estelar. Una estrella puede ser clasificada en estas subclases conociendo su curva de luz (ver el capítulo 13 de \cite{karttunen_fundamental_2007}).} como un problema de aprendizaje supervisado. Para esto utilizamos una parte de los resultados de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III) que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver capítulo \ref{cap:losDatos}) (ver cuadro \ref{cuadro:datosUsados}). 
+% En este trabajo abordamos el problema de clasificar curvas de luz de estrellas variables por su tipo de variabilidad \footnote{Las estrellas variables son estrellas cuya magnitud cambia en el tiempo (ver nota \ref{nota:curvasDeLuz}). Pueden ser periódicas o no periódicas y se pueden clasificar como pulsantes, eruptivas o variables eclipsantes aunque existen subclases de variabilidad estelar. Una estrella puede ser clasificada en estas subclases conociendo su curva de luz (ver el capítulo 13 de \cite{karttunen_fundamental_2007}).} como un problema de aprendizaje supervisado. Para esto utilizamos una parte de los resultados de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III) que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver capítulo \ref{cap:losDatos}) (ver cuadro \ref{cuadro:datosUsados}). 
 
 
-Para abordar el problema de clasificación adoptamos el siguiente punto de vista. Cada curva de luz $c_i = \{(t_{n}^{i}, m_{n}^{i})\}_{n}$ es una sucesión de parejas donde la primera es el tiempo y la segunda es la magnitud medida en ese instante.  Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de matenimiento de los instrumentos utilizados y el hecho de que no todas las regiones del cielo son observables durante todo el año y solo se puede observar una región limitada en cada oportunidad, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares ($t_{k} - t_{k+1}$ no es constante). Una forma de hacer frente a esto es asignarle a cada curva de luz $c_i$ un vector de atributos $\vec{x_{i}} = \vec{x_{i}}(c_i)\in\mathbb{R}^{n}$ calculados a partir de de $c_i$ (ver sección \ref{sec:atributos}) que intenten describir los tipos de variabilidad. Como los elementos de la muestra han sido clasificados previamente, le asignamos a cada curva de luz $c_i$ una etiqueta $j_i\in J=\{\text{RR Lyr}, \dots, \text{BeSC}\}$ (ver tabla \ref{cuadro:datosUsados}) que corresponde al tipo de variabilidad estelar de la estrella observada.  Dicha etiqueta, a su vez, es heredada por el vector de atributos $\vec{x}_i$.
+% Para abordar el problema de clasificación adoptamos el siguiente punto de vista. Cada curva de luz $c_i = \{(t_{n}^{i}, m_{n}^{i})\}_{n}$ es una sucesión de parejas donde la primera es el tiempo y la segunda es la magnitud medida en ese instante.  Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de matenimiento de los instrumentos utilizados y el hecho de que no todas las regiones del cielo son observables durante todo el año y solo se puede observar una región limitada en cada oportunidad, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares ($t_{k} - t_{k+1}$ no es constante). Una forma de hacer frente a esto es asignarle a cada curva de luz $c_i$ un vector de atributos $\vec{x_{i}} = \vec{x_{i}}(c_i)\in\mathbb{R}^{n}$ calculados a partir de de $c_i$ (ver sección \ref{sec:atributos}) que intenten describir los tipos de variabilidad. Como los elementos de la muestra han sido clasificados previamente, le asignamos a cada curva de luz $c_i$ una etiqueta $j_i\in J=\{\text{RR Lyr}, \dots, \text{BeSC}\}$ (ver tabla \ref{cuadro:datosUsados}) que corresponde al tipo de variabilidad estelar de la estrella observada.  Dicha etiqueta, a su vez, es heredada por el vector de atributos $\vec{x}_i$.
 
-Si nuestra elección de atributos es acertada, podremos utilizar la representación de las curvas de luz en el espacio de atributos para realizar la clasificación, esto es, existirá una función $g:\mathbb{R}^n\rightarrow J$ que, de alcanzar la mejor tasa de clasificación correcta posible para esos atributos, le asigna a cada curva de luz el tipo de variabilidad correcto con probabilidad alta (ver capítulo \ref{cap:problemaAprendizaje}). Puede suceder que, si los atributos no caracterizan los diferentes tipos de variabilidad, incluso utilizando el mejor clasificador posible (la mejor función $g$) no sea posible alcanzar errores de clasificación bajos. De esto se sigue que la elección de atributos es crucial para lograr una buena clasificación. La elección de los atributos utilizados se discute en la sección \ref{sec:atributos}.
+% Si nuestra elección de atributos es acertada, podremos utilizar la representación de las curvas de luz en el espacio de atributos para realizar la clasificación, esto es, existirá una función $g:\mathbb{R}^n\rightarrow J$ que, de alcanzar la mejor tasa de clasificación correcta posible para esos atributos, le asigna a cada curva de luz el tipo de variabilidad correcto con probabilidad alta (ver capítulo \ref{cap:problemaAprendizaje}). Puede suceder que, si los atributos no caracterizan los diferentes tipos de variabilidad, incluso utilizando el mejor clasificador posible (la mejor función $g$) no sea posible alcanzar errores de clasificación bajos. De esto se sigue que la elección de atributos es crucial para lograr una buena clasificación. La elección de los atributos utilizados se discute en la sección \ref{sec:atributos}.
 
-El siguiente problema será el de inferir (aprender) de los datos una función $\hat{g}:\mathbb{R}^n\rightarrow J$ que se aproxime tanto como sea posible a la mejor regla posible en cuanto a que maximice la probabilidad de clasificación correcta. Para encontrar esta regla existen diferentes aproximaciones y algorítmos que permiten la división del espacio de atributos en zonas a cada una de las cuales se le asigna un tipo de variabilidad. En la práctica no se conoce la mejor regla posible porque esto requeriría el conocimiento de la distribución exacta de los atributos (ver capítulo \ref{cap:problemaAprendizaje}). Tampoco se conoce el mínimo error de clasificación posible por lo que, para la selección del mejor clasificador entre los posibles, se utilizan estimaciones del error de clasificación que utilizan la muestra disponible, en este caso validación cruzada (ver sección \ref{sec:estimacionError}).En el capítulo \ref{cap:aprendizaje} utilizamos k vecinos más cercanos, arboles de clasificación y regresión; y maquinas de soporte vectorial para inferir la función $\hat{g}$. Asímismo analizamos los estimados de la probabilidad de error al usar cada algorítmo y comentamos las ventajas comparativas de cada uno. Estos tres métodos son muy diferentes en su naturaleza, fueron elegidos porque han mostrado ser efectivos en gran variedad de aplicaciones y por su carácter no paramétrico y no lineal. 
+% El siguiente problema será el de inferir (aprender) de los datos una función $\hat{g}:\mathbb{R}^n\rightarrow J$ que se aproxime tanto como sea posible a la mejor regla posible en cuanto a que maximice la probabilidad de clasificación correcta. Para encontrar esta regla existen diferentes aproximaciones y algorítmos que permiten la división del espacio de atributos en zonas a cada una de las cuales se le asigna un tipo de variabilidad. En la práctica no se conoce la mejor regla posible porque esto requeriría el conocimiento de la distribución exacta de los atributos (ver capítulo \ref{cap:problemaAprendizaje}). Tampoco se conoce el mínimo error de clasificación posible por lo que, para la selección del mejor clasificador entre los posibles, se utilizan estimaciones del error de clasificación que utilizan la muestra disponible, en este caso validación cruzada (ver sección \ref{sec:estimacionError}).En el capítulo \ref{cap:aprendizaje} utilizamos k vecinos más cercanos, arboles de clasificación y regresión; y maquinas de soporte vectorial para inferir la función $\hat{g}$. Asímismo analizamos los estimados de la probabilidad de error al usar cada algorítmo y comentamos las ventajas comparativas de cada uno. Estos tres métodos son muy diferentes en su naturaleza, fueron elegidos porque han mostrado ser efectivos en gran variedad de aplicaciones y por su carácter no paramétrico y no lineal. 
 
-Así la clasificación de una curva de luz correspondiente a una estrella cuyo tipo de variabilidad es desconocido será un proceso de dos pasos. El primero será la extracción de los atributos. El segundo paso será la clasificación basada en los atributos utilizando la función $\hat{g}$ que fue encontrada con ayuda de la muestra disponible. Esta clasificación será correcta con cierta probabilidad, estimada con validación cruzada.
+% Así la clasificación de una curva de luz correspondiente a una estrella cuyo tipo de variabilidad es desconocido será un proceso de dos pasos. El primero será la extracción de los atributos. El segundo paso será la clasificación basada en los atributos utilizando la función $\hat{g}$ que fue encontrada con ayuda de la muestra disponible. Esta clasificación será correcta con cierta probabilidad, estimada con validación cruzada.
 
-Este documento está organizado de la siguiente manera. En el capítulo \ref{cap:losDatos} damos un análisis descriptivo del conjunto de datos que consideramos y discutimos la elección de los atributos para realizar la clasificación. En el capítulo \ref{cap:problemaAprendizaje} discutimos brevemente el problema de clasificación en general, describimos el mejor clasificador posible (el clasificador de Bayes), discutimos la imposibilidad de utilizarlo en la mayoría de aplicaciones complejas y describimos el método que usamos para estimar la probabilidad de error de los clasificadores. En el capítulo \ref{cap:aprendizaje} describimos los métodos de clasificación utilizados, damos los estimados del error de clasificación y comparamos los resultados con otros valores dados en la literatura.
+% Este documento está organizado de la siguiente manera. En el capítulo \ref{cap:losDatos} damos un análisis descriptivo del conjunto de datos que consideramos y discutimos la elección de los atributos para realizar la clasificación. En el capítulo \ref{cap:problemaAprendizaje} discutimos brevemente el problema de clasificación en general, describimos el mejor clasificador posible (el clasificador de Bayes), discutimos la imposibilidad de utilizarlo en la mayoría de aplicaciones complejas y describimos el método que usamos para estimar la probabilidad de error de los clasificadores. En el capítulo \ref{cap:aprendizaje} describimos los métodos de clasificación utilizados, damos los estimados del error de clasificación y comparamos los resultados con otros valores dados en la literatura.
 
 \bibliographystyle{plain}
 \bibliography{tesisMatematicas}
