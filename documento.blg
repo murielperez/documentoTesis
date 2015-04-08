@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: documento.aux
 The style file: plain.bst
 Database file #1: tesisMatematicas.bib
-You've used 18 entries,
+You've used 25 entries,
             2118 wiz_defined-function locations,
-            584 strings with 9621 characters,
-and the built_in function-call counts, 9328 in all, are:
-= -- 821
-> -- 824
+            626 strings with 11228 characters,
+and the built_in function-call counts, 11947 in all, are:
+= -- 1071
+> -- 989
 < -- 0
-+ -- 342
-- -- 308
-* -- 905
-:= -- 1673
-add.period$ -- 54
-call.type$ -- 18
-change.case$ -- 208
++ -- 407
+- -- 366
+* -- 1123
+:= -- 2131
+add.period$ -- 76
+call.type$ -- 25
+change.case$ -- 257
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 200
-empty$ -- 441
-format.name$ -- 308
-if$ -- 1730
+cite$ -- 25
+duplicate$ -- 278
+empty$ -- 615
+format.name$ -- 366
+if$ -- 2247
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 18
-newline$ -- 93
-num.names$ -- 37
-pop$ -- 175
+int.to.str$ -- 25
+missing$ -- 26
+newline$ -- 128
+num.names$ -- 51
+pop$ -- 215
 preamble$ -- 1
-purify$ -- 190
+purify$ -- 233
 quote$ -- 0
-skip$ -- 124
+skip$ -- 173
 stack$ -- 0
-substring$ -- 445
-swap$ -- 18
+substring$ -- 601
+swap$ -- 25
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
+type$ -- 96
 warning$ -- 0
-while$ -- 68
-width$ -- 20
-write$ -- 201
+while$ -- 92
+width$ -- 27
+write$ -- 278

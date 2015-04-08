@@ -1,5 +1,18 @@
 \begin{thebibliography}{10}
 
+\bibitem{cincotta_astronomical_1995}
+Pablo~M. Cincotta, Mariano Mendez, and Josue~A. Nunez.
+\newblock Astronomical time series analysis. {I}. {A} search for periodicity
+  using information entropy.
+\newblock {\em The Astrophysical Journal}, 449:231, 1995.
+
+\bibitem{debosscher_automated_2007}
+Jonas Debosscher, L.~M. Sarro, Conny Aerts, J.~Cuypers, Bart Vandenbussche,
+  R.~Garrido, and E.~Solano.
+\newblock Automated supervised classification of variable stars-{I}.
+  {Methodology}.
+\newblock {\em Astronomy \& Astrophysics}, 475(3):1159--1183, 2007.
+
 \bibitem{graczyk_optical_2011}
 D.~Graczyk, I.~Soszyński, R.~Poleski, G.~Pietrzyński, A.~Udalski, M.~K.
   Szymański, M.~Kubiak, Ł. Wyrzykowski, and K.~Ulaczyk.
@@ -29,6 +42,38 @@ R.~Poleski, I.~Soszyński, A.~Udalski, M.~K. Szymański, M.~Kubiak,
   {OGLE}-{III} {Catalog} of {Variable} {Stars}. {VI}. {Delta} {Scuti} {Stars}
   in the {Large} {Magellanic} {Cloud}.
 \newblock {\em Acta Astronomica}, 60:1--16, March 2010.
+
+\bibitem{richards_machine-learned_2011}
+Joseph~W. Richards, Dan~L. Starr, Nathaniel~R. Butler, Joshua~S. Bloom, John~M.
+  Brewer, Arien Crellin-Quick, Justin Higgins, Rachel Kennedy, and Maxime
+  Rischard.
+\newblock On {Machine}-learned {Classification} of {Variable} {Stars} with
+  {Sparse} and {Noisy} {Time}-series {Data}.
+\newblock {\em The Astrophysical Journal}, 733(1):10, May 2011.
+
+\bibitem{rodriguez_feliciano_alisis_2012}
+Bayron~Stevenson Rodríguez~Feliciano and José~Alejandro García~Varela.
+\newblock {\em Análisis estadístico en poblaciones de estrellas variables}.
+\newblock Tesis ({Físico}). {Universidad} de los {Andes}. Bogotá : Uniandes,
+  2012., 2012.
+
+\bibitem{sabogal_search_2014}
+B.~E. Sabogal, A.~García-Varela, and R.~E. Mennickent.
+\newblock Search for {Southern} {Galactic} {Be} {Star} {Candidates}.
+\newblock {\em Publications of the Astronomical Society of the Pacific},
+  126:219--226, 2014.
+
+\bibitem{sarro_automated_2009}
+L.~M. Sarro, Jonas Debosscher, M.~López, and Conny Aerts.
+\newblock Automated supervised classification of variable stars-{II}.
+  {Application} to the {OGLE} database.
+\newblock {\em Astronomy \& Astrophysics}, 494(2):739--768, 2009.
+
+\bibitem{scargle_studies_1982}
+Jeffrey~D. Scargle.
+\newblock Studies in astronomical time series analysis. {II}-{Statistical}
+  aspects of spectral analysis of unevenly spaced data.
+\newblock {\em The Astrophysical Journal}, 263:835--853, 1982.
 
 \bibitem{soszynski_optical_2011-2}
 I.~Soszyński, W.~A. Dziembowski, A.~Udalski, R.~Poleski, M.~K. Szymański,
