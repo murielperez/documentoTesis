@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{appendix}
 \title{Clasificación de Series de Tiempo Astronómicas}
 \author{Muriel Pérez\\ 201011755}
 \begin{document}
@@ -117,9 +118,33 @@ En el Catálogo de Estrellas Variables de OGLE-III, cada curva de luz está disp
 
 \chapter{Clasificación}\label{cap:clasificacion}
 
+Conociendo la curva de luz de un objeto podemos clasificarlo según su tipo de variabilidad estelar, sin embargo, esta relación no puede ser programada en un computador de manera sencilla. Cuando decimos que a cada curva de luz le corresponde un tipo de variabilidad estelar, queremos decir que existe una función, llamada función objetivo, cuya entrada es una curva de luz y cuya salida es un tipo de variabilidad estelar. 
+
+
 
 
 \section{Atributos Seleccionados \label{sec:atributos}}
+
+\begin{table}[ht]
+    \centering
+   \caption{Variables utilizadas}
+    \begin{tabular}{rr}
+      \hline
+      Cantidad & Fórmula  \\
+      \hline
+        Media& $\mu =\frac{1}{n}\sum_{i} m_{i}$ \\ 
+        Desviación estándar& $\sigma = \sqrt{\frac{1}{n}\sum_{i} (m_{i}-\mu)^{2}}$ \\
+        Sesgo & $\frac{1}{n}\sum_{i}{\left(\frac{m_{i}-\mu}{\sigma}\right)^{3}}$ \\
+        Curtosis& $\frac{1}{n}\sum_{i}{\left(\frac{m_{i}-\mu}{\sigma}\right)^{4}}$ \\
+        Rango& $\max_{i}m_{i} - \min_{i}m_{i}$ \\
+        Variación cuadrática& $\frac{1}{n}\sum_{i}(m_{i}-m_{i-1})^{2}$ \\
+        Valor Abbe \cite{mowlavi_searching_2014}& $\mathcal{A}=\frac{n}{2(n-1)}\frac{\sum_{i}{(m_{i}-m_{i-1})^{2}}}{\sum_{i}{(m_{i}-\mu})^2}$ \\
+        Abbe promedio \cite{mowlavi_searching_2014}& $\bar{\mathcal{A}_{t}}$ \\
+        Entropía de Shannon \cite{shannon_mathematical_1948} & $\sum_{i}{-p_{i}\log_{2}{p_{i}}}$ \\
+        Entropía de Renyi \cite{renyi_measures_1961}& $\frac{1}{1-\alpha}\log_{2}{\sum_{i}p_{i}^{\alpha}}$\\
+      \hline
+    \end{tabular}
+  \end{table}
 
 \section{K Vecinos Más Cercanos}
 \begin{table}[ht]
@@ -244,24 +269,23 @@ becand & 0.63 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
 \section{Bosques Aleatorios}
 
 
-\chapter{Apéndices}
+% \begin{appendices}
 
-\section{El Problema del Aprendizaje\label{cap:problemaAprendizaje}}
+%   \chapter{El Problema de Aprendizaje} %\label{sec:problemaAprendizaje}}
+  
+%   \chapter{K Vecinos Más cercanos}
+  
+%   \chapter{Árboles de Clasificación y Regresión}
+  
+%   \chapter{Máquinas de Soporte Vectorial}
+  
+%   \chapter{Bosques Aleatorios}
+  
+% \end{appendices}
 
-\section{K Vecinos Más cercanos}
+%\chapter{Cosas que la evolución se llevó}
 
-\section{Árboles de Clasificación y Regresión}
-
-\section{Máquinas de Soporte Vectorial}
-
-\section{Bosques Aleatorios}
-
-\section{Estimación del Error de Clasificación}\label{sec:estimacionError}
-
-
-\chapter{Cosas que la evolución se llevó}
-
-\section{vieja introducción}
+%\section{vieja introducción}
 % En este trabajo abordamos el problema de clasificar curvas de luz de estrellas variables por su tipo de variabilidad \footnote{Las estrellas variables son estrellas cuya magnitud cambia en el tiempo (ver nota \ref{nota:curvasDeLuz}). Pueden ser periódicas o no periódicas y se pueden clasificar como pulsantes, eruptivas o variables eclipsantes aunque existen subclases de variabilidad estelar. Una estrella puede ser clasificada en estas subclases conociendo su curva de luz (ver el capítulo 13 de \cite{karttunen_fundamental_2007}).} como un problema de aprendizaje supervisado. Para esto utilizamos una parte de los resultados de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III) que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver capítulo \ref{cap:losDatos}) (ver cuadro \ref{cuadro:datosUsados}). 
 
 

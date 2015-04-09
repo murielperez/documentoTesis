@@ -27,6 +27,12 @@ Hannu Karttunen, Pekka Kröger, Heikki Oja, Markku Poutanen, and Karl~Johan
 \newblock {\em Fundamental {Astronomy}}.
 \newblock Springer, Berlin ; New York, 5th edition edition, August 2007.
 
+\bibitem{mowlavi_searching_2014}
+N.~Mowlavi.
+\newblock Searching transients in large-scale surveys. {A} method based on the
+  {Abbe} value.
+\newblock {\em Astronomy and Astrophysics}, 568:78, 2014.
+
 \bibitem{pawlak_eclipsing_2013}
 M.~Pawlak, D.~Graczyk, I.~Soszyński, P.~Pietrukowicz, R.~Poleski, A.~Udalski,
   M.~K. Szymański, M.~Kubiak, G.~Pietrzyński, Ł. Wyrzykowski, K.~Ulaczyk,
@@ -57,6 +63,14 @@ Bayron~Stevenson Rodríguez~Feliciano and José~Alejandro García~Varela.
 \newblock Tesis ({Físico}). {Universidad} de los {Andes}. Bogotá : Uniandes,
   2012., 2012.
 
+\bibitem{renyi_measures_1961}
+Alfréd Rényi and {others}.
+\newblock On {Measures} of {Entropy} and {Information}.
+\newblock In {\em Proceedings of the {Fourth} {Berkeley} {Symposium} on
+  {Mathematical} {Statistics} and {Probability}, {Volume} 1: {Contributions} to
+  the {Theory} of {Statistics}}. The Regents of the University of California,
+  1961.
+
 \bibitem{sabogal_search_2014}
 B.~E. Sabogal, A.~García-Varela, and R.~E. Mennickent.
 \newblock Search for {Southern} {Galactic} {Be} {Star} {Candidates}.
@@ -74,6 +88,11 @@ Jeffrey~D. Scargle.
 \newblock Studies in astronomical time series analysis. {II}-{Statistical}
   aspects of spectral analysis of unevenly spaced data.
 \newblock {\em The Astrophysical Journal}, 263:835--853, 1982.
+
+\bibitem{shannon_mathematical_1948}
+C.E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock {\em Bell System Technical Journal, The}, 27(3):379--423, July 1948.
 
 \bibitem{soszynski_optical_2011-2}
 I.~Soszyński, W.~A. Dziembowski, A.~Udalski, R.~Poleski, M.~K. Szymański,
