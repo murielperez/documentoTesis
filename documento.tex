@@ -138,7 +138,7 @@ Utilizamos la maximización de la precisión como criterio para elegir la mejor 
 
 Para una curva de luz denotaremos con $(m_{i})_{1\leq i\leq n}$, $(t_{i})_{1\leq i\leq n}$ y $j$ a su serie de magnitudes, tiempos y tipo de variabilidad.
 
-Idealmente, el vector de características debe ser fácil de cálcular y debe capturar las diferencias entre los tipos de variabilidad estelar. En la literatura \cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011} se han utilizado coeficientes de Fourier para este propósito. Suponiendo que los pares $(t_i,m_i)$ provienen de una versión corrupta  $y(t) = m(t)+\epsilon$ de $m(t)$, la magnitud verdadera de la estrella, con $\epsilon$ una variable aleatoria,  los autores de \cite{debosscher_automated_2007} encuentran los parámetros $a_{ls}$, $f_l$ y $b_{ij}$ que mejor se ajustan a los datos de forma tal que $y$ es estimada por $\tilde{y}$
+Idealmente, el vector de características debe ser fácil de cálcular y debe capturar las diferencias entre los tipos de variabilidad estelar. En la literatura \cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011} se han utilizado coeficientes de Fourier para este propósito. Suponiendo que los pares $(t_i,m_i)$ provienen de una versión corrupta  de la magnitud verdadera es posible encontrar estimadores de mpinimos cuadrados para los coeficientes con el periodograma de Lomb-Scargle. Sea $m(t)$ la magnitud verdadera de la estrella observada, $y(t) = m(t)+\epsilon$ la medición que es una versión corrupta de $m(t)$ con $\epsilon$ siendo una variable aleatoria. Los autores de \cite{debosscher_automated_2007} encuentran los parámetros $a_{ls}$, $f_l$ y $b_{ij}$ que mejor se ajustan a los datos de forma tal que $y$ es estimada por $\tilde{y}$
 \begin{equation*}
 \tilde{y}(t)=\sum_{l=1}^{3}\sum_{s=1}^{4}(a_{ls}\sen{2\pi f_l st} + b_{ls}\cos{2\pi f_l st}) + b_0
 \end{equation*} 
@@ -147,10 +147,13 @@ Idealmente, el vector de características debe ser fácil de cálcular y debe ca
 % \tilde{y}(t)=\sum_{l=1}^{3}\sum_{s=1}^{4}A_{ls}\sen{(2\pi f_l st + PH_{ls})}  + b_0.
 % \end{equation*} 
 % A partir de $PH_{ls}$ es posible definir $PH''_{ls}$ que sea independiente de traslaciones temporales. 
-Luego, los autores utilizan estos coeficientes para dar una descripción de $y(t)$ que es independiente de traslaciones temporales. Lo importante no es entrear en los detalles de esta elección de parámetros sino resaltar que la búsqueda de estos es computacionalmente intensiva. Los autores de \cite{debosscher_automated_2007} utilizan el periodograma de Lomb-Scargle \cite{scargle_studies_1982} p
+Luego los autores utilizan estos coeficientes para dar una descripción de $y(t)$ que es independiente de traslaciones temporales. Lo importante no es entrear en los detalles de esta elección de parámetros sino resaltar que la búsqueda de estos es computacionalmente intensiva. Los autores de \cite{debosscher_automated_2007} utilizan el periodograma de Lomb-Scargle \cite{scargle_studies_1982} con el cual se obtiene una potencia para cada periodo posible. Predefinir los periodos posibles es un reto si no se tiene más información que la curva de luz de un objeto. Por ejemplo para clasificar las curvas de luz de Cefeidas Clásicas para el catálogo de OGLE-III \cite{soszynski_optical_2008-1} los autores probaron frecuencias entre 0.0 y 24.0 ciclos por día en aumentos de frecuencias de 0.0001 para 32 millones de objetos, para lo cual utilizaron supercomputadores del  \textit{Centre for Mathematical and Computational Modeling} de la Universidad de Varsovia, siguido de un análisis que llevó a la inspección manual de decenas de miles de curvas de luz. En este trabajo, basado en los hallazgos de \cite{rodriguez_feliciano_alisis_2012} y \cite{sabogal_search_2014}, proponemos utilizar en lugar de estos coeficientes, variables descriptivas de la serie de magnitudes (ver tabla \ref{cuadro:variablesUtilizadas}) que pueden ser calculadas en tiempos abrumadoramente menores, con menos poder computacional y sin intervención manual.
+
+
 
 \begin{table}[ht]
     \centering
+    \label{cuadro:variablesUtilizadas}
    \caption{Variables utilizadas}
     \begin{tabular}{rr}
       \hline
