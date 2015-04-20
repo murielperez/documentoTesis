@@ -3,7 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{hyperref}
+%\usepackage{hyperref} \url de ogle
 \usepackage{graphicx}
 \usepackage{appendix}
 \title{Clasificación de Series de Tiempo Astronómicas}
@@ -17,7 +17,9 @@ Con los avances en técnicas de observación astronómica que han sucedido en lo
 
 Para que estos datos sean útiles para la comunidad científica es necesario clasificarlos y extraer sus características. Aunque los métodos automáticos muchas veces no pueden igualar la inspección manual por parte de un experto, la cantidad de datos disponible hace que esta tarea no sea posible en corto tiempo y hace necesario utilizar técnicas de minería de datos. Este interés se manifiesta en proyectos como el \textit{VVV Templates Project} que tiene como objetivo consolidar una base bien definida de curvas de luz de estrellas variables en el infrarojo cercano para ser utilzadas como referencia para la clasificación automática de curvas de luz.
 
-Debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de mantenimiento de los instrumentos utilizados y la imposibilidad de abservar todas las regiones del cielo durante todo el año, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares. Como el tiempo durante el cual cada estrella no es observada es impredecible y no se observan características importantes de las curvas de luz,  estas no pueden ser analizadas con técnicas clásicas de análisis de series de tiempo.
+Las curvas de luz no pueden ser analizadas con técnicas de análisis de series de tiempo porque, debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de mantenimiento de los instrumentos utilizados y la imposibilidad de abservar todas las regiones del cielo durante todo el año, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares por lo que el tiempo durante el cual cada estrella no es observada es impredecible y algunas características importantes de las curvas de luz no son observadas. 
+
+Dependiendo de la serie de magnitudes observadas, una estrella puede ser clasificadas como variable o no variable; periódicas o no periódicas; y en diferentes clases de variabilidad estelar que depende de la morfología de su curva de luz. La forma de la curva de luz depende de las condiciones físicas de la estrella por lo que conocer a qué tipo de variabilidad pertenece cada estrella es de vital importancia para la comunidad científica.
 
 En estudios previos \cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011} se le ha asignado a cada curva de luz un vector, llamado vector de características, y, basado en él, se ha hecho la clasificación automática. La escogencia de el vector de características es crucial para el proceso de clasificación porque con él se debe poder clasificar cada curva de luz, es decir, debe logar que, en el espacio de características las clases se superpongan lo menos posible. Para la conformación de este vector se han elegido coeficientes de Fourier de la curva de luz\cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011}, que son calculados mediante métodos como el periodograma de  Lomb-Scargle \cite{scargle_studies_1982} o la minimización de la entropía de Shannon de la gráfica de la curva \cite{cincotta_astronomical_1995}. 
 
@@ -25,7 +27,7 @@ Esta elección de caracterísicas no es del todo conveniente porque requiere de 
 
 En \cite{rodriguez_feliciano_alisis_2012, sabogal_search_2014}, los autores notaron que algunas variables descriptivas de la serie de magnitudes de una curva de luz (como su sesgo o su curtosis) sirven para clasificar ciertos tipos de estrellas con clasificadores lineales. En este trabajo retomamos esa idea y construimos un vector de características basadas en variables tomadas de estadística descriptiva. El uso de este tipo de variables tiene las ventajas de que puede ser calculadas de manera rápida y dan como resultado un vector de caracterísicas que sive para realizar clasificación con una taza de éxito alta. Para evaluar esta aproximación al problema utilizamos una parte del Catálogo de Estrellas Variables de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III)\cite{soszynski_optical_2011-2,soszynski_optical_2010,soszynski_optical_2009-1,soszynski_optical_2011,soszynski_optical_2010-2,soszynski_optical_2008-1,soszynski_optical_2013-1,soszynski_optical_2011-1,soszynski_optical_2009,pawlak_eclipsing_2013,graczyk_optical_2011,poleski_optical_2010,soszynski_optical_2013,soszynski_optical_2010-1,soszynski_optical_2008} que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver cuadro \ref{cuadro:datosUsados}).
 
-En este trabajo utilizamos k-vecinos más cercanos, árboles de clasificación, máquinas de soporte vectorial y bosques aleatorios para realizar la clasificación automática de las curvas de luz basada en nuestra elección de características. Estos clasificadores fueron elegidos porque son aproximaciones muy distintas al problema de clasificación, por su naturaleza no lineal y no paramétrica; y por el hecho de que han mostrado ser efectivos en gran cantidad de aplicaciones prácticas. 
+En este trabajo utilizamos k-vecinos más cercanos, árboles de clasificación, máquinas de soporte vectorial y bosques aleatorios para realizar la clasificación automática de las curvas de luz basada en nuestra elección de características. Estos clasificadores fueron elegidos porque son aproximaciones muy distintas al problema de clasificación, por su naturaleza no lineal y no paramétrica; y por el hecho de que han mostrado ser efectivos en gran cantidad de aplicaciones prácticas. Para todo el análisis utilzamos $R$ (cita de R), que es un paquete estadístico de fuente abierta. Para cada tarea utilizamos paquetes específicos que son referenciados a lo largo del documento. 
 
 Este documento está organizado de la siguiente forma. En el capítulo \ref{cap:losDatos} damos una descripción del conjunto de datos utilizado en este trabajo. En el capítulo \ref{cap:clasificacion} abordamos el problema de clasificación de manera informal, presentamos y discutimos la elección de atributos y evaluamos el desempeño de los clasificadores mediante validación cruzada de 10 iteraciones. En los apéndices abordamos formalmente el problema de aprendizaje en general y damos una descripción de cada uno de los algorítmos utilizados en el trabajo.
 
@@ -34,14 +36,12 @@ Este documento está organizado de la siguiente forma. En el capítulo \ref{cap:
 
 \chapter{El conjunto de Datos\label{cap:losDatos}}
 
-Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE-III). OGLE es un proyecto de larga duración cuyo objetivo principal es la búsqueda de materia oscura mediante el aprovechamiento de lentes gravitacionales. La tercera fase del protecto comenzó en 2001 y hace uso de un telescopio de $1.3$m de diámetro localizado en el observatorio de Las Campanas, Chile\cite{udalski_optical_2004}. Uno de los principales resultados de OGLE-III es la reducción y publicación \cite{udalski_optical_2008} de las curvas de luz de objetos en el bulbo de la Galaxia, la Gran Nube de Magallanes y la Pequeña Nube de Magallanes. En este trabajo utilizamos las curvas de luz de $431 653$ objetos del catálogo de estrellas variables de OGLE-III de seis tipos de variabilidad (ver tabla \ref{cuadro:datosUsados}) al cual se puede acceder en la página del proyecto \footnote{\url{http://ogle.astrouw.edu.pl/}} y $475$ curvas de luz de estrellas candidatas a ser clasificadas como Be (ESCRIBIR DE DÓNDE FUERON TOMADAS ESTAS).
+Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE-III). OGLE es un proyecto de larga duración cuyo objetivo principal es la búsqueda de materia oscura mediante el aprovechamiento de lentes gravitacionales. La tercera fase del protecto comenzó en 2001 y hace uso de un telescopio de $1.3$m de diámetro localizado en el observatorio de Las Campanas, Chile\cite{udalski_optical_2004}. Uno de los principales resultados de OGLE-III es la reducción y publicación \cite{udalski_optical_2008} de las curvas de luz de objetos en el bulbo de la Galaxia, la Gran Nube de Magallanes y la Pequeña Nube de Magallanes. En este trabajo utilizamos las curvas de luz de $431 653$ objetos del catálogo de estrellas variables de OGLE-III de seis tipos de variabilidad (ver tabla \ref{cuadro:datosUsados}) al cual se puede acceder en la página del proyecto \footnote{http://ogle.astrouw.edu.pl/} y $475$ curvas de luz de estrellas candidatas a ser clasificadas como Be (ESCRIBIR DE DÓNDE FUERON TOMADAS ESTAS).
 
 Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III se encuentran clasificadas por tipo de variabilidad estelar en un proceso que que involucró, en una etapa, la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}) por lo cual tomaremos esta clasificación como verdadera. En este trabajo utilizamos únicamente las curvas de luz registradas en la banda I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El filtro I (infrarojo) tiene un ancho de banda de 149nm y una longitud de onda efectiva de 797nm (ver \cite{karttunen_fundamental_2007})} a pesar de que también se encuentra disponible información adicional sobre las curvas de luz como sus periodos y algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}). Esta elección se debe a que el cálculo de estas cantidades es computacionalmente intensivo, no siempre se encuentran disponible y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva.
 
 \begin{table}
-  \centering
-  \caption{Conjunto de datos utilizados. BG hace referencia al Bulbo Galáctico; PNM, a la Pequeña Nube de Magallanes y GNM, a la Gran Nube de Magallanes. }
-  \label{cuadro:datosUsados}  
+  \centering  
   \begin{tabular}{rr}
     \hline
     \hline
@@ -73,6 +73,8 @@ Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III se en
     \hline
     \hline 
   \end{tabular} 
+  \caption{Conjunto de datos utilizados. BG hace referencia al Bulbo Galáctico; PNM, a la Pequeña Nube de Magallanes y GNM, a la Gran Nube de Magallanes. }
+  \label{cuadro:datosUsados}
 \end{table}
 
 
@@ -80,8 +82,6 @@ Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estel
 
 \begin{table}[ht]
   \centering
-  \caption{Cantidad de datos por tipo de variabilidad}
-  \label{cuadro:cantidadDatos}
   \begin{tabular}{rrr}
     \hline
     Tipo de Variabilidad & Cantidad \\
@@ -97,6 +97,8 @@ Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estel
     Total & 432128\\
     \hline
   \end{tabular}
+  \caption{Cantidad de datos por tipo de variabilidad}
+  \label{cuadro:cantidadDatos}
 \end{table}
 
 
@@ -111,7 +113,7 @@ Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estel
 En el Catálogo de Estrellas Variables de OGLE-III, cada curva de luz está disponible en un archivo que contiene tres columnas con los valores de magnitud, fecha juliana \footnote{La fecha Juliana es el tiempo medido en días desde el 1 de enero de 4713 a. C.} en la que fue tomada cada medida y error en la medida de la magnitud. El número de medidas para cada objeto y la separación temporal varía ampliamente. La separación mínima dos mediciones en toda la muestra es de 0.00147d, la máxima es 2156.9d y en promedio están separadas por 5.1d; por su parte el número promedio de observaciones por objeto es 759; el máximo, 5173; y el mínimo,  11. El 75\% de los objetos cuenta con más de 386 observaciones. Para todos los objetos estas observaciones están repartidas en los (número de años) años en que estuvo activo OGLE-III. En la figura \ref{fig:curvaDeLuz} se puede observar una curva de luz del catálogo de estrellas variables de OGLE-III.    
 
 \begin{figure}
-  %\includegraphics[width = \textwidth]{./img/C2Datos/tiposCefeidas.png}
+  \includegraphics[width = \textwidth]{./img/C2Datos/tiposCefeidas.png}
   \label{fig:curvaDeLuz}
   \caption{(figura pendiente de imagen) Curva de luz (nombre del archivo) del catálogo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del año en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posición relativa entre el Sol y la Tierra.}
 \end{figure}
@@ -120,7 +122,7 @@ En el Catálogo de Estrellas Variables de OGLE-III, cada curva de luz está disp
 
 Conociendo la curva de luz de un objeto podemos clasificarlo según su tipo de variabilidad estelar, sin embargo, esta relación no puede ser programada en un computador de manera sencilla. Cuando decimos que a cada curva de luz le corresponde un tipo de variabilidad estelar, queremos decir que existe una función, llamada función objetivo, cuya entrada es una curva de luz y cuya salida es un tipo de variabilidad estelar. El objetivo general del aprendizaje supervidado es aproximar esta función utilizando la experiencia previa. Esta experiencia previa es, en este caso, nuestro conjunto de datos (ver cuadro \ref{cuadro:datosUsados}) y la estimación de esta regla, o función de decisión, es encontrada mediante un algorítmo de aprendizaje. Un algorítmo de aprendizaje escoge una función de decisión de un conjunto de funciones, llamado conjunto de hipótesis, utilizando un criterio que usualmente consiste en la minimización de una función de costo asociada a las clasificaciones erróneas. En nuestro caso utilizamos como función de costo la probabilidad de clasificación incorrecta.
 
-Cada curva de luz en nuestra muestra es una tríada que consta de una sucesión de mediciones de magnitud, una suseción de fechas y un tipo de variabilidad estelar. Como cada curva de luz tiene un número de mediciones diferentes, esto dificulta la implementación de algorítmos para entrenar una regla de desisión. En consecuencia, a cada curva de luz le asignamos un vector de dimensionalidad fija, llamado vector de características. Este vector puede ser, en principio, una combinación de variables categóricas y numéricas; en este trabajo le asignamos únicamente variables numéricas. La función de decisión divide el espacio de caracterísitcas en regiones tales que a cada elemento del espacio de características le asigna un tipo de variabilidad estelar basado en qué región se encuentra. Así, para clasificar una curva cuyo tipo de variabilidad es desconicido, calculamos su vector de caracterísicas y le asignamos la clase de variabilidad dada por la regla de decisión previamente entrenada. Por lo tanto la elección de características es crucial puesto que si los vectores de características de diferentes clases se superponen, no podrán ser distinguidos por la regla de decisión.
+Cada curva de luz en nuestra muestra es una tríada que consta de una sucesión de mediciones de magnitud, una suseción de fechas y un tipo de variabilidad estelar. Como cada curva de luz tiene un número de mediciones diferentes que están repartidas en diferentes intervalos de tiempo, esto dificulta la implementación de algorítmos para entrenar una regla de desisión. En consecuencia, a cada curva de luz le asignamos un vector de dimensionalidad fija, llamado vector de características. Este vector puede ser, en principio, una combinación de variables categóricas y numéricas; en este trabajo le asignamos únicamente variables numéricas. La función de decisión divide el espacio de caracterísitcas en regiones tales que a cada elemento del espacio de características le asigna un tipo de variabilidad estelar basado en qué región se encuentra. Así, para clasificar una curva cuyo tipo de variabilidad es desconicido, calculamos su vector de caracterísicas y le asignamos la clase de variabilidad dada por la regla de decisión previamente entrenada. Por lo tanto la elección de características es crucial puesto que si los vectores de características de diferentes clases se superponen, no podrán ser distinguidos por la regla de decisión.
 
 Subsecuentemente llamaremos $g:\mathbb{R}^{n}\rightarrow \{VLP,\dots, BeEC\}$ a la función de decisión en cuestión que le asigna a cada vector de características un tipo de variabilidad (ver cuadro \ref{cuadro:cantidadDatos}). Cada dato es representado por una pareja $(\vec{x}, i)$, con $\vec{x}\in\mathbb{R}$ siendo el vector de características y $i\in\{VLP,\dots, BeEC\}$ la clase a la que pertenece. La regla de decisión se equivoca si  $g(x)\neq i$. Suponemos que existe una distribución de probabilidad $p(\vec{x},i)$ que representa la probabilidad de observar el vector de características $\vec{x}$ con el tipo de variabilidad $i$.
 
@@ -149,148 +151,172 @@ Idealmente, el vector de características debe ser fácil de cálcular y debe ca
 % A partir de $PH_{ls}$ es posible definir $PH''_{ls}$ que sea independiente de traslaciones temporales. 
 Luego los autores utilizan estos coeficientes para dar una descripción de $y(t)$ que es independiente de traslaciones temporales. Lo importante no es entrear en los detalles de esta elección de parámetros sino resaltar que la búsqueda de estos es computacionalmente intensiva. Los autores de \cite{debosscher_automated_2007} utilizan el periodograma de Lomb-Scargle \cite{scargle_studies_1982} con el cual se obtiene una potencia para cada periodo posible. Predefinir los periodos posibles es un reto si no se tiene más información que la curva de luz de un objeto. Por ejemplo para clasificar las curvas de luz de Cefeidas Clásicas para el catálogo de OGLE-III \cite{soszynski_optical_2008-1} los autores probaron frecuencias entre 0.0 y 24.0 ciclos por día en aumentos de frecuencias de 0.0001 para 32 millones de objetos, para lo cual utilizaron supercomputadores del  \textit{Centre for Mathematical and Computational Modeling} de la Universidad de Varsovia, siguido de un análisis que llevó a la inspección manual de decenas de miles de curvas de luz. En este trabajo, basado en los hallazgos de \cite{rodriguez_feliciano_alisis_2012} y \cite{sabogal_search_2014}, proponemos utilizar en lugar de estos coeficientes, variables descriptivas de la serie de magnitudes (ver tabla \ref{cuadro:variablesUtilizadas}) que pueden ser calculadas en tiempos abrumadoramente menores, con menos poder computacional y sin intervención manual.
 
-
-
 \begin{table}[ht]
-    \centering
-    \label{cuadro:variablesUtilizadas}
-   \caption{Variables utilizadas}
-    \begin{tabular}{rr}
-      \hline
-      Cantidad & Fórmula  \\
-      \hline
-        Media& $\mu =\frac{1}{n}\sum_{i} m_{i}$ \\ 
-        Desviación estándar& $\sigma = \sqrt{\frac{1}{n}\sum_{i} (m_{i}-\mu)^{2}}$ \\
-        Sesgo & $\frac{1}{n}\sum_{i}{\left(\frac{m_{i}-\mu}{\sigma}\right)^{3}}$ \\
-        Curtosis& $\frac{1}{n}\sum_{i}{\left(\frac{m_{i}-\mu}{\sigma}\right)^{4}}$ \\
-        Rango& $\max_{i}m_{i} - \min_{i}m_{i}$ \\
-        Variación cuadrática& $\frac{1}{n}\sum_{i}(m_{i}-m_{i-1})^{2}$ \\
-        Valor Abbe \cite{mowlavi_searching_2014}& $\mathcal{A}=\frac{n}{2(n-1)}\frac{\sum_{i}{(m_{i}-m_{i-1})^{2}}}{\sum_{i}{(m_{i}-\mu})^2}$ \\
-        Abbe promedio \cite{mowlavi_searching_2014}& $\bar{\mathcal{A}_{t}}$ \\
-        Entropía de Shannon \cite{shannon_mathematical_1948} & $\sum_{i}{-p_{i}\log_{2}{p_{i}}}$ \\
-        Entropía de Renyi \cite{renyi_measures_1961}& $\frac{1}{1-\alpha}\log_{2}{\sum_{i}p_{i}^{\alpha}}$\\
-      \hline
-    \end{tabular}
-  \end{table}
+  \centering
+  \begin{tabular}{rr}
+    \hline
+    Cantidad & Fórmula  \\
+    \hline
+    Media& $\mu =\frac{1}{n}\sum_{i} m_{i}$ \\ 
+    Desviación estándar& $\sigma = \sqrt{\frac{1}{n}\sum_{i} (m_{i}-\mu)^{2}}$ \\
+    Sesgo & $\frac{1}{n}\sum_{i}{\left(\frac{m_{i}-\mu}{\sigma}\right)^{3}}$ \\
+    Curtosis& $\frac{1}{n}\sum_{i}{\left(\frac{m_{i}-\mu}{\sigma}\right)^{4}}$ \\
+    Rango& $\max_{i}m_{i} - \min_{i}m_{i}$ \\
+    Variación cuadrática& $\frac{1}{n}\sum_{i}(m_{i}-m_{i-1})^{2}$ \\
+    Valor Abbe \cite{mowlavi_searching_2014}& $\mathcal{A}=\frac{n}{2(n-1)}\frac{\sum_{i}{(m_{i}-m_{i-1})^{2}}}{\sum_{i}{(m_{i}-\mu})^2}$ \\
+    Abbe promedio \cite{mowlavi_searching_2014}& $\bar{\mathcal{A}_{t}}$ \\
+    Entropía de Shannon \cite{shannon_mathematical_1948} & $\sum_{i}{-p_{i}\log_{2}{p_{i}}}$ \\
+    Entropía de Rényi\cite{renyi_measures_1961}& $\frac{1}{1-\alpha}\log_{2}{\sum_{x}p_{i}^{\alpha}}$\\
+    \hline
+  \end{tabular}
+  \label{cuadro:variablesUtilizadas}
+  \caption{Variables utilizadas}
+\end{table}
+
+Bajo este punto de vista, las magnitudes son vistas como una variable aleatoria independiente del tiempo y las cantidades de la tabla \ref{cuadro:variablesUtilizadas} son variables descriptivas de su densidad. En la figura \ref{fig:curvaHist} se observa una curva de luz y la densidad estimada de sus magnitudes. Al utilizar la distribución de la serie de magnitudes se asume que el número de observaciones es lo suficientemente grande, que estas son hechas en intervalos que evitan el aliasing y que son hechas durante más de un periodo del objeto observado. Es de esperar que las curvas que tienen formas similares, es decir, que pertenecen al mismo tipo de variabilidad estelar, tengan densidades de magnitudes similares y que, por ende, los parámetros descriptivos utilizados también sean similares.
+
+Como es de esperar, no encontramos que alguna variable sirviera para distinguir todas las clases de variabiliad estelar, sin embargo el vector que forman 
+
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.8\textwidth]{./img/CClasificacion/curvaHist.pdf}
+  \caption{Curva de luz OGLE-LMC-CEP-0503 y densidad estimada de las magnitudes. }
+  \label{fig:curvaHist}
+  \centering
+\end{figure}
+
+La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:variablesUtilizadas}) son variables descriptivas bien conocidas. En este caso la media es el valor al rededor del cual la serie de magnitudes oscila y la desviación una medida de la amplitud de estas oscilaciones. (Dar argumentos astronómicos). La figura \ref{fig:mediaDesv} muestra la densidad de cada una de las clases en el plano $\mu$-$\sigma$. Aunque las diferentes clases se superponen en este plano, hay pares de clases que pueden ser   
+
+\begin{figure}
+  \centering
+  \includegraphics[width = \textwidth]{./img/CClasificacion/mediaDesv.pdf}
+  \caption{}
+  \label{fig:mediaDesv}
+  \centering
+\end{figure}
+
+ 
+
+
 
 \section{K Vecinos Más Cercanos}
 \begin{table}[ht]
-\centering
-\caption{k = 1} 
-\label{table:cmknn}
-\begin{tabular}{rrrrrrrr}
-  \hline
- & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
-  \hline
-becand & 381 &   1 &   0 &  50 &  41 &   0 &   0 \\ 
-  cep &   1 & 6595 &   4 & 172 &  54 & 986 &  87 \\ 
-  dcst &   0 &   7 & 2064 & 340 &  13 & 151 &   0 \\ 
-  ebs &  51 & 184 & 536 & 30129 & 573 & 668 &  29 \\ 
-  lpv &  42 & 187 &  19 & 944 & 342740 & 371 & 158 \\ 
-  rrlyr &   0 & 971 & 165 & 595 & 308 & 41911 & 217 \\ 
-  t2cep &   0 &  59 &   0 &  29 &  53 & 130 & 112 \\ 
-   \hline
-\end{tabular}
+  \centering
+  \caption{k = 1} 
+  \label{table:cmknn}
+  \begin{tabular}{rrrrrrrr}
+    \hline
+    & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
+    \hline
+    becand & 381 &   1 &   0 &  50 &  41 &   0 &   0 \\ 
+    cep &   1 & 6595 &   4 & 172 &  54 & 986 &  87 \\ 
+    dcst &   0 &   7 & 2064 & 340 &  13 & 151 &   0 \\ 
+    ebs &  51 & 184 & 536 & 30129 & 573 & 668 &  29 \\ 
+    lpv &  42 & 187 &  19 & 944 & 342740 & 371 & 158 \\ 
+    rrlyr &   0 & 971 & 165 & 595 & 308 & 41911 & 217 \\ 
+    t2cep &   0 &  59 &   0 &  29 &  53 & 130 & 112 \\ 
+    \hline
+  \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\centering
-\caption{k=1, validación cruzada de 10 iteraciones} 
-\label{table:cmCvKnn}
-\begin{tabular}{rrrrrrrr}
-  \hline
- & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
-  \hline
-becand & 0.80 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  cep & 0.00 & 0.82 & 0.00 & 0.01 & 0.00 & 0.02 & 0.14 \\ 
-  dcst & 0.00 & 0.00 & 0.74 & 0.01 & 0.00 & 0.00 & 0.00 \\ 
-  ebs & 0.11 & 0.02 & 0.19 & 0.93 & 0.00 & 0.02 & 0.05 \\ 
-  lpv & 0.09 & 0.02 & 0.01 & 0.03 & 1.00 & 0.01 & 0.26 \\ 
-  rrlyr & 0.00 & 0.12 & 0.06 & 0.02 & 0.00 & 0.95 & 0.36 \\ 
-  t2cep & 0.00 & 0.01 & 0.00 & 0.00 & 0.00 & 0.00 & 0.19 \\ 
-   \hline
-\end{tabular}
+  \centering
+  \caption{k=1, validación cruzada de 10 iteraciones} 
+  \label{table:cmCvKnn}
+  \begin{tabular}{rrrrrrrr}
+    \hline
+    & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
+    \hline
+    becand & 0.80 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
+    cep & 0.00 & 0.82 & 0.00 & 0.01 & 0.00 & 0.02 & 0.14 \\ 
+    dcst & 0.00 & 0.00 & 0.74 & 0.01 & 0.00 & 0.00 & 0.00 \\ 
+    ebs & 0.11 & 0.02 & 0.19 & 0.93 & 0.00 & 0.02 & 0.05 \\ 
+    lpv & 0.09 & 0.02 & 0.01 & 0.03 & 1.00 & 0.01 & 0.26 \\ 
+    rrlyr & 0.00 & 0.12 & 0.06 & 0.02 & 0.00 & 0.95 & 0.36 \\ 
+    t2cep & 0.00 & 0.01 & 0.00 & 0.00 & 0.00 & 0.00 & 0.19 \\ 
+    \hline
+  \end{tabular}
 \end{table}
 
 \section{Árboles de clasificación y regresión}
-%Matriz de confusión para Cart
+% Matriz de confusión para Cart
 \begin{table}[ht]
-\centering
-\caption{Matriz de confusión para CART} 
-\label{cuadro:cmCart}
-\begin{tabular}{rrrrrrrr}
-  \hline
- & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
-  \hline
-becand & 470 &  12 &   6 & 1039 & 8906 &  47 &  18 \\ 
-  cep &   0 & 6210 &  12 &  18 & 320 & 3098 &  92 \\ 
-  dcst &   0 &  35 & 2511 & 5538 &  91 & 1615 &   1 \\ 
-  ebs &   0 &   1 & 148 & 21346 & 346 &  64 &   1 \\ 
-  lpv &   5 & 107 &  24 & 1762 & 304810 & 100 &   3 \\ 
-  rrlyr &   0 & 648 &  82 & 552 & 13880 & 34313 &  92 \\ 
-  t2cep &   0 & 991 &   5 & 2004 & 15429 & 4980 & 396 \\ 
-   \hline
-\end{tabular}
+  \centering
+  \caption{Matriz de confusión para CART} 
+  \label{cuadro:cmCart}
+  \begin{tabular}{rrrrrrrr}
+    \hline
+    & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
+    \hline
+    becand & 470 &  12 &   6 & 1039 & 8906 &  47 &  18 \\ 
+    cep &   0 & 6210 &  12 &  18 & 320 & 3098 &  92 \\ 
+    dcst &   0 &  35 & 2511 & 5538 &  91 & 1615 &   1 \\ 
+    ebs &   0 &   1 & 148 & 21346 & 346 &  64 &   1 \\ 
+    lpv &   5 & 107 &  24 & 1762 & 304810 & 100 &   3 \\ 
+    rrlyr &   0 & 648 &  82 & 552 & 13880 & 34313 &  92 \\ 
+    t2cep &   0 & 991 &   5 & 2004 & 15429 & 4980 & 396 \\ 
+    \hline
+  \end{tabular}
 \end{table}
 
-%Errores de validación cruzada para cart
+% Errores de validación cruzada para cart
 \begin{table}[ht]
-\centering
-\caption{Tasas de clasificación estimadas por validación cruzada de 10 iteraciones} 
-\label{table:cmCvart}
-\begin{tabular}{rrrrrrrr}
-  \hline
- & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
-  \hline
-becand & 0.99 & 0.00 & 0.00 & 0.03 & 0.03 & 0.00 & 0.03 \\ 
-  cep & 0.00 & 0.78 & 0.00 & 0.00 & 0.00 & 0.07 & 0.15 \\ 
-  dcst & 0.00 & 0.00 & 0.90 & 0.17 & 0.00 & 0.04 & 0.00 \\ 
-  ebs & 0.00 & 0.00 & 0.05 & 0.66 & 0.00 & 0.00 & 0.00 \\ 
-  lpv & 0.01 & 0.01 & 0.01 & 0.05 & 0.89 & 0.00 & 0.00 \\ 
-  rrlyr & 0.00 & 0.08 & 0.03 & 0.02 & 0.04 & 0.78 & 0.15 \\ 
-  t2cep & 0.00 & 0.12 & 0.00 & 0.06 & 0.04 & 0.11 & 0.66 \\ 
-   \hline
-\end{tabular}
+  \centering
+  \caption{Tasas de clasificación estimadas por validación cruzada de 10 iteraciones} 
+  \label{table:cmCvart}
+  \begin{tabular}{rrrrrrrr}
+    \hline
+    & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
+    \hline
+    becand & 0.99 & 0.00 & 0.00 & 0.03 & 0.03 & 0.00 & 0.03 \\ 
+    cep & 0.00 & 0.78 & 0.00 & 0.00 & 0.00 & 0.07 & 0.15 \\ 
+    dcst & 0.00 & 0.00 & 0.90 & 0.17 & 0.00 & 0.04 & 0.00 \\ 
+    ebs & 0.00 & 0.00 & 0.05 & 0.66 & 0.00 & 0.00 & 0.00 \\ 
+    lpv & 0.01 & 0.01 & 0.01 & 0.05 & 0.89 & 0.00 & 0.00 \\ 
+    rrlyr & 0.00 & 0.08 & 0.03 & 0.02 & 0.04 & 0.78 & 0.15 \\ 
+    t2cep & 0.00 & 0.12 & 0.00 & 0.06 & 0.04 & 0.11 & 0.66 \\ 
+    \hline
+  \end{tabular}
 \end{table}
 
 \section{Máquinas de Soporte Vectorial}
 
 \begin{table}[ht]
-\centering
-\caption{$\gamma = 0.1$, costo = $16$} 
-\label{table:cmSvm}
-\begin{tabular}{rrrrrrrr}
-  \hline
- & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
-  \hline
-becand & 297 &   0 &   2 &  26 &  16 &   0 &   0 \\ 
-  cep &   0 & 4622 &   0 &  55 &  85 & 788 &  69 \\ 
-  dcst &   0 &   0 & 1683 & 163 &   4 &  47 &   0 \\ 
-  ebs &  89 &  48 & 865 & 29439 & 198 & 563 &   5 \\ 
-  lpv &  89 & 490 &  22 & 1380 & 342823 & 1113 & 255 \\ 
-  rrlyr &   0 & 2844 & 216 & 1196 & 656 & 41706 & 274 \\ 
-  t2cep &   0 &   0 &   0 &   0 &   0 &   0 &   0 \\ 
-   \hline
-\end{tabular}
+  \centering
+  \caption{$\gamma = 0.1$, costo = $16$} 
+  \label{table:cmSvm}
+  \begin{tabular}{rrrrrrrr}
+    \hline
+    & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
+    \hline
+    becand & 297 &   0 &   2 &  26 &  16 &   0 &   0 \\ 
+    cep &   0 & 4622 &   0 &  55 &  85 & 788 &  69 \\ 
+    dcst &   0 &   0 & 1683 & 163 &   4 &  47 &   0 \\ 
+    ebs &  89 &  48 & 865 & 29439 & 198 & 563 &   5 \\ 
+    lpv &  89 & 490 &  22 & 1380 & 342823 & 1113 & 255 \\ 
+    rrlyr &   0 & 2844 & 216 & 1196 & 656 & 41706 & 274 \\ 
+    t2cep &   0 &   0 &   0 &   0 &   0 &   0 &   0 \\ 
+    \hline
+  \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\centering
-\caption{$\gamma = 0.1$, costo = $16$, validación cruzada de 10 iteraciones} 
-\label{table:cmCvSvm}
-\begin{tabular}{rrrrrrrr}
-  \hline
- & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
-  \hline
-becand & 0.63 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-  cep & 0.00 & 0.58 & 0.00 & 0.00 & 0.00 & 0.02 & 0.11 \\ 
-  dcst & 0.00 & 0.00 & 0.60 & 0.01 & 0.00 & 0.00 & 0.00 \\ 
-  ebs & 0.19 & 0.01 & 0.31 & 0.91 & 0.00 & 0.01 & 0.01 \\ 
-  lpv & 0.19 & 0.06 & 0.01 & 0.04 & 1.00 & 0.03 & 0.42 \\ 
-  rrlyr & 0.00 & 0.36 & 0.08 & 0.04 & 0.00 & 0.94 & 0.45 \\ 
-  t2cep & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
-   \hline
-\end{tabular}
+  \centering
+  \caption{$\gamma = 0.1$, costo = $16$, validación cruzada de 10 iteraciones} 
+  \label{table:cmCvSvm}
+  \begin{tabular}{rrrrrrrr}
+    \hline
+    & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
+    \hline
+    becand & 0.63 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
+    cep & 0.00 & 0.58 & 0.00 & 0.00 & 0.00 & 0.02 & 0.11 \\ 
+    dcst & 0.00 & 0.00 & 0.60 & 0.01 & 0.00 & 0.00 & 0.00 \\ 
+    ebs & 0.19 & 0.01 & 0.31 & 0.91 & 0.00 & 0.01 & 0.01 \\ 
+    lpv & 0.19 & 0.06 & 0.01 & 0.04 & 1.00 & 0.03 & 0.42 \\ 
+    rrlyr & 0.00 & 0.36 & 0.08 & 0.04 & 0.00 & 0.94 & 0.45 \\ 
+    t2cep & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\ 
+    \hline
+  \end{tabular}
 \end{table}
 
 \section{Bosques Aleatorios}
@@ -299,11 +325,11 @@ becand & 0.63 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 & 0.00 \\
 % \begin{appendices}
 
 %   \chapter{El Problema de Aprendizaje} %\label{sec:problemaAprendizaje}}
-  
+
 %   \chapter{K Vecinos Más cercanos}
-  
+
 %   \chapter{Árboles de Clasificación y Regresión}
-  
+
 %   \chapter{Máquinas de Soporte Vectorial}
   
 %   \chapter{Bosques Aleatorios}

@@ -10,4 +10,4 @@ tesisMatematicas.bib:documento.tex
 	pdflatex documento.tex
 	bibtex documento
 clean:
-	rm *.aux *.log *.bbl *.blg
+	rm *.aux *.log *.bbl *.blg *.toc
