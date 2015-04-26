@@ -6,6 +6,11 @@
 %\usepackage{hyperref} \url de ogle
 \usepackage{graphicx}
 \usepackage{appendix}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{subcaption}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
 \title{Clasificación de Series de Tiempo Astronómicas}
 \author{Muriel Pérez\\ 201011755}
 \begin{document}
@@ -19,19 +24,107 @@ Para que estos datos sean útiles para la comunidad científica es necesario cla
 
 Las curvas de luz no pueden ser analizadas con técnicas de análisis de series de tiempo porque, debido a limitaciones en el tiempo de observación, fallas técnicas, periodos de mantenimiento de los instrumentos utilizados y la imposibilidad de abservar todas las regiones del cielo durante todo el año, las curvas de luz no constan del mismo número de observaciones y éstas no son hechas en intervalos regulares por lo que el tiempo durante el cual cada estrella no es observada es impredecible y algunas características importantes de las curvas de luz no son observadas. 
 
-Dependiendo de la serie de magnitudes observadas, una estrella puede ser clasificadas como variable o no variable; periódicas o no periódicas; y en diferentes clases de variabilidad estelar que depende de la morfología de su curva de luz. La forma de la curva de luz depende de las condiciones físicas de la estrella por lo que conocer a qué tipo de variabilidad pertenece cada estrella es de vital importancia para la comunidad científica.
+Dependiendo de la serie de magnitudes observadas, una estrella puede ser clasificadas como variable o no variable; periódicas o no periódicas; y en diferentes clases de variabilidad estelar que depende de la morfología de su curva de luz. La forma de la curva de luz depende de las condiciones físicas de la estrella por lo que conocer a qué tipo de variabilidad pertenece cada estrella es de vital importancia para el estudio de las estrellas variables. A su vez, el estudio de las estrellas variables ha sido importante para el estudio de la evolución estelar, la determinación de distancias cósmicas y la búsqueda de exoplanetas, entre otras. 
 
-En estudios previos \cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011} se le ha asignado a cada curva de luz un vector, llamado vector de características, y, basado en él, se ha hecho la clasificación automática. La escogencia de el vector de características es crucial para el proceso de clasificación porque con él se debe poder clasificar cada curva de luz, es decir, debe logar que, en el espacio de características las clases se superpongan lo menos posible. Para la conformación de este vector se han elegido coeficientes de Fourier de la curva de luz\cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011}, que son calculados mediante métodos como el periodograma de  Lomb-Scargle \cite{scargle_studies_1982} o la minimización de la entropía de Shannon de la gráfica de la curva \cite{cincotta_astronomical_1995}. 
+En estudios previos \cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011} se le ha asignado a cada curva de luz un vector, llamado vector de características, y, basado en él, se ha hecho la clasificación automática. Este proceso consiste en entrenar un clasificador basado en una muestra clasificada previamente, la  muestra de entrenamiento, utilizando el vector de características escogido. La escogencia de el vector de características es crucial para el proceso de clasificación porque con él se debe poder clasificar cada curva de luz, es decir, debe logar que, en el espacio de características, las clases se superpongan lo menos posible. Para la conformación de este vector se han elegido coeficientes de Fourier de la curva de luz\cite{debosscher_automated_2007, sarro_automated_2009, richards_machine-learned_2011}, que son calculados mediante métodos como el periodograma de  Lomb-Scargle \cite{scargle_studies_1982} o la minimización de la entropía de Shannon de la gráfica de la curva \cite{cincotta_astronomical_1995}. 
 
-Esta elección de caracterísicas no es del todo conveniente porque requiere de gran poder computacional y limita el tipo de objetos que pueden ser clasificados. El cálculo del periodogramas como el de Lomb-Scargle para curvas de luz, y en general el de los métodos utilizados en la literatura, requiere de intentar una gran cantidad de periodos candidatos a ser el periodo de la curva de luz para luego elegir el mejor. Los periodos de los objetos observados varía entre desde unos pocos minutos y varios años por lo cual se requiere probar una gran cantidad de periodos. Por un lado este es un proceso es computacionalmente intensivo, lo que limita su uso en conjuntos grandes de curvas de luz; y por otro lado no es seguro que dé como resultado el periodo real de una curva de luz, por lo que a menudo éste debe ser revisado manualmente. Además el resultado de la clasificación puede ser sensible a la calidad de las curvas de luz que sean elegidas como muestra de entrenamiento \cite{debosscher_automated_2007} y limita el estudio a fuentes periódicas.  
+Esta elección de caracterísicas no es del todo conveniente porque requiere de gran poder computacional y limita el tipo de objetos que pueden ser clasificados. El cálculo del periodogramas como el de Lomb-Scargle para curvas de luz, y en general el de los métodos utilizados en la literatura, requiere de intentar una gran cantidad de periodos candidatos a ser el periodo de la curva de luz para luego elegir el mejor y de la inspección manual de las curvas de luz. Los periodos de los objetos observados varía entre desde unos pocos minutos y varios años por lo cual se requiere probar una gran cantidad de periodos. Por un lado este es un proceso es computacionalmente intensivo, lo que limita su uso en conjuntos grandes de curvas de luz; y por otro lado no es seguro que dé como resultado el periodo real de una curva de luz, por lo que a menudo éste debe ser revisado manualmente. Además el resultado de la clasificación puede ser sensible a la calidad de las curvas de luz que sean elegidas como muestra de entrenamiento \cite{debosscher_automated_2007} y limita el estudio a fuentes periódicas.  
 
-En \cite{rodriguez_feliciano_alisis_2012, sabogal_search_2014}, los autores notaron que algunas variables descriptivas de la serie de magnitudes de una curva de luz (como su sesgo o su curtosis) sirven para clasificar ciertos tipos de estrellas con clasificadores lineales. En este trabajo retomamos esa idea y construimos un vector de características basadas en variables tomadas de estadística descriptiva. El uso de este tipo de variables tiene las ventajas de que puede ser calculadas de manera rápida y dan como resultado un vector de caracterísicas que sive para realizar clasificación con una taza de éxito alta. Para evaluar esta aproximación al problema utilizamos una parte del Catálogo de Estrellas Variables de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III)\cite{soszynski_optical_2011-2,soszynski_optical_2010,soszynski_optical_2009-1,soszynski_optical_2011,soszynski_optical_2010-2,soszynski_optical_2008-1,soszynski_optical_2013-1,soszynski_optical_2011-1,soszynski_optical_2009,pawlak_eclipsing_2013,graczyk_optical_2011,poleski_optical_2010,soszynski_optical_2013,soszynski_optical_2010-1,soszynski_optical_2008} que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver cuadro \ref{cuadro:datosUsados}).
+En \cite{rodriguez_feliciano_alisis_2012, sabogal_search_2014}, los autores notaron que algunas variables descriptivas de la serie de magnitudes de una curva de luz (como su sesgo o su curtosis) sirven para clasificar ciertos tipos de estrellas con clasificadores lineales. En este trabajo retomamos esa idea y construimos un vector de características basadas en variables tomadas de estadística descriptiva. El uso de este tipo de variables tiene las ventajas de que puede ser calculadas de manera rápida y da como resultado un vector de caracterísicas que sive para realizar clasificación con una taza de éxito alta. Para evaluar esta aproximación al problema utilizamos una parte del Catálogo de Estrellas Variables de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE III)\cite{soszynski_optical_2011-2,soszynski_optical_2010,soszynski_optical_2009-1,soszynski_optical_2011,soszynski_optical_2010-2,soszynski_optical_2008-1,soszynski_optical_2013-1,soszynski_optical_2011-1,soszynski_optical_2009,pawlak_eclipsing_2013,graczyk_optical_2011,poleski_optical_2010,soszynski_optical_2013,soszynski_optical_2010-1,soszynski_optical_2008} que contiene curvas de luz  de estrellas previamente clasificadas en seis tipos de variabilidad estelar y curvas de luz de estrellas candidatas a ser clasificadas como Be (ver cuadro \ref{cuadro:datosUsados}).
 
-En este trabajo utilizamos k-vecinos más cercanos, árboles de clasificación, máquinas de soporte vectorial y bosques aleatorios para realizar la clasificación automática de las curvas de luz basada en nuestra elección de características. Estos clasificadores fueron elegidos porque son aproximaciones muy distintas al problema de clasificación, por su naturaleza no lineal y no paramétrica; y por el hecho de que han mostrado ser efectivos en gran cantidad de aplicaciones prácticas. Para todo el análisis utilzamos $R$ (cita de R), que es un paquete estadístico de fuente abierta. Para cada tarea utilizamos paquetes específicos que son referenciados a lo largo del documento. 
+En este trabajo utilizamos k-vecinos más cercanos, árboles de clasificación, máquinas de soporte vectorial y bosques aleatorios para realizar la clasificación automática de las curvas de luz basada en nuestra elección de características. Asímismo, estimamos la probabilidad de que una nueva curva de luz sea clasificada correctamente por uno de estos clasificadores utilzando validación cruzada de 10 iteraciones.  Estos clasificadores fueron elegidos porque son aproximaciones muy distintas al problema de clasificación, por su naturaleza no lineal y no paramétrica; y por el hecho de que han mostrado ser efectivos en gran cantidad de aplicaciones prácticas. Para todo el análisis utilzamos el paquete estadístico de fuente abierta $R$ (cita de R). Para cada tarea utilizamos paquetes específicos que son referenciados a lo largo del documento. 
 
+%%Reescribir, así ya no está organizado el documento
 Este documento está organizado de la siguiente forma. En el capítulo \ref{cap:losDatos} damos una descripción del conjunto de datos utilizado en este trabajo. En el capítulo \ref{cap:clasificacion} abordamos el problema de clasificación de manera informal, presentamos y discutimos la elección de atributos y evaluamos el desempeño de los clasificadores mediante validación cruzada de 10 iteraciones. En los apéndices abordamos formalmente el problema de aprendizaje en general y damos una descripción de cada uno de los algorítmos utilizados en el trabajo.
 
+\chapter{El Problema del Aprendizaje}
 
+Aquí diré cómo está organizado el capítulo.
+
+\section{Lulu}
+
+Las personas reconocemos con facilidad las letras en manuscritos, las caras de otras personas, las palabras que alguien nos dice o el estado de la comida basado en su olor. La capacidad de agrupar los estímulos que recibimos en categorías, por ejemplo el olor de la comida en buen o mal estado,y la capacidad para actuar en respuesta a ellos ha sido de vital importancia para nuestra supervivencia . Por ello  hemos desarrollado complejos sistemas para llevar a cabo estas tareas. 
+
+Con la popularización de computadores electrónicos, la construcción máquinas que aprendan de la experiencia ha sido objeto de estudio. La habilidad de crear estas máquinas tiene una importancia estratégica puesto que existen tareas que no pueden ser llevadas a cabo utilizando técnicas de porgramación clásicas porque no existe un modelo matemático para ellas. En el caso de la clasificaciónd ecurvas de luz, por la forma en que se hacen las observaciones y el hecho de que la identificación de una curva de luz se hace con base en su forma, es difícil hacer un modelo matemático que capture estas diferencias. A pesar de esto existe gran gantidad de ejemplos de curvas de luz disponibles, por lo que es natural preguntarse si se puede entrenar un computador para identificar estas diferencias de la misma forma en que una persona puede ser entrenada para reconocerlas. En la figura \ref{fig:dosCurvas} se observan dos curvas de luz, una pulsante y una eruptiva, que pueden ser distinguidas utilizando únicamente esta información. La pregunta de si es posible entrenar un sistema basado en datos disponibles puede ser hecha para otras tareas, como el reconocimiento de textos en manuscritos, la detección e identificación de caras y objetos en imágenes o la identificación de genes en secuencias de ADN. 
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{./img/CProblema/omicet.jpg}
+    \caption{Curva de luz de una estrella Mira}
+    \label{fig:gull}
+  \end{subfigure}%
+  ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+  % (or a blank line to force the subfigure onto a new line)
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{./img/CProblema/sn1987a.jpg}
+    \caption{Curva de luz de la Supernova 1987A}
+    \label{fig:tiger}
+  \end{subfigure}
+  ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+  % (or a blank line to force the subfigure onto a new line)
+  \caption{Las estrellas pueden ser clasificadas en grupos basado en la forma de sus curvas de luz. Estas clasificación puede ser hecha con base en la forma de las curvas de luz, sin embargo es difícil crear un modelo matemático que capture estas diferencias. Imágenes tomadas de \cite{bsj_types_2012}}\label{fig:dosCurvas}
+\end{figure} 
+
+El reconocimiento de patrones es una disciplina científica cuya meta es la clasificación de objetos en clases. Existen situaciones en las cuales existe una gran cantidad de objetos previamente clasificados en clases predefinidas y la tarea es encontrar, o aproximar lo mejor posible, la dependencia funcional entre objetos y clases. Podemos precisar esto de la siguiente forma. Llamemos al espacio de los objetos que queremos clasificar $X$y $\{1,\dots, M\}$ es el conjunto de las posibles clases a las que pueden pertenecer los elementosd e $X$.  En el caso de la clasificación de curvas de luz, $X$ consta de todas las curvas de luz y  $\{1,\dots, M\}$ representa los posibles tipos de variabilidad estelar. Contamos con una muestra aleatoria, llamada muestra de entrenamiento, $\mathcal{L} = \{(x_i,j_i), \dots, (x_N,j_N)\}$  con $x_l\in X$ y $j_l\in \{1, \dots, M\}$, es decir, una muestra de $X$ previamente clasificada. Nuestra tarea es entonces proponer una función $g:X\rightarrow \{1,\dots, M\}$ a partir de la información contenida en $\mathcal{L}$, que representa nuestra predicción de la clase a la que pertenece cada elemento de $X$. La función $g$ se llama clasificador y, para un elemento $x\in X$ cuya clase $j$ es desconocida, el clasificador falla si $g(x)\neq j$.
+
+El espacio $X$ puede ser complejo o no estar matemáticamente bien definido, por lo cual con frecuencia se representan los objetos con vectores, llamados de características,  en $\mathbb{R}^n$. Por ejemplo si queremos realizar detección de rostros, $X$ consiste de todos los posibles rostros, por lo que es más conveniente representar cada rostro con un conjunto de números como la separación de los ojos, el ángulo que forma las líneas que unen los ojos con la barbilla, etcétera; lo mismo sucede con las curvas de luz, por lo que representamos cada una con un vector. Estos vectores de características pueden, en principio, ser una combinación de variables continuas, discretas y categóricas, sin embargo esto no afecta en gran medida la teoría. Así las cosas, la elección de un clasificador puede ser una función $g:\mathbb{R}^n\rightarrow \{1, \dots, M\}$.
+
+Se debe utilizar un marco probabilístico para modelar la dependencia entre características y clases. Puede suceder que dos observaciones con un mismo vector de características pertenezcan a clases diferentes. Esto puede suceder en escenarios en los que pertenencia a una u otra clase no so sea completamente explicada por diferencias en los vectores de características, o porque la dependencia real entre características y clases sea no determinista. En este orden de ideas suponemos que existe una medida de probabilidad $P$ sobre $\mathbb{R}^n\times \{1, \dots, M\}$ tal que $P(\vec{x}, j)$ es la probabilidad de observar un vector de características $\vec{x}\in\mathbb{R}^n$ cuyo objeto representado pertenece a clase $j$. Así definimos la probabilidad de error del clasificador $g$, $P_{e}(g)$, como 
+\begin{equation}
+P_e(g) = P(g(\vec{x})\neq j).
+\end{equation}
+
+Surge entonces la pregunta de qué tan bueno puede ser un clasificador. El mejor clasificador posible es llamado el clasificador de Bayes.
+
+\section{El Clasificador de Bayes}
+
+Decimos que un clasificador $g_B:\mathbb{R}^n\rightarrow \{1, \dots, M\}$ es de Bayes si minimiza la probabilidad de error, es decir, que si $g$ es otro clasificador entonces
+\begin{equation}
+P_e(g_B) \leq P_e(g).
+\end{equation}
+Llamaremos $P_{e}^{*}$ a  $P_e(g_B)$.
+
+En el caso de que existan densidades condicionales $f_j$ tales que para cada $A\subset \mathbb{R}^n$ medible se cumple
+\begin{equation}
+P(A|j) =\int_{A}f_{j}(\vec{x})d\vec{x}
+\end{equation}
+podemos dar una expresión explícita para el clasificador de Bayes. Para un clasificador $g$ podemos escribir
+\begin{equation}
+  \begin{aligned}
+    P_e(g) &= 1-P(g(\vec{x}) =  j)\\
+    & = 1-\sum_{j=1}^{M} P(g(\vec{x}) = j|j)P(j)\\
+    & = 1-\sum_{j=1}^{M}\left( \int_{\{g(\vec{x})=j\}}f_j(\vec{x})  d\vec{x} \right) P(j)\\
+    & = 1 - \int \sum_{j=1}^{M} \chi_{\{g(\vec{x})=j\}}f_j(\vec{x})P(j)d\vec{x}.
+  \end{aligned}
+\end{equation}
+Donde $P(j)$ es la probabilidad \textit{a priori} de encontrar un objeto de clase $j$. Ahora, para cada $\vec{x}$ 
+\begin{equation}\label{eq:bayesIneq}
+\sum_{j=1}^{M}\chi_{\{g(\vec{x})=j\}}f_j(\vec{x})P(j) \leq \max_j[f_j(\vec{x})P(j)]
+\end{equation}
+entonces
+\begin{equation}\label{eq:bayesIneq}
+P_e(g)\geq \int \max_j[f_j(\vec{x})P(j)] d\vec{x}.
+\end{equation}
+Como la desigualdad \ref{eq:bayesIneq} es igualdad cuando $g$ le asigna a cada $\vec{x}$ la clase $j$ para la cual $f_j(\vec{x})P(j)$, podemos concluir que éste es el clasificador de Bayes, es decir,
+\begin{equation}
+  g_B(\vec{x}) = \argmax_{j\in\{1,\dots,M\}}f_j(\vec{x})P(j)
+\end{equation}
+y
+\begin{equation}
+  P_e^* = \int \max_j[f_j(\vec{x})P(j)] d\vec{x}.
+\end{equation}
+
+
+\section{Clasificadores}
+
+\subsection{K Vecinos Más Cercanos}
+
+\subsection{Máquinas de Soporte Vectorial}
+
+\subsection{Árboles de Clasificación y Regresión}
+
+\subsection{Bosques Aleatorios}
 
 
 \chapter{El conjunto de Datos\label{cap:losDatos}}
@@ -175,7 +268,6 @@ Luego los autores utilizan estos coeficientes para dar una descripción de $y(t)
 
 Bajo este punto de vista, las magnitudes son vistas como una variable aleatoria independiente del tiempo y las cantidades de la tabla \ref{cuadro:variablesUtilizadas} son variables descriptivas de su densidad. En la figura \ref{fig:curvaHist} se observa una curva de luz y la densidad estimada de sus magnitudes. Al utilizar la distribución de la serie de magnitudes se asume que el número de observaciones es lo suficientemente grande, que estas son hechas en intervalos que evitan el aliasing y que son hechas durante más de un periodo del objeto observado. Es de esperar que las curvas que tienen formas similares, es decir, que pertenecen al mismo tipo de variabilidad estelar, tengan densidades de magnitudes similares y que, por ende, los parámetros descriptivos utilizados también sean similares.
 
-Como es de esperar, no encontramos que alguna variable sirviera para distinguir todas las clases de variabiliad estelar, sin embargo el vector que forman 
 
 \begin{figure}
   \centering
@@ -185,7 +277,7 @@ Como es de esperar, no encontramos que alguna variable sirviera para distinguir 
   \centering
 \end{figure}
 
-La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:variablesUtilizadas}) son variables descriptivas bien conocidas. En este caso la media es el valor al rededor del cual la serie de magnitudes oscila y la desviación una medida de la amplitud de estas oscilaciones. (Dar argumentos astronómicos). La figura \ref{fig:mediaDesv} muestra la densidad de cada una de las clases en el plano $\mu$-$\sigma$. Aunque las diferentes clases se superponen en este plano, hay pares de clases que pueden ser   
+La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:variablesUtilizadas}) son variables descriptivas bien conocidas. En este caso la media es el valor al rededor del cual la serie de magnitudes oscila y la desviación una medida de la amplitud de estas oscilaciones. (Dar argumentos astronómicos). La figura \ref{fig:mediaDesv} muestra la densidad de cada una de las clases en el plano $\mu$-$\sigma$. Aunque las diferentes clases se superponen en este plano, hay pares de clases que pueden ser distinguidas como $\delta$Sct y RRLyr.
 
 \begin{figure}
   \centering
@@ -195,11 +287,13 @@ La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:varia
   \centering
 \end{figure}
 
- 
+Basado en el trabajo de \cite{rodriguez_feliciano_alisis_2012} utilizamos el sesgo y la curtosis como características. El sesgo es el tercer momento central estandarizado \footnote{El k-ésimo momento centrado de una variable aleatoria $X$ (o de su distribución) es $\mu_{k} =E[(X-\mu)^{k}]$, siendo $\mu$ su media. Su k-ésimo momento central estandarizado es $\frac{\mu_k}{\sigma^k}$, siendo $\sigma$ la desviación estándar.} y es una medida de de la asimetría de una distribución. Una distribución es simétrica si su sesgo es $0$, su cola izquierda es más larga si su sesgo es positivo y su cola derecha es más larga si su sesgo es negativo. Por su parte la curtosis es el cuarto momento central estndarizado. Es una medida de qué tan concentrada está la distribución al rededor de la media. La curtosis de una distribución normal es $3$ y con frecuencia se estudia una cantidad llamada exceso de curtosis que es el resultado de restarle $3$ a la curtosis. Los autores de \cite{rodriguez_feliciano_alisis_2012}  encontraron que algunos tipos de variabilidad estelar podían ser distinguidos utilizando clasificadores lineales en el plano sesgo-curtosis.
+
+Dado que la estimación de el sesgo y la curtosis con las fórmulas del cuadro \label{cuadro:variablesUtilizadas} requiere de calcular las potencias $(\mu-m_i)^3$ y $(\mu-m_i)^4$, son propensas a dar estimaciones erróneas en el caso de que existan datos atípicos. Calculamos también la l-curtosis y el l-sesgo\footnote{Los l-momentos son combinaciones lineales de los estadísticos de orden. Son robustos, toman valores entre 0 y 1, y la interpretación de sus valores es análoga a la de los momentos. De la misma manera en que se define el sesgo y la curtosis muestral, es posible definir la l-curtosis y el l-sesgo. Fuero propuestos en (cita l-momentos) y su cálculo fue realizado utilizando el paquete lmoments(cita paquete l-moments) para R} y reemplazando el sesgo y la curtosis por estas cantidades no encontramos dierencias importantes en el poder para clasificar de los clasificadores que utlizamos. Esto puede ser un indicador de que no existe una proporción grande de datos atípicos en las curvas de luz. Por su simplicidad utilizamos el sesgo y la curtosis.  
 
 
-
-\section{K Vecinos Más Cercanos}
+\section{Clasificación}
+\subsection{K Vecinos Más Cercanos}
 \begin{table}[ht]
   \centering
   \caption{k = 1} 
@@ -238,7 +332,7 @@ La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:varia
   \end{tabular}
 \end{table}
 
-\section{Árboles de clasificación y regresión}
+\subsection{Árboles de clasificación y regresión}
 % Matriz de confusión para Cart
 \begin{table}[ht]
   \centering
@@ -279,7 +373,7 @@ La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:varia
   \end{tabular}
 \end{table}
 
-\section{Máquinas de Soporte Vectorial}
+\subsection{Máquinas de Soporte Vectorial}
 
 \begin{table}[ht]
   \centering
@@ -319,7 +413,7 @@ La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:varia
   \end{tabular}
 \end{table}
 
-\section{Bosques Aleatorios}
+\subsection{Bosques Aleatorios}
 
 
 % \begin{appendices}
