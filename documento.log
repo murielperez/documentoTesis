@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  26 APR 2015 21:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  27 APR 2015 09:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -602,65 +602,65 @@ LaTeX Info: Redefining \. on input line 168.
 LaTeX Info: Redefining \% on input line 168.
 
 [15]
-LaTeX Info: Redefining \. on input line 168.
-LaTeX Info: Redefining \% on input line 168.
- [16
+LaTeX Info: Redefining \. on input line 177.
+LaTeX Info: Redefining \% on input line 177.
+ [16]
+Cap\'{\i }tulo 3.
+[17
 
 ]
-Cap\'{\i }tulo 3.
-[17]
-LaTeX Info: Redefining \. on input line 180.
-LaTeX Info: Redefining \% on input line 180.
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
  [18]
-LaTeX Info: Redefining \. on input line 191.
-LaTeX Info: Redefining \% on input line 191.
+LaTeX Info: Redefining \. on input line 200.
+LaTeX Info: Redefining \% on input line 200.
  [19]
-LaTeX Info: Redefining \. on input line 231.
-LaTeX Info: Redefining \% on input line 231.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
  [20]
-<./img/C2Datos/tiposCefeidas.png, id=83, 634.37pt x 689.57625pt>
+<./img/C2Datos/tiposCefeidas.png, id=84, 634.37pt x 689.57625pt>
 File: ./img/C2Datos/tiposCefeidas.png Graphic file (type png)
 
 <use ./img/C2Datos/tiposCefeidas.png>
-Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 254
+Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 263
 .
 (pdftex.def)             Requested size: 390.0pt x 423.95534pt.
 
-<./img/C2Datos/curvaDeLuz.pdf, id=84, 361.35pt x 216.81pt>
+<./img/C2Datos/curvaDeLuz.pdf, id=85, 361.35pt x 216.81pt>
 File: ./img/C2Datos/curvaDeLuz.pdf Graphic file (type pdf)
 
 <use ./img/C2Datos/curvaDeLuz.pdf>
-Package pdftex.def Info: ./img/C2Datos/curvaDeLuz.pdf used on input line 264.
+Package pdftex.def Info: ./img/C2Datos/curvaDeLuz.pdf used on input line 273.
 (pdftex.def)             Requested size: 312.00119pt x 187.20062pt.
-LaTeX Info: Redefining \. on input line 276.
-LaTeX Info: Redefining \% on input line 276.
- [21]
-LaTeX Info: Redefining \. on input line 276.
-LaTeX Info: Redefining \% on input line 276.
- [22 <./img/C2Datos/tiposCefeidas.png>]
 LaTeX Info: Redefining \. on input line 285.
 LaTeX Info: Redefining \% on input line 285.
+ [21]
+LaTeX Info: Redefining \. on input line 285.
+LaTeX Info: Redefining \% on input line 285.
+ [22 <./img/C2Datos/tiposCefeidas.png>]
+LaTeX Info: Redefining \. on input line 294.
+LaTeX Info: Redefining \% on input line 294.
 
 [23 <./img/C2Datos/curvaDeLuz.pdf>]
-<./img/CClasificacion/curvaHist.pdf, id=100, 361.35pt x 216.81pt>
+<./img/CClasificacion/curvaHist.pdf, id=101, 361.35pt x 216.81pt>
 File: ./img/CClasificacion/curvaHist.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/curvaHist.pdf>
 Package pdftex.def Info: ./img/CClasificacion/curvaHist.pdf used on input line 
-313.
+322.
 (pdftex.def)             Requested size: 312.00119pt x 187.20062pt.
-LaTeX Info: Redefining \. on input line 320.
-LaTeX Info: Redefining \% on input line 320.
+LaTeX Info: Redefining \. on input line 329.
+LaTeX Info: Redefining \% on input line 329.
  [24]
-<./img/CClasificacion/mediaDesv.pdf, id=107, 361.35pt x 216.81pt>
+<./img/CClasificacion/mediaDesv.pdf, id=108, 361.35pt x 216.81pt>
 File: ./img/CClasificacion/mediaDesv.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/mediaDesv.pdf>
 Package pdftex.def Info: ./img/CClasificacion/mediaDesv.pdf used on input line 
-323.
+332.
 (pdftex.def)             Requested size: 390.0pt x 234.00243pt.
-LaTeX Info: Redefining \. on input line 332.
-LaTeX Info: Redefining \% on input line 332.
+LaTeX Info: Redefining \. on input line 341.
+LaTeX Info: Redefining \% on input line 341.
  [25 <./img/CClasificacion/curvaHist.pdf>] (./documento.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -680,31 +680,36 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [30
 
-] [31]
-LaTeX Info: Redefining \. on input line 119.
-LaTeX Info: Redefining \% on input line 119.
+]
+Underfull \hbox (badness 1194) in paragraph at lines 47--51
+[]\OT1/cmr/m/n/12 Evelyn Fix and Jo-seph L. Hod-ges Jr.  Dis-cri-mi-na-tory ana
+lysis-
+ []
+
+[31]
+LaTeX Info: Redefining \. on input line 115.
+LaTeX Info: Redefining \% on input line 115.
  [32]
-LaTeX Info: Redefining \. on input line 167.
-LaTeX Info: Redefining \% on input line 167.
+LaTeX Info: Redefining \. on input line 178.
+LaTeX Info: Redefining \% on input line 178.
  [33]
 LaTeX Info: Redefining \. on input line 226.
 LaTeX Info: Redefining \% on input line 226.
  [34])
-LaTeX Info: Redefining \. on input line 491.
-LaTeX Info: Redefining \% on input line 491.
-
-[35] (./documento.aux
+LaTeX Info: Redefining \. on input line 500.
+LaTeX Info: Redefining \% on input line 500.
+ [35] (./documento.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 ) ) 
 Here is how much of TeX's memory you used:
- 5387 strings out of 493304
- 77945 string characters out of 6139871
- 163074 words of memory out of 5000000
- 8731 multiletter control sequences out of 15000+600000
- 14653 words of font info for 56 fonts, out of 8000000 for 9000
+ 5396 strings out of 493304
+ 78116 string characters out of 6139871
+ 163116 words of memory out of 5000000
+ 8739 multiletter control sequences out of 15000+600000
+ 14999 words of font info for 57 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 53i,12n,92p,1737b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,92p,1744b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share
@@ -723,12 +728,13 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/symbols/msbm10.pfb>
-Output written on documento.pdf (35 pages, 539593 bytes).
+public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/symbols/msbm10.pfb>
+Output written on documento.pdf (35 pages, 556846 bytes).
 PDF statistics:
- 229 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,9 +1,25 @@
 \begin{thebibliography}{10}
 
+\bibitem{beygelzimer_cover_2006}
+Alina Beygelzimer, Sham Kakade, and John Langford.
+\newblock Cover trees for nearest neighbor.
+\newblock In {\em Proceedings of the 23rd international conference on {Machine}
+  learning}, pages 97--104. ACM, 2006.
+
 \bibitem{biau_consistency_2008}
 Gérard Biau, Luc Devroye, and Gábor Lugosi.
 \newblock Consistency of random forests and other averaging classifiers.
 \newblock {\em The Journal of Machine Learning Research}, 9:2015--2033, 2008.
+
+\bibitem{breiman_bagging_1996}
+Leo Breiman.
+\newblock Bagging predictors.
+\newblock {\em Machine learning}, 24(2):123--140, 1996.
+
+\bibitem{breiman_heuristics_1996}
+Leo Breiman and {others}.
+\newblock Heuristics of instability and stabilization in model selection.
+\newblock {\em The annals of statistics}, 24(6):2350--2383, 1996.
 
 \bibitem{bsj_types_2012}
 {BSJ}.
@@ -26,6 +42,12 @@ Jonas Debosscher, L.~M. Sarro, Conny Aerts, J.~Cuypers, Bart Vandenbussche,
 Luc Devroye.
 \newblock {\em A probabilistic theory of pattern recognition}, volume~31.
 \newblock Springer Science \& Business Media, 1996.
+
+\bibitem{fix_discriminatory_1951}
+Evelyn Fix and Joseph~L. Hodges~Jr.
+\newblock Discriminatory analysis-nonparametric discrimination: consistency
+  properties.
+\newblock Technical report, DTIC Document, 1951.
 
 \bibitem{graczyk_optical_2011}
 D.~Graczyk, I.~Soszyński, R.~Poleski, G.~Pietrzyński, A.~Udalski, M.~K.
@@ -91,6 +113,11 @@ B.~E. Sabogal, A.~García-Varela, and R.~E. Mennickent.
 \newblock {\em Publications of the Astronomical Society of the Pacific},
   126:219--226, 2014.
 
+\bibitem{samworth_optimal_2012}
+Richard~J. Samworth.
+\newblock Optimal weighted nearest neighbour classifiers.
+\newblock {\em The Annals of Statistics}, 40(5):2733--2763, October 2012.
+
 \bibitem{sarro_automated_2009}
 L.~M. Sarro, Jonas Debosscher, M.~López, and Conny Aerts.
 \newblock Automated supervised classification of variable stars-{II}.
@@ -107,6 +134,14 @@ Jeffrey~D. Scargle.
 C.E. Shannon.
 \newblock A mathematical theory of communication.
 \newblock {\em Bell System Technical Journal, The}, 27(3):379--423, July 1948.
+
+\bibitem{silverman_e._1989}
+Bernard~W. Silverman and M.~Christopher Jones.
+\newblock E. {Fix} and {JL} {Hodges} (1951): {An} important contribution to
+  nonparametric discriminant analysis and density estimation: {Commentary} on
+  {Fix} and {Hodges} (1951).
+\newblock {\em International Statistical Review/Revue Internationale de
+  Statistique}, pages 233--238, 1989.
 
 \bibitem{soszynski_optical_2011-2}
 I.~Soszyński, W.~A. Dziembowski, A.~Udalski, R.~Poleski, M.~K. Szymański,
