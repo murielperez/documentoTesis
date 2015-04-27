@@ -7,13 +7,13 @@
 \contentsline {section}{\numberline {2.4}Clasificadores}{15}
 \contentsline {subsection}{\numberline {2.4.1}K Vecinos M\IeC {\'a}s Cercanos}{15}
 \contentsline {subsection}{\numberline {2.4.2}M\IeC {\'a}quinas de Soporte Vectorial}{16}
-\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{16}
-\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{16}
-\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{17}
-\contentsline {section}{\numberline {3.1}El conjunto de Datos}{19}
-\contentsline {section}{\numberline {3.2}Caracter\IeC {\'\i }sticas Seleccionadas }{21}
-\contentsline {section}{\numberline {3.3}Clasificaci\IeC {\'o}n}{27}
-\contentsline {subsection}{\numberline {3.3.1}K Vecinos M\IeC {\'a}s Cercanos}{27}
-\contentsline {subsection}{\numberline {3.3.2}\IeC {\'A}rboles de clasificaci\IeC {\'o}n y regresi\IeC {\'o}n}{27}
-\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'a}quinas de Soporte Vectorial}{27}
-\contentsline {subsection}{\numberline {3.3.4}Bosques Aleatorios}{27}
+\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{17}
+\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{17}
+\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{19}
+\contentsline {section}{\numberline {3.1}El conjunto de Datos}{21}
+\contentsline {section}{\numberline {3.2}Caracter\IeC {\'\i }sticas Seleccionadas }{23}
+\contentsline {section}{\numberline {3.3}Clasificaci\IeC {\'o}n}{29}
+\contentsline {subsection}{\numberline {3.3.1}K Vecinos M\IeC {\'a}s Cercanos}{29}
+\contentsline {subsection}{\numberline {3.3.2}\IeC {\'A}rboles de clasificaci\IeC {\'o}n y regresi\IeC {\'o}n}{29}
+\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'a}quinas de Soporte Vectorial}{29}
+\contentsline {subsection}{\numberline {3.3.4}Bosques Aleatorios}{29}

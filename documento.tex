@@ -168,7 +168,40 @@ Existen algunas variaciones de knn como knn empaquetado\footnote{En inglés \tex
 
 \subsection{Máquinas de Soporte Vectorial}
 
-Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de alta dimensión.  
+Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de alta dimensión. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en (cita vapnik-cortes) basado en untilizar núcleos para calcular productos internos en espacios de alta dimensión para encontrar planos de margen maximal. Daremos una discusión sobre clasificadores lineales y daremos la teoría básica de MSV. Para saber más, un introducción concisa a MSV puede ser encontrada en (cita cristianini).
+
+Supongamos que tenemos un problema de clasificación binario, es decir, que las posibles clases son dos, digamos $\{-1,1\}$. Una muestra de entrenamiento de tamaño N  $\mathcal{L} = \{(\vec{x}_1, j_1), \dots, (\vec{x}_N, j_N)\}$ es linealmente separable si existe un plano definido por $\langle \vec{w}, \vec{x} \rangle = b$ tal que
+\begin{equation}\label{eq:linSep}
+j_{i}\langle \vec{w}, \vec{x}_i \rangle +b> 0
+\end{equation}
+para $i = 1,\dots, N$. $\vec{w}$ es el vector perpendicular al plano definido por $\langle \vec{w}, \vec{x} \rangle = b$ y la condición \ref{eq:linSep} corresponde a que los elementos de la clase $1$ quedan en un semiespacio definido por $\langle \vec{w}, \vec{x} \rangle > 0$, mientras que los pertenecientes a la clase $-1$ quedan en el semiespacio $\langle \vec{w}, \vec{x} \rangle < 0$. En en el caso en que los datos son linealmente separables el plano separador puede ser encontrado mediante el algorítmo del perceptrón de Rossenblat (cita, perceptron). Sin embargo este plano puede no estar bien definido, en el sentido de que puede haber más de un plano separador para un conjunto de datos, por lo que es necessario definir una noción de lo que significa elegir ``el mejor'' plano.
+
+Podemos elegir el plano maximizando la distancia entre el plano y los ejemplos. Definimos el margen funcional $\gamma_i$ de un ejemplo $(\vec{x}_i, j_i)$ con respecto al hiperplano $(\vec{w}, b)$ como
+\begin{equation}
+\gamma_i = j_i(\langle\vec{w}, \vec{x}_i \rangle + b).
+\end{equation}
+Un ejemplo $(\vec{x}_i, j_i)$ clasificado de manera correcta por el plano $(\vec{w}, b)$ si $\gamma_i>0$ y nos referimos al margen funcional de un plano como el mínimo de los márgenes funcionales de la muestra. También podemos tomar el margen con respecto plano normalizado $(\frac{\vec{w}}{\|\vec{w}\|},\frac{b}{\|\vec{w}\|})$ en cuyo el margen funcional mide la distancia euclidiana entre el punto $\vec{x}_i$ y el plano. En este caso nos referiremos al margen como  margen geométrico. 
+
+Como $(\lambda\vec{w}, \lambda b)$ define el mismo plano que $(\vec{w}, b)$  para todo $\lambda \neq 0$, tenemos un grado de libertad para elegir el plano separador. Por esta razón podríamos maximizar el margen geométrico haciéndo que el margen funcional del hiperplano sea 1. En este caso, si $\vec{w}$ es el vector que alcanza un margen de 1 en el punto positivo $\vec{x}^+$ y en el punto negativo $\vec{x}^-$, podemos calcular su margen geométrico de la siguiente forma. Como tener un margen geométrico de 1 significa que $\langle \vec{w}, \vec{x}^{\pm}\rangle +b = \pm 1$ tenemos que el margen funcional cumple
+\begin{equation}
+  \begin{aligned}
+    \gamma &=\frac{1}{2}\left(\left\langle\frac{\vec{w}}{\|\vec{w}\|},\vec{x}^+\right\rangle-\left\langle\frac{\vec{w}}{\|\vec{w}\|},\vec{x}^-\right\rangle\right) \\
+    & = \frac{1}{\|\vec{w}\|}\\ 
+  \end{aligned}
+\end{equation}
+por lo que encontrar el plano que maximize el margen funcional es equivalente a solucionar el problema de optimización
+\begin{equation}\label{eq:optimizacionLinSep}
+\begin{aligned}
+& \underset{\vec{w}}{\text{minimizar}}
+& & \langle \vec{w}, \vec{w} \rangle \\
+& \text{sujeto a}
+& & j_i(\langle \vec{w}, \vec{x_i}\rangle + b)\geq 1, \; i = 1, \ldots, N.
+\end{aligned}
+\end{equation}
+Donde la restricción hace referencia a que el margen funcional de cada $\vec{x}_i$ con respecto al plano debe ser mayor a 1.
+
+Hasta ahora solo hemos consierado situaciones en las que los datos $(\vec{x}_i,j_i)$ son linealmente separables. Para permitir clasificaciones erróneas podemos introducir variables de holgura $\xi_i$ en el problema \ref{eq:optimizacionLinSep}
+ 
 
 \subsection{Árboles de Clasificación y Regresión}
 
