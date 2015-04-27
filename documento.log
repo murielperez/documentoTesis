@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  26 APR 2015 13:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  26 APR 2015 21:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -440,7 +440,10 @@ LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 
 
-LaTeX Warning: Label `eq:bayesIneq' multiply defined.
+LaTeX Warning: Label `eq:clasificadorBayes' multiply defined.
+
+
+LaTeX Warning: Label `eq:clasificadorBayes' multiply defined.
 
 
 LaTeX Warning: Label `cuadro:variablesUtilizadas' multiply defined.
@@ -596,100 +599,99 @@ LaTeX Info: Redefining \% on input line 72.
 LaTeX Info: Redefining \. on input line 100.
 LaTeX Info: Redefining \% on input line 100.
  [11]
-Underfull \vbox (badness 6268) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 130.
-LaTeX Info: Redefining \% on input line 130.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
  [12]
-LaTeX Info: Redefining \. on input line 130.
-LaTeX Info: Redefining \% on input line 130.
+LaTeX Info: Redefining \. on input line 146.
+LaTeX Info: Redefining \% on input line 146.
+ [13]
+LaTeX Info: Redefining \. on input line 152.
+LaTeX Info: Redefining \% on input line 152.
+ [14]
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
 
-[13]
-LaTeX Info: Redefining \. on input line 130.
-LaTeX Info: Redefining \% on input line 130.
- [14
+[15]
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
+ [16
 
 ]
 Cap\'{\i }tulo 3.
-[15]
+[17]
+LaTeX Info: Redefining \. on input line 181.
+LaTeX Info: Redefining \% on input line 181.
+ [18]
+LaTeX Info: Redefining \. on input line 192.
+LaTeX Info: Redefining \% on input line 192.
+ [19]
 
-Package caption Warning: \label without proper \caption on input line 202.
+Package caption Warning: \label without proper \caption on input line 256.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:tiposCefeidas' on page 16 undefined on input line
- 174.
+LaTeX Warning: Reference `fig:tiposCefeidas' on page 20 undefined on input line
+ 231.
 
-<./img/C2Datos/tiposCefeidas.png, id=66, 634.37pt x 689.57625pt>
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
+[20] <./img/C2Datos/tiposCefeidas.png, id=83, 634.37pt x 689.57625pt>
 File: ./img/C2Datos/tiposCefeidas.png Graphic file (type png)
 
 <use ./img/C2Datos/tiposCefeidas.png>
-Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 201
+Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 255
 .
 (pdftex.def)             Requested size: 390.0pt x 423.95534pt.
 
 
-Package caption Warning: \label without proper \caption on input line 210.
+Package caption Warning: \label without proper \caption on input line 266.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:curvaDeLuz' on page 16 undefined on input line 20
-6.
+LaTeX Warning: Reference `fig:curvaDeLuz' on page 21 undefined on input line 26
+0.
 
+<./img/C2Datos/curvaDeLuz.pdf, id=84, 361.35pt x 216.81pt>
+File: ./img/C2Datos/curvaDeLuz.pdf Graphic file (type pdf)
 
-Underfull \vbox (badness 1092) has occurred while \output is active []
+<use ./img/C2Datos/curvaDeLuz.pdf>
+Package pdftex.def Info: ./img/C2Datos/curvaDeLuz.pdf used on input line 265.
+(pdftex.def)             Requested size: 312.00119pt x 187.20062pt.
+LaTeX Info: Redefining \. on input line 277.
+LaTeX Info: Redefining \% on input line 277.
+ [21]
+LaTeX Info: Redefining \. on input line 277.
+LaTeX Info: Redefining \% on input line 277.
+ [22 <./img/C2Datos/tiposCefeidas.png>]
+LaTeX Info: Redefining \. on input line 286.
+LaTeX Info: Redefining \% on input line 286.
 
-LaTeX Info: Redefining \. on input line 207.
-LaTeX Info: Redefining \% on input line 207.
- [16]
-[17 <./img/C2Datos/tiposCefeidas.png>]
-File: ./img/C2Datos/tiposCefeidas.png Graphic file (type png)
- <use ./img/C2Datos/tiposCefeidas.png>
-Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 209
-.
-(pdftex.def)             Requested size: 390.0pt x 423.95534pt.
-LaTeX Info: Redefining \. on input line 214.
-LaTeX Info: Redefining \% on input line 214.
-
-[18] [19]
-LaTeX Info: Redefining \. on input line 214.
-LaTeX Info: Redefining \% on input line 214.
- [20
-
-]
-Cap\'{\i }tulo 4.
-[21]
-LaTeX Info: Redefining \. on input line 226.
-LaTeX Info: Redefining \% on input line 226.
- [22]
-LaTeX Info: Redefining \. on input line 246.
-LaTeX Info: Redefining \% on input line 246.
- [23]
-<./img/CClasificacion/curvaHist.pdf, id=92, 361.35pt x 216.81pt>
+[23 <./img/C2Datos/curvaDeLuz.pdf>]
+<./img/CClasificacion/curvaHist.pdf, id=100, 361.35pt x 216.81pt>
 File: ./img/CClasificacion/curvaHist.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/curvaHist.pdf>
 Package pdftex.def Info: ./img/CClasificacion/curvaHist.pdf used on input line 
-274.
+314.
 (pdftex.def)             Requested size: 312.00119pt x 187.20062pt.
-LaTeX Info: Redefining \. on input line 281.
-LaTeX Info: Redefining \% on input line 281.
+LaTeX Info: Redefining \. on input line 321.
+LaTeX Info: Redefining \% on input line 321.
  [24]
-<./img/CClasificacion/mediaDesv.pdf, id=100, 361.35pt x 216.81pt>
+<./img/CClasificacion/mediaDesv.pdf, id=107, 361.35pt x 216.81pt>
 File: ./img/CClasificacion/mediaDesv.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/mediaDesv.pdf>
 Package pdftex.def Info: ./img/CClasificacion/mediaDesv.pdf used on input line 
-284.
+324.
 (pdftex.def)             Requested size: 390.0pt x 234.00243pt.
-LaTeX Info: Redefining \. on input line 292.
-LaTeX Info: Redefining \% on input line 292.
- [25 <./img/CClasificacion/curvaHist.pdf>]
+LaTeX Info: Redefining \. on input line 333.
+LaTeX Info: Redefining \% on input line 333.
+ [25 <./img/CClasificacion/curvaHist.pdf>] (./documento.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 314.
-LaTeX Info: Redefining \% on input line 314.
- [26 <./img/CClasificacion/mediaDesv.pdf>] (./documento.bbl
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [26 <./img/CClasificacion/mediaDesv.pdf>]
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [27]
@@ -704,16 +706,19 @@ LaTeX Info: Redefining \% on input line 1.
  [30
 
 ] [31]
-LaTeX Info: Redefining \. on input line 117.
-LaTeX Info: Redefining \% on input line 117.
+LaTeX Info: Redefining \. on input line 119.
+LaTeX Info: Redefining \% on input line 119.
+ [32]
+LaTeX Info: Redefining \. on input line 167.
+LaTeX Info: Redefining \% on input line 167.
+ [33]
+LaTeX Info: Redefining \. on input line 226.
+LaTeX Info: Redefining \% on input line 226.
+ [34])
+LaTeX Info: Redefining \. on input line 492.
+LaTeX Info: Redefining \% on input line 492.
 
-[32]
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
- [33])
-LaTeX Info: Redefining \. on input line 452.
-LaTeX Info: Redefining \% on input line 452.
- [34] (./documento.aux
+[35] (./documento.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
@@ -725,13 +730,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5374 strings out of 493304
- 77648 string characters out of 6139871
- 162120 words of memory out of 5000000
- 8719 multiletter control sequences out of 15000+600000
+ 5387 strings out of 493304
+ 77944 string characters out of 6139871
+ 163185 words of memory out of 5000000
+ 8731 multiletter control sequences out of 15000+600000
  14653 words of font info for 56 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 53i,12n,92p,1497b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,92p,1737b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/
@@ -752,10 +757,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
 type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on documento.pdf (34 pages, 523544 bytes).
+Output written on documento.pdf (35 pages, 539795 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 229 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{biau_consistency_2008}
+Gérard Biau, Luc Devroye, and Gábor Lugosi.
+\newblock Consistency of random forests and other averaging classifiers.
+\newblock {\em The Journal of Machine Learning Research}, 9:2015--2033, 2008.
+
 \bibitem{bsj_types_2012}
 {BSJ}.
 \newblock Types of {Variables}, June 2012.
@@ -16,6 +21,11 @@ Jonas Debosscher, L.~M. Sarro, Conny Aerts, J.~Cuypers, Bart Vandenbussche,
 \newblock Automated supervised classification of variable stars-{I}.
   {Methodology}.
 \newblock {\em Astronomy \& Astrophysics}, 475(3):1159--1183, 2007.
+
+\bibitem{devroye_probabilistic_1996}
+Luc Devroye.
+\newblock {\em A probabilistic theory of pattern recognition}, volume~31.
+\newblock Springer Science \& Business Media, 1996.
 
 \bibitem{graczyk_optical_2011}
 D.~Graczyk, I.~Soszyński, R.~Poleski, G.~Pietrzyński, A.~Udalski, M.~K.
@@ -195,6 +205,12 @@ I.~Soszyński, A.~Udalski, M.~K. Szymański, M.~Kubiak, G.~Pietrzyński, Ł.
   {OGLE}-{III} {Catalog} of {Variable} {Stars}. {XV}. {Long}-{Period}
   {Variables} in the {Galactic} {Bulge}.
 \newblock {\em Acta Astronomica}, 63:21--36, March 2013.
+
+\bibitem{steinwart_consistency_2005}
+Ingo Steinwart.
+\newblock Consistency of support vector machines and other regularized kernel
+  classifiers.
+\newblock {\em Information Theory, IEEE Transactions on}, 51(1):128--142, 2005.
 
 \bibitem{udalski_optical_2004}
 A.~Udalski.

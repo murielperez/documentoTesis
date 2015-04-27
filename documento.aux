@@ -52,21 +52,31 @@
 \newlabel{sub@fig:tiger}{{b}{10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Las estrellas pueden ser clasificadas en grupos basado en la forma de sus curvas de luz. Estas clasificaci\IeC {\'o}n puede ser hecha con base en la forma de las curvas de luz, sin embargo es dif\IeC {\'\i }cil crear un modelo matem\IeC {\'a}tico que capture estas diferencias. Im\IeC {\'a}genes tomadas de \cite  {bsj_types_2012}\relax }}{10}}
 \newlabel{fig:dosCurvas}{{2.1}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}El Clasificador de Bayes}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}El Clasificador de Bayes y Consistencia}{11}}
 \newlabel{eq:bayesIneq}{{2.5}{12}}
-\newlabel{eq:bayesIneq}{{2.6}{12}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Clasificadores}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}K Vecinos M\IeC {\'a}s Cercanos}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}M\IeC {\'a}quinas de Soporte Vectorial}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Bosques Aleatorios}{13}}
+\newlabel{eq:clasificadorBayes}{{2.7}{12}}
+\citation{devroye_probabilistic_1996}
+\citation{biau_consistency_2008}
+\citation{steinwart_consistency_2005}
+\citation{devroye_probabilistic_1996}
+\newlabel{eq:clasificadorBayes}{{2.9}{13}}
+\newlabel{eq:clasificadorBayes}{{2.10}{13}}
+\newlabel{eq:empiricalErrorMin}{{2.12}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Estimaci\IeC {\'o}n del Error}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Clasificadores}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}K Vecinos M\IeC {\'a}s Cercanos}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}M\IeC {\'a}quinas de Soporte Vectorial}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{15}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{17}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{cap:clasificacion}{{3}{17}}
 \citation{udalski_optical_2004}
 \citation{udalski_optical_2008}
 \citation{karttunen_fundamental_2007}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}El conjunto de Datos}{15}}
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:losDatos}{{3}{15}}
+\newlabel{cap:losDatos}{{3.1}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}El conjunto de Datos}{19}}
 \citation{soszynski_optical_2011-2}
 \citation{soszynski_optical_2010}
 \citation{soszynski_optical_2009-1}
@@ -82,89 +92,88 @@
 \citation{soszynski_optical_2013}
 \citation{soszynski_optical_2010-1}
 \citation{soszynski_optical_2008}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Conjunto de datos utilizados. BG hace referencia al Bulbo Gal\IeC {\'a}ctico; PNM, a la Peque\IeC {\~n}a Nube de Magallanes y GNM, a la Gran Nube de Magallanes. \relax }}{20}}
+\newlabel{cuadro:datosUsados}{{3.1}{20}}
 \citation{soszynski_optical_2011}
 \citation{soszynski_optical_2011}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Conjunto de datos utilizados. BG hace referencia al Bulbo Gal\IeC {\'a}ctico; PNM, a la Peque\IeC {\~n}a Nube de Magallanes y GNM, a la Gran Nube de Magallanes. \relax }}{16}}
-\newlabel{cuadro:datosUsados}{{3.1}{16}}
-\newlabel{fig:tiposCefeidas}{{\caption@xref {fig:tiposCefeidas}{ on input line 202}}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los n\IeC {\'u}meros peque\IeC {\~n}os a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite  {soszynski_optical_2011}\relax }}{17}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Cantidad de datos por tipo de variabilidad\relax }}{18}}
-\newlabel{cuadro:cantidadDatos}{{3.2}{18}}
-\newlabel{fig:curvaDeLuz}{{\caption@xref {fig:curvaDeLuz}{ on input line 210}}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces (figura pendiente de imagen) Curva de luz (nombre del archivo) del cat\IeC {\'a}logo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del a\IeC {\~n}o en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posici\IeC {\'o}n relativa entre el Sol y la Tierra.\relax }}{19}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Clasificaci\IeC {\'o}n}{21}}
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:clasificacion}{{4}{21}}
 \citation{debosscher_automated_2007}
 \citation{sarro_automated_2009}
 \citation{richards_machine-learned_2011}
 \citation{debosscher_automated_2007}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Cantidad de datos por tipo de variabilidad\relax }}{21}}
+\newlabel{cuadro:cantidadDatos}{{3.2}{21}}
+\newlabel{sec:atributos}{{3.2}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Caracter\IeC {\'\i }sticas Seleccionadas }{21}}
+\newlabel{fig:tiposCefeidas}{{\caption@xref {fig:tiposCefeidas}{ on input line 256}}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los n\IeC {\'u}meros peque\IeC {\~n}os a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite  {soszynski_optical_2011}\relax }}{22}}
 \citation{debosscher_automated_2007}
 \citation{scargle_studies_1982}
 \citation{soszynski_optical_2008-1}
 \citation{rodriguez_feliciano_alisis_2012}
 \citation{sabogal_search_2014}
-\newlabel{sec:atributos}{{4.1}{23}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Caracter\IeC {\'\i }sticas Seleccionadas }{23}}
+\newlabel{fig:curvaDeLuz}{{\caption@xref {fig:curvaDeLuz}{ on input line 266}}{23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces  Curva de luz de OGLE-LMC-CEP-2515 del cat\IeC {\'a}logo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del a\IeC {\~n}o en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posici\IeC {\'o}n relativa entre el Sol y la Tierra.\relax }}{23}}
 \citation{mowlavi_searching_2014}
 \citation{mowlavi_searching_2014}
 \citation{shannon_mathematical_1948}
 \citation{renyi_measures_1961}
-\newlabel{cuadro:variablesUtilizadas}{{\caption@xref {cuadro:variablesUtilizadas}{ on input line 265}}{24}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Variables utilizadas\relax }}{24}}
+\newlabel{cuadro:variablesUtilizadas}{{\caption@xref {cuadro:variablesUtilizadas}{ on input line 305}}{24}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Variables utilizadas\relax }}{24}}
 \citation{rodriguez_feliciano_alisis_2012}
 \citation{rodriguez_feliciano_alisis_2012}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Curva de luz OGLE-LMC-CEP-0503 y densidad estimada de las magnitudes. \relax }}{25}}
-\newlabel{fig:curvaHist}{{4.1}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces \relax }}{26}}
-\newlabel{fig:mediaDesv}{{4.2}{26}}
-\newlabel{cuadro:variablesUtilizadas}{{4.1}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Curva de luz OGLE-LMC-CEP-0503 y densidad estimada de las magnitudes. \relax }}{25}}
+\newlabel{fig:curvaHist}{{3.3}{25}}
+\newlabel{cuadro:variablesUtilizadas}{{3.2}{25}}
 \bibstyle{plain}
 \bibdata{tesisMatematicas}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Clasificaci\IeC {\'o}n}{27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}K Vecinos M\IeC {\'a}s Cercanos}{27}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces k = 1\relax }}{27}}
-\newlabel{table:cmknn}{{4.2}{27}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces k=1, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{27}}
-\newlabel{table:cmCvKnn}{{4.3}{27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}\IeC {\'A}rboles de clasificaci\IeC {\'o}n y regresi\IeC {\'o}n}{27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}M\IeC {\'a}quinas de Soporte Vectorial}{27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Bosques Aleatorios}{27}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Matriz de confusi\IeC {\'o}n para CART\relax }}{28}}
-\newlabel{cuadro:cmCart}{{4.4}{28}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Tasas de clasificaci\IeC {\'o}n estimadas por validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{28}}
-\newlabel{table:cmCvart}{{4.5}{28}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces $\gamma = 0.1$, costo = $16$\relax }}{28}}
-\newlabel{table:cmSvm}{{4.6}{28}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces $\gamma = 0.1$, costo = $16$, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{29}}
-\newlabel{table:cmCvSvm}{{4.7}{29}}
-\bibcite{bsj_types_2012}{1}
-\bibcite{cincotta_astronomical_1995}{2}
-\bibcite{debosscher_automated_2007}{3}
-\bibcite{graczyk_optical_2011}{4}
-\bibcite{karttunen_fundamental_2007}{5}
-\bibcite{mowlavi_searching_2014}{6}
-\bibcite{pawlak_eclipsing_2013}{7}
-\bibcite{poleski_optical_2010}{8}
-\bibcite{richards_machine-learned_2011}{9}
-\bibcite{rodriguez_feliciano_alisis_2012}{10}
-\bibcite{renyi_measures_1961}{11}
-\bibcite{sabogal_search_2014}{12}
-\bibcite{sarro_automated_2009}{13}
-\bibcite{scargle_studies_1982}{14}
-\bibcite{shannon_mathematical_1948}{15}
-\bibcite{soszynski_optical_2011-2}{16}
-\bibcite{soszynski_optical_2008-1}{17}
-\bibcite{soszynski_optical_2010-2}{18}
-\bibcite{soszynski_optical_2011}{19}
-\bibcite{soszynski_optical_2013}{20}
-\bibcite{soszynski_optical_2010}{21}
-\bibcite{soszynski_optical_2008}{22}
-\bibcite{soszynski_optical_2009-1}{23}
-\bibcite{soszynski_optical_2009}{24}
-\bibcite{soszynski_optical_2010-1}{25}
-\bibcite{soszynski_optical_2011-1}{26}
-\bibcite{soszynski_optical_2013-1}{27}
-\bibcite{udalski_optical_2004}{28}
-\bibcite{udalski_optical_2008}{29}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \relax }}{26}}
+\newlabel{fig:mediaDesv}{{3.4}{26}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces k = 1\relax }}{27}}
+\newlabel{table:cmknn}{{3.4}{27}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces k=1, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{27}}
+\newlabel{table:cmCvKnn}{{3.5}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Clasificaci\IeC {\'o}n}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}K Vecinos M\IeC {\'a}s Cercanos}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}\IeC {\'A}rboles de clasificaci\IeC {\'o}n y regresi\IeC {\'o}n}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'a}quinas de Soporte Vectorial}{27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Bosques Aleatorios}{27}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Matriz de confusi\IeC {\'o}n para CART\relax }}{28}}
+\newlabel{cuadro:cmCart}{{3.6}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Tasas de clasificaci\IeC {\'o}n estimadas por validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{28}}
+\newlabel{table:cmCvart}{{3.7}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.8}{\ignorespaces $\gamma = 0.1$, costo = $16$\relax }}{28}}
+\newlabel{table:cmSvm}{{3.8}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.9}{\ignorespaces $\gamma = 0.1$, costo = $16$, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{29}}
+\newlabel{table:cmCvSvm}{{3.9}{29}}
+\bibcite{biau_consistency_2008}{1}
+\bibcite{bsj_types_2012}{2}
+\bibcite{cincotta_astronomical_1995}{3}
+\bibcite{debosscher_automated_2007}{4}
+\bibcite{devroye_probabilistic_1996}{5}
+\bibcite{graczyk_optical_2011}{6}
+\bibcite{karttunen_fundamental_2007}{7}
+\bibcite{mowlavi_searching_2014}{8}
+\bibcite{pawlak_eclipsing_2013}{9}
+\bibcite{poleski_optical_2010}{10}
+\bibcite{richards_machine-learned_2011}{11}
+\bibcite{rodriguez_feliciano_alisis_2012}{12}
+\bibcite{renyi_measures_1961}{13}
+\bibcite{sabogal_search_2014}{14}
+\bibcite{sarro_automated_2009}{15}
+\bibcite{scargle_studies_1982}{16}
+\bibcite{shannon_mathematical_1948}{17}
+\bibcite{soszynski_optical_2011-2}{18}
+\bibcite{soszynski_optical_2008-1}{19}
+\bibcite{soszynski_optical_2010-2}{20}
+\bibcite{soszynski_optical_2011}{21}
+\bibcite{soszynski_optical_2013}{22}
+\bibcite{soszynski_optical_2010}{23}
+\bibcite{soszynski_optical_2008}{24}
+\bibcite{soszynski_optical_2009-1}{25}
+\bibcite{soszynski_optical_2009}{26}
+\bibcite{soszynski_optical_2010-1}{27}
+\bibcite{soszynski_optical_2011-1}{28}
+\bibcite{soszynski_optical_2013-1}{29}
+\bibcite{steinwart_consistency_2005}{30}
+\bibcite{udalski_optical_2004}{31}
+\bibcite{udalski_optical_2008}{32}
