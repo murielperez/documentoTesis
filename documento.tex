@@ -119,11 +119,11 @@ $g^*$ es el estimador de máxima verosimilitud para $j$ y le asigna a cada $\vec
 El hecho de que este clasificador sea el mejor posible nos muestra la importancia de elegir un vector de características de forma tal que las clases, es decir, sus distribuciones marginales $f_j$ se superpongan lo menos posible en el espacio de características. Aunque esto es intuitivamente obvio, esto nos da un argumento para afirmarlo. $f_j(\vec{x})P(j)$ puede ser interpretado como la probabilidad de que el vector $\vec{x}$ sea generado por la clase $j$. Si dos clases generan puntos en una región del espacio n-dimensional con probabilidad parecida, al clasificar un punto en esa región se esperará una probabilidad de error alta. En el caso extremo en que se le asigna a cada objeto un vector constante, el clasificador \ref{eq:clasificadorBayes} se reduce a escoger la clase que sea más probable \textit{a priori}.
 
 En realidad rara vez se conocen las distribuciones marginales $f_j$ y frecuentemente no se conocen la probabilidades $P(j)$. Las probabilidades \textit{a priori} pueden ser dadas por el analísta o estimadas a partir de los datos si la muestra es representativa de $X$. Algunos métodos intentan estimar estas distribuciones marginales con funciones $\tilde{f}_j$ y utilizar el clasificador 
-\begin{equation}\label{eq:clasificadorBayes}
+\begin{equation}
   g(\vec{x}) = \argmax_{j\in\{1,\dots,M\}}\tilde{f}_j(\vec{x})P(j)
 \end{equation}
 por ejemplo suponiendo alguna forma para las distribuciones $f_j$ o utilizando métodos no paramétricos de estimación de densidades como estimación por núcleos. La estimación de densidades por núcleos ha probado ser útil porque se sabe que el estimador $\tilde{f}_{j}$ de la densidad $f_j$ converge en media cuadrática, es decir,
-\begin{equation}\label{eq:clasificadorBayes}
+\begin{equation}
   \int\left(f(\vec{x})-\tilde{f}(\vec{x})\right)^2d\vec{x}\rightarrow 0\text{ cuando } N\to\infty
 \end{equation}
  sin embargo en dimensión $d$ se ha demostrado que estos convergen a una velocidad de $O(N^{1/(4+d)})$(REVISAR Y CITA) por lo cual no son prácticos en dimensiones altas. 
@@ -150,13 +150,12 @@ En aplicaciones no se conoce la probabilidad mínima de error $P_e^*$ por lo que
 
 Uno de los métodos más populares para estimar la probabilidad de clasificación correcta de la función de decisión entrenada por un algorítmo de aprendizaje es validación cruzada de $v$ iteraciones. Para esto dividimos la muestra $\mathcal{L}$ en $v$ muestras de prueba $\mathcal{L}_{k}$, $k=1,\dots,v$ con el mismo número de elementos (o lo más próximo posible) y definimos la $k$-ésima muestra de entrenamiento como $\mathcal{L}^{k} = \mathcal{L}\setminus \mathcal{L}_{k}$. Utilizando cada una de las $v$ muestras de entrenamiento $\mathcal{L}^{k}$  entrenamos una regla de decisión utilizando el algorítmo de aprendizaje en cuestión, con ella clasificamos los elementos de la muestra de prueba $\mathcal{L}^{k}$ y calculamos $N_{ij}^{k}$ el número de elementos de de la clase $j$ clasificado como $i$. Definimos $N_{ij}=\sum_{k}N_{ij}^{k}$ el número total de elmentos de la clase $j$ clasificado como $i$. Estimamos la probabilidad de que un elemento de la clase $j$ sea clasificado como $i$, $P^{VC}(g(\vec{x})=i|j)$, con $N_{ij}/N_{j}$, donde $N_{j}$ es el número de elementos pretenecientes a la clase $j$ en la muestra $\mathcal{L}$. Intuitivamente, si la muestra es grande tendremos aproximadamente el mismo poder para clasificar con la muestra completa que con una fracción $\frac{v-1}{v}$ de ella, por lo cual $P^{VC}$ será una buena aproximación a la probabilidad real de clasificación. El valor $v = 10$ es popular en la literatura. Esta elección es un poco arbitraria. Una elección de $v$ grande da estiamdos menos pesimistas de la probabildiad de error, sin embargo aumentar $v$ aumenta el costo computacional del estimado, por lo que estos dos apectos deben ser balanceados.
 
-
-
 A continuación exponemos algunos clasificadores.
 
 \section{Clasificadores}
 
 \subsection{K Vecinos Más Cercanos}
+
 
 
 
@@ -253,8 +252,8 @@ Agrupamos los $432128$ objetos disponibles en siete clases de variabilidad estel
 
 \begin{figure}
   \includegraphics[width = \textwidth]{./img/C2Datos/tiposCefeidas.png}
-  \label{fig:tiposCefeidas}
   \caption{Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los números pequeños a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite{soszynski_optical_2011}}
+  \label{fig:tiposCefeidas}
 \end{figure}
 
 En el Catálogo de Estrellas Variables de OGLE-III, cada curva de luz está disponible en un archivo que contiene tres columnas con los valores de magnitud, fecha juliana \footnote{La fecha Juliana es el tiempo medido en días desde el 1 de enero de 4713 a. C.} en la que fue tomada cada medida y error en la medida de la magnitud. El número de medidas para cada objeto y la separación temporal varía ampliamente. La separación mínima dos mediciones en toda la muestra es de 0.00147d, la máxima es 2156.9d y en promedio están separadas por 5.1d; por su parte el número promedio de observaciones por objeto es 759; el máximo, 5173; y el mínimo,  11. El 75\% de los objetos cuenta con más de 386 observaciones. Para todos los objetos estas observaciones están repartidas en los (número de años) años en que estuvo activo OGLE-III. En la figura \ref{fig:curvaDeLuz} se puede observar una curva de luz del catálogo de estrellas variables de OGLE-III.    
@@ -263,8 +262,8 @@ En el Catálogo de Estrellas Variables de OGLE-III, cada curva de luz está disp
 \begin{figure}
   \centering
   \includegraphics[width = 0.8\textwidth]{./img/C2Datos/curvaDeLuz.pdf}
-  \label{fig:curvaDeLuz}
   \caption{ Curva de luz de OGLE-LMC-CEP-2515 del catálogo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del año en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posición relativa entre el Sol y la Tierra.}
+  \label{fig:curvaDeLuz}
 \end{figure}
 
 
@@ -302,8 +301,8 @@ Luego los autores utilizan estos coeficientes para dar una descripción de $y(t)
     Entropía de Rényi\cite{renyi_measures_1961}& $\frac{1}{1-\alpha}\log_{2}{\sum_{x}p_{i}^{\alpha}}$\\
     \hline
   \end{tabular}
-  \label{cuadro:variablesUtilizadas}
   \caption{Variables utilizadas}
+  \label{cuadro:variablesUtilizadas}
 \end{table}
 
 Bajo este punto de vista, las magnitudes son vistas como una variable aleatoria independiente del tiempo y las cantidades de la tabla \ref{cuadro:variablesUtilizadas} son variables descriptivas de su densidad. En la figura \ref{fig:curvaHist} se observa una curva de luz y la densidad estimada de sus magnitudes. Al utilizar la distribución de la serie de magnitudes se asume que el número de observaciones es lo suficientemente grande, que estas son hechas en intervalos que evitan el aliasing y que son hechas durante más de un periodo del objeto observado. Es de esperar que las curvas que tienen formas similares, es decir, que pertenecen al mismo tipo de variabilidad estelar, tengan densidades de magnitudes similares y que, por ende, los parámetros descriptivos utilizados también sean similares.
@@ -329,7 +328,7 @@ La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:varia
 
 Basado en el trabajo de \cite{rodriguez_feliciano_alisis_2012} utilizamos el sesgo y la curtosis como características. El sesgo es el tercer momento central estandarizado \footnote{El k-ésimo momento centrado de una variable aleatoria $X$ (o de su distribución) es $\mu_{k} =E[(X-\mu)^{k}]$, siendo $\mu$ su media. Su k-ésimo momento central estandarizado es $\frac{\mu_k}{\sigma^k}$, siendo $\sigma$ la desviación estándar.} y es una medida de de la asimetría de una distribución. Una distribución es simétrica si su sesgo es $0$, su cola izquierda es más larga si su sesgo es positivo y su cola derecha es más larga si su sesgo es negativo. Por su parte la curtosis es el cuarto momento central estndarizado. Es una medida de qué tan concentrada está la distribución al rededor de la media. La curtosis de una distribución normal es $3$ y con frecuencia se estudia una cantidad llamada exceso de curtosis que es el resultado de restarle $3$ a la curtosis. Los autores de \cite{rodriguez_feliciano_alisis_2012}  encontraron que algunos tipos de variabilidad estelar podían ser distinguidos utilizando clasificadores lineales en el plano sesgo-curtosis.
 
-Dado que la estimación de el sesgo y la curtosis con las fórmulas del cuadro \label{cuadro:variablesUtilizadas} requiere de calcular las potencias $(\mu-m_i)^3$ y $(\mu-m_i)^4$, son propensas a dar estimaciones erróneas en el caso de que existan datos atípicos. Calculamos también la l-curtosis y el l-sesgo\footnote{Los l-momentos son combinaciones lineales de los estadísticos de orden. Son robustos, toman valores entre 0 y 1, y la interpretación de sus valores es análoga a la de los momentos. De la misma manera en que se define el sesgo y la curtosis muestral, es posible definir la l-curtosis y el l-sesgo. Fuero propuestos en (cita l-momentos) y su cálculo fue realizado utilizando el paquete lmoments(cita paquete l-moments) para R} y reemplazando el sesgo y la curtosis por estas cantidades no encontramos dierencias importantes en el poder para clasificar de los clasificadores que utlizamos. Esto puede ser un indicador de que no existe una proporción grande de datos atípicos en las curvas de luz. Por su simplicidad utilizamos el sesgo y la curtosis.  
+Dado que la estimación de el sesgo y la curtosis con las fórmulas del cuadro \ref{cuadro:variablesUtilizadas} requiere de calcular las potencias $(\mu-m_i)^3$ y $(\mu-m_i)^4$, son propensas a dar estimaciones erróneas en el caso de que existan datos atípicos. Calculamos también la l-curtosis y el l-sesgo\footnote{Los l-momentos son combinaciones lineales de los estadísticos de orden. Son robustos, toman valores entre 0 y 1, y la interpretación de sus valores es análoga a la de los momentos. De la misma manera en que se define el sesgo y la curtosis muestral, es posible definir la l-curtosis y el l-sesgo. Fuero propuestos en (cita l-momentos) y su cálculo fue realizado utilizando el paquete lmoments(cita paquete l-moments) para R} y reemplazando el sesgo y la curtosis por estas cantidades no encontramos dierencias importantes en el poder para clasificar de los clasificadores que utlizamos. Esto puede ser un indicador de que no existe una proporción grande de datos atípicos en las curvas de luz. Por su simplicidad utilizamos el sesgo y la curtosis.  
 
 
 \section{Clasificación}
@@ -397,7 +396,7 @@ Dado que la estimación de el sesgo y la curtosis con las fórmulas del cuadro \
 \begin{table}[ht]
   \centering
   \caption{Tasas de clasificación estimadas por validación cruzada de 10 iteraciones} 
-  \label{table:cmCvart}
+  \label{table:cmCvCart}
   \begin{tabular}{rrrrrrrr}
     \hline
     & becand & cep & dcst & ebs & lpv & rrlyr & t2cep \\ 
