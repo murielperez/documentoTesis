@@ -77,26 +77,30 @@
 \newlabel{eq:knnRule}{{2.14}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}M\IeC {\'a}quinas de Soporte Vectorial}{16}}
 \newlabel{eq:clasificadorLineal}{{2.15}{16}}
-\newlabel{eq:linSep}{{2.16}{16}}
-\newlabel{eq:optimizacionLinSep}{{2.19}{17}}
+\newlabel{eq:linSep}{{2.16}{17}}
+\newlabel{eq:optimizacionLinSep}{{2.19}{18}}
 \newlabel{eq:problemaOptimizacionPrimalMSV}{{2.22}{18}}
 \newlabel{eq:problemaDeOptimizacionGeneral}{{2.23}{19}}
 \newlabel{eq:problemaOptimizacionDualGeneral}{{2.27}{19}}
 \newlabel{eq:condicionComplementariedad}{{2.31}{20}}
 \newlabel{eq:vectorPesoEnVarsDuales}{{2.34}{20}}
+\newlabel{eq:alphaYXi}{{2.35}{20}}
 \newlabel{eq:problemaOptimizacionDualMSV}{{2.38}{21}}
-\newlabel{eq:problemaOptimizacionDualKernelMSV}{{2.41}{21}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{22}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{22}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{23}}
+\newlabel{eq:condicionComplementariedadMSV}{{2.39}{21}}
+\newlabel{eq:clasificadorMargenMaximal}{{2.42}{21}}
+\newlabel{eq:problemaOptimizacionDualKernelMSV}{{2.45}{22}}
+\newlabel{eq:clasificadorMargenMaximalKernel}{{2.46}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{23}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{25}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:clasificacion}{{3}{23}}
+\newlabel{cap:clasificacion}{{3}{25}}
 \citation{udalski_optical_2004}
 \citation{udalski_optical_2008}
 \citation{karttunen_fundamental_2007}
-\newlabel{cap:losDatos}{{3.1}{25}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}El conjunto de Datos}{25}}
+\newlabel{cap:losDatos}{{3.1}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}El conjunto de Datos}{27}}
 \citation{soszynski_optical_2011-2}
 \citation{soszynski_optical_2010}
 \citation{soszynski_optical_2009-1}
@@ -112,58 +116,58 @@
 \citation{soszynski_optical_2013}
 \citation{soszynski_optical_2010-1}
 \citation{soszynski_optical_2008}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Conjunto de datos utilizados. BG hace referencia al Bulbo Gal\IeC {\'a}ctico; PNM, a la Peque\IeC {\~n}a Nube de Magallanes y GNM, a la Gran Nube de Magallanes. \relax }}{26}}
-\newlabel{cuadro:datosUsados}{{3.1}{26}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Conjunto de datos utilizados. BG hace referencia al Bulbo Gal\IeC {\'a}ctico; PNM, a la Peque\IeC {\~n}a Nube de Magallanes y GNM, a la Gran Nube de Magallanes. \relax }}{28}}
+\newlabel{cuadro:datosUsados}{{3.1}{28}}
 \citation{soszynski_optical_2011}
 \citation{soszynski_optical_2011}
 \citation{debosscher_automated_2007}
 \citation{sarro_automated_2009}
 \citation{richards_machine-learned_2011}
 \citation{debosscher_automated_2007}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Cantidad de datos por tipo de variabilidad\relax }}{27}}
-\newlabel{cuadro:cantidadDatos}{{3.2}{27}}
-\newlabel{sec:atributos}{{3.2}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Caracter\IeC {\'\i }sticas Seleccionadas }{27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los n\IeC {\'u}meros peque\IeC {\~n}os a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite  {soszynski_optical_2011}\relax }}{28}}
-\newlabel{fig:tiposCefeidas}{{3.1}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Cantidad de datos por tipo de variabilidad\relax }}{29}}
+\newlabel{cuadro:cantidadDatos}{{3.2}{29}}
+\newlabel{sec:atributos}{{3.2}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Caracter\IeC {\'\i }sticas Seleccionadas }{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Curvas de luz ilustrativas de Cefeidas en modo fundamental (izquierda), primer sobretono (mitad), segundo sobretono (derecha). Los n\IeC {\'u}meros peque\IeC {\~n}os a la derecha de cada recuadro muestran los periodos redondeados de las curvas de luz presentadas en los recuadros. Tomado de \cite  {soszynski_optical_2011}\relax }}{30}}
+\newlabel{fig:tiposCefeidas}{{3.1}{30}}
 \citation{debosscher_automated_2007}
 \citation{scargle_studies_1982}
 \citation{soszynski_optical_2008-1}
 \citation{rodriguez_feliciano_alisis_2012}
 \citation{sabogal_search_2014}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces  Curva de luz de OGLE-LMC-CEP-2515 del cat\IeC {\'a}logo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del a\IeC {\~n}o en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posici\IeC {\'o}n relativa entre el Sol y la Tierra.\relax }}{29}}
-\newlabel{fig:curvaDeLuz}{{3.2}{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces  Curva de luz de OGLE-LMC-CEP-2515 del cat\IeC {\'a}logo OGLE-III. Los periodos en los que no hay mediciones corresponden a los momentos del a\IeC {\~n}o en los que la zona en la que se encuentra el objeto no puede ser observada debido a la posici\IeC {\'o}n relativa entre el Sol y la Tierra.\relax }}{31}}
+\newlabel{fig:curvaDeLuz}{{3.2}{31}}
 \citation{mowlavi_searching_2014}
 \citation{mowlavi_searching_2014}
 \citation{shannon_mathematical_1948}
 \citation{renyi_measures_1961}
-\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Variables utilizadas\relax }}{30}}
-\newlabel{cuadro:variablesUtilizadas}{{3.3}{30}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Variables utilizadas\relax }}{32}}
+\newlabel{cuadro:variablesUtilizadas}{{3.3}{32}}
 \citation{rodriguez_feliciano_alisis_2012}
 \citation{rodriguez_feliciano_alisis_2012}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Curva de luz OGLE-LMC-CEP-0503 y densidad estimada de las magnitudes. \relax }}{31}}
-\newlabel{fig:curvaHist}{{3.3}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Curva de luz OGLE-LMC-CEP-0503 y densidad estimada de las magnitudes. \relax }}{33}}
+\newlabel{fig:curvaHist}{{3.3}{33}}
 \bibstyle{plain}
 \bibdata{tesisMatematicas}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \relax }}{32}}
-\newlabel{fig:mediaDesv}{{3.4}{32}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces k = 1\relax }}{33}}
-\newlabel{table:cmknn}{{3.4}{33}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces k=1, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{33}}
-\newlabel{table:cmCvKnn}{{3.5}{33}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Clasificaci\IeC {\'o}n}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}K Vecinos M\IeC {\'a}s Cercanos}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}\IeC {\'A}rboles de clasificaci\IeC {\'o}n y regresi\IeC {\'o}n}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'a}quinas de Soporte Vectorial}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Bosques Aleatorios}{33}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Matriz de confusi\IeC {\'o}n para CART\relax }}{34}}
-\newlabel{cuadro:cmCart}{{3.6}{34}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Tasas de clasificaci\IeC {\'o}n estimadas por validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{34}}
-\newlabel{table:cmCvCart}{{3.7}{34}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.8}{\ignorespaces $\gamma = 0.1$, costo = $16$\relax }}{34}}
-\newlabel{table:cmSvm}{{3.8}{34}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.9}{\ignorespaces $\gamma = 0.1$, costo = $16$, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{35}}
-\newlabel{table:cmCvSvm}{{3.9}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \relax }}{34}}
+\newlabel{fig:mediaDesv}{{3.4}{34}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces k = 1\relax }}{35}}
+\newlabel{table:cmknn}{{3.4}{35}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces k=1, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{35}}
+\newlabel{table:cmCvKnn}{{3.5}{35}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Clasificaci\IeC {\'o}n}{35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}K Vecinos M\IeC {\'a}s Cercanos}{35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}\IeC {\'A}rboles de clasificaci\IeC {\'o}n y regresi\IeC {\'o}n}{35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'a}quinas de Soporte Vectorial}{35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Bosques Aleatorios}{35}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Matriz de confusi\IeC {\'o}n para CART\relax }}{36}}
+\newlabel{cuadro:cmCart}{{3.6}{36}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Tasas de clasificaci\IeC {\'o}n estimadas por validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{36}}
+\newlabel{table:cmCvCart}{{3.7}{36}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.8}{\ignorespaces $\gamma = 0.1$, costo = $16$\relax }}{36}}
+\newlabel{table:cmSvm}{{3.8}{36}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.9}{\ignorespaces $\gamma = 0.1$, costo = $16$, validaci\IeC {\'o}n cruzada de 10 iteraciones\relax }}{37}}
+\newlabel{table:cmCvSvm}{{3.9}{37}}
 \bibcite{beygelzimer_cover_2006}{1}
 \bibcite{biau_consistency_2008}{2}
 \bibcite{breiman_bagging_1996}{3}

@@ -9,6 +9,9 @@
 \usepackage{adjustbox}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Teorema}
 \DeclareMathOperator*{\argmax}{arg\,m\acute{a}x}
 \DeclareMathOperator*{\argmin}{arg\,m\acute{i}n}
 \DeclareMathOperator*{\sign}{signo}
@@ -169,43 +172,43 @@ Existen algunas variaciones de knn como knn empaquetado\footnote{En inglés \tex
 
 \subsection{Máquinas de Soporte Vectorial}
 
-Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de dimensión alta. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en (cita vapnik-cortes) basado en untilizar núcleos para calcular productos internos en espacios de alta dimensión para encontrar planos de margen maximal. Daremos una discusión sobre clasificadores lineales y clasificadores lineales de margen maximal, sobre los que está basado  MSV; luego mencionamos los conceptos de optimización convexa que son la base de la utilización de núcleos para MSV. Para saber más, un introducción concisa a MSV puede ser encontrada en (cita cristianini).
+Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de dimensión alta. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en (cita vapnik-cortes) basado en utilizar núcleos para para encontrar un plano que maximice la distancia a los puntos de la muestra, o equivalentemente, de margen maximal. Daremos una discusión sobre clasificadores lineales y clasificadores lineales de margen maximal, luego mencionamos los conceptos de optimización convexa que son la base de la utilización de núcleos para MSV y finalmente describimos el algorítmo de Minimización Secuancial Óptima. Seguimos el texto de Cristianini y Shawe-Taylor (cita cristianini) en el que se puede encontrar una introducción completa a MSV.
 
-Supongamos que tenemos un problema de clasificación binario, es decir, que las posibles clases son dos, digamos $\{-1,1\}$. Consideremos clasificadores lineales de la forma
+Las MSV son clasificadores binarios, es decir, solo pueden distinguir entre dos clases. Para casos en los que se necesita clasificar más de dos clases, es posible implementar esquemas de votación que serán expuestos más adelante. Primero describimos los clasificadores lineales en $\mathbb{R}^n$ en casos en los que se puede escoger un plano que separe perfectamente las dos clases y luego extendemos estos métodos para casos en lo que esto no es posible. Supongamos que se tiene un problema de clasificación binario donde el conjunto de las clases bosibles es $\{-1,1\}$. Consideremos clasificadores lineales de la forma
 \begin{equation}\label{eq:clasificadorLineal}
 g(\vec{x}) = signo( \langle \vec{w}, \vec{x} \rangle + b).
 \end{equation}
  Una muestra de entrenamiento de tamaño N  $\mathcal{L} = \{(\vec{x}_1, j_1), \dots, (\vec{x}_N, j_N)\}$ es linealmente separable si existe un plano definido por $\langle \vec{w}, \vec{x} \rangle +b =0$ tal que
 \begin{equation}\label{eq:linSep}
-j_{i}\left(\langle \vec{w}, \vec{x}_i \rangle +b\right)> 0
+j_{i}\left(\langle \vec{w}, \vec{x}_i \rangle +b\right)> 0, i = 1,\dots, N.
 \end{equation}
-para $i = 1,\dots, N$. $\vec{w}$ es el vector perpendicular al plano y la condición \ref{eq:linSep} corresponde a que los elementos de la clase $1$ quedan ubicados en el semiespacio definido por $\langle \vec{w}, \vec{x} \rangle +b > 0$, mientras que los pertenecientes a la clase $-1$ quedan en el semiespacio $\langle \vec{w}, \vec{x} \rangle + b< 0$. En en el caso en que los datos son linealmente separables el plano separador puede ser encontrado mediante el algorítmo del perceptrón de Rossenblat (cita, perceptron). Sin embargo este plano puede no estar bien definido, en el sentido de que puede haber más de un plano separador para un conjunto de datos, por lo que es necessario definir una noción de lo que significa elegir ``el mejor'' plano.
+Nos referiremos al plano $\langle \vec{w}, \vec{x} \rangle +b = 0$ con la notación abreviada $(\vec{w},b)$. $\vec{w}$ es el vector perpendicular al plano y la condición \ref{eq:linSep} corresponde a que los elementos de la clase $1$ quedan ubicados en el semiespacio definido por $\langle \vec{w}, \vec{x} \rangle +b > 0$, mientras que los pertenecientes a la clase $-1$ quedan en el semiespacio $\langle \vec{w}, \vec{x} \rangle + b< 0$. Este plano puede no estar bien definido, en el sentido de que puede haber más de un plano separador para un conjunto de datos, por lo que es necessario definir una noción de lo que significa elegir ``el mejor'' plano.
 
-Podemos elegir el plano maximizando la distancia entre el plano y los ejemplos. Definimos el margen funcional $\gamma_i$ de un ejemplo $(\vec{x}_i, j_i)$ con respecto al hiperplano $(\vec{w}, b)$ como
+Podemos elegir el plano maximizando la distancia entre el plano y los ejemplos, por lo que es necesario definir la noción de margen. Definimos el margen funcional $\gamma_i$ de un ejemplo $(\vec{x}_i, j_i)$ con respecto al hiperplano $(\vec{w}, b)$ como
 \begin{equation}
 \gamma_i = j_i(\langle\vec{w}, \vec{x}_i \rangle + b).
 \end{equation}
-Un ejemplo $(\vec{x}_i, j_i)$ clasificado de manera correcta por el plano $(\vec{w}, b)$ si $\gamma_i>0$ y nos referimos al margen funcional de un plano como el mínimo de los márgenes funcionales de la muestra. También podemos tomar el margen con respecto plano normalizado $(\frac{\vec{w}}{\|\vec{w}\|},\frac{b}{\|\vec{w}\|})$ en cuyo caso el margen funcional mide la distancia euclidiana entre el punto $\vec{x}_i$ y el plano. En esta situación nos referiremos al margen como  margen geométrico. 
+Un ejemplo $(\vec{x}_i, j_i)$ es clasificado de manera correcta por el plano $(\vec{w}, b)$ si $\gamma_i>0$ y nos referimos al  mínimo de los márgenes funcionales de la muestra como el margen funcional de un plano. También podemos tomar el margen con respecto plano normalizado $(\frac{\vec{w}}{\|\vec{w}\|},\frac{b}{\|\vec{w}\|})$ en cuyo caso el margen funcional mide la distancia euclidiana entre el punto $\vec{x}_i$ y el plano. En esta situación nos referiremos al margen como  margen geométrico. 
 
-Como $(\lambda\vec{w}, \lambda b)$ define el mismo plano que $(\vec{w}, b)$  para todo $\lambda \neq 0$, tenemos un grado de libertad para elegir el plano separador. Por esta razón podríamos maximizar el margen geométrico haciéndo que el margen funcional del hiperplano sea 1. En este caso, si $\vec{w}$ es el vector que alcanza un margen funcional de 1 en el punto positivo $\vec{x}^+$ y -1 en el punto negativo $\vec{x}^-$, podemos calcular su margen geométrico de la siguiente forma. Como tener un margen funcional de 1 significa que $\langle \vec{w}, \vec{x}^{\pm}\rangle +b = \pm 1$ tenemos que el margen funcional cumple
+Como $(\lambda\vec{w}, \lambda b)$ define el mismo plano que $(\vec{w}, b)$  para todo $\lambda \neq 0$, tenemos un grado de libertad para elegir el plano separador. Podemos llevar a cabo un truco para expresar el margen funcional del plano en términos de la norma de $\vec{w}$ y así traducir el problema de encontrar el plano a un problema de optimización. Por tener un grado de libertad,  podemos maximizar el margen geométrico manteniende el margen funcional fijo e igual a 1. En este caso, si $\vec{w}$ es el vector que alcanza un margen funcional de 1 en el punto  positivo$\vec{x}^+$ y $-1$ en el punto negativo $\vec{x}^-$, podemos calcular su margen geométrico de la siguiente forma. Como tener un margen funcional de $\pm 1$ significa que $\langle \vec{w}, \vec{x}^{\pm}\rangle +b = \pm 1$ tenemos que el margen geométrico $\gamma$ del plano cumple
 \begin{equation}
   \begin{aligned}
     \gamma &=\frac{1}{2}\left(\left\langle\frac{\vec{w}}{\|\vec{w}\|},\vec{x}^+\right\rangle-\left\langle\frac{\vec{w}}{\|\vec{w}\|},\vec{x}^-\right\rangle\right) \\
     & = \frac{1}{\|\vec{w}\|}\\ 
   \end{aligned}
 \end{equation}
-por lo que encontrar el plano que maximize el margen funcional es equivalente a solucionar el problema de optimización
+por lo que encontrar el plano que maximize el margen geométrico es equivalente a solucionar el problema de optimización
 \begin{equation}\label{eq:optimizacionLinSep}
 \begin{aligned}
 & \underset{\vec{w},b}{\text{minimizar}}
 & & \langle \vec{w}, \vec{w} \rangle \\
 & \text{sujeto a}
-& & j_i(\langle \vec{w}, \vec{x_i}\rangle + b)\geq 1, \; i = 1, \ldots, N.
+& & j_i(\langle \vec{w}, \vec{x_i}\rangle + b)\geq 1, \; i = 1, \ldots, N,
 \end{aligned}
 \end{equation}
-Donde la restricción hace referencia a que el margen funcional de cada $\vec{x}_i$ con respecto al plano debe ser mayor a 1. Así, podemos traducir el problema de encontrar el plano separador para una muestra linealmente separable con el problema de optimización convexa \ref{eq:optimizacionLinSep}.
+donde la restricción hace que el margen funcional de cada $\vec{x}_i$ con respecto al plano sea mayor o igual que 1, porque elegimos el plano con margen 1. Así, podemos traducir el problema de encontrar el plano separador para una muestra linealmente separable con el problema de optimización convexa \ref{eq:optimizacionLinSep}.
 
-Hasta ahora solo hemos consierado situaciones en las que los datos $(\vec{x}_i,j_i)$ son linealmente separables. Para permitir clasificaciones erróneas podemos introducir variables de holgura $\xi_i>0$ en el problema de optimización \ref{eq:optimizacionLinSep} para que los algunos ejemplos puedan ser clasificados erróneamente, es decir,  $j_i(\langle \vec{w}, \vec{x_i}\rangle + b)\geq 1-\xi_i$. También debemos introducir un costo asociado al vector de holgura $\vec{\xi}=(\xi_1,\dots,\xi_N)$, por lo que la función objetivo será una combinación del costo y la función objetivo original. Este costo puede ser dado por su norma 1, $\sum_i\xi$ o por su norma 2, $\sum_i\xi_i^2$. En el caso en que se utilice la norma 1, el problema de optimización \ref{eq:optimizacionLinSep} se convierte en 
+Hasta ahora solo hemos consierado situaciones en las que los datos $(\vec{x}_i,j_i)$ son linealmente separables. Para permitir clasificaciones erróneas podemos introducir variables de holgura $\xi_i>0$ en el problema de optimización \ref{eq:optimizacionLinSep} para que los algunos ejemplos puedan ser clasificados erróneamente, es decir,  $j_i(\langle \vec{w}, \vec{x_i}\rangle + b)\geq 1-\xi_i$. También debemos introducir un costo asociado al vector de holgura $\vec{\xi}=(\xi_1,\dots,\xi_N)$, por lo que la función objetivo será una combinación del costo y la función objetivo original. En el caso en que se utilice la norma 1 del vector $\vec{\xi}$, el problema de optimización \ref{eq:optimizacionLinSep} se convierte en 
 \begin{equation}
   \begin{aligned}
     & \underset{\vec{w},b, \vec{\xi}}{\text{minimizar}}
@@ -237,9 +240,9 @@ que es equivalente al mismo problema tras eliminar la restricción $\xi_i>0$, es
     & & & i = 1, \ldots, N,
   \end{aligned}
 \end{equation}
-donde $C$ es un número que debe ser calibrado. Elegimos la norma 2 como costo porque se pueden dar cotas para el errror de generalización, esto es, el error cometido al clasificar ejemplos que no están incluídos en la muestra de aprendizaje, basadas en la norma 2 del vector de holgura $\vec{\xi}$ (ver cristianini), por lo que minimizar la norma 2 implica disminuir el error de generalización. El problema de optimización \ref{eq:optimizacionLinSep} es también un problema de optimización convexa.
+donde $C$ es un número que debe ser calibrado, utilizando estimaciones del error como validación cruzada. Elegimos la norma 2 como costo porque se pueden dar cotas para el errror de generalización, esto es, el error cometido al clasificar ejemplos que no están incluídos en la muestra de aprendizaje, basadas en la norma 2 del vector de holgura $\vec{\xi}$ (ver cristianini), por lo que minimizar la norma 2 implica disminuir el error de generalización. El problema de optimización \ref{eq:optimizacionLinSep} es también un problema de optimización convexa.
 
-Recordemos que para un  problema de optimización de la forma 
+La observación clave para la construcción del método de MSV es observar que el problema dual de \ref{eq:problemaOptimizacionPrimalMSV} solo depende de el ptoducto interno entre los datos $\vec{x}_i, i = 1,\dots,N$. Para ello es necesario definir el lagrangiano y el problema dual de un problema de optimización. Adicionalmente damos lasa condiciones de Karush-Kuhn-Tucker, que tienen como consecuencia el fenómeno que le da el nombre a MSV. Recordemos que para un  problema de optimización de la forma 
 \begin{equation}\label{eq:problemaDeOptimizacionGeneral}
   \begin{aligned}
     & \underset{\vec{w}\in\mathcal{D}}{\text{minimizar}}
@@ -253,7 +256,7 @@ podemos definir su lagrangiano
 \begin{equation}
   L(\vec{w}, \vec{\alpha}, \vec{\beta}) = f_0(\vec{w}) + \sum_{i=1}^{m}\alpha_if_i(\vec{w}) + \sum_{i=1}^{p}\beta_ih_i(\vec{w})
 \end{equation}
-y su funcíon dual 
+y su función dual 
 \begin{equation}
   g(\vec{\alpha}, \vec{\beta}) = \inf_{\vec{w}\in\mathcal{D}}L(\vec{w}, \vec{\alpha}, \vec{\beta})
 \end{equation}
@@ -289,14 +292,14 @@ Ahora retomamos el problema original. El lagrangiano del problema \ref{eq:proble
 Para calcular la función dual $g$ calculamos los puntos críticos de $L$
 \begin{align}
     \frac{\partial L}{\partial\vec{w}} & = \vec{w} - \sum_{i=1}^{N}j_i\alpha_i\vec{x}_i = \vec{0}\label{eq:vectorPesoEnVarsDuales}\\
-    \frac{\partial L}{\partial\vec{\xi}} & = C\vec{\xi}-\vec{\alpha} = \vec{0}\\
+    \frac{\partial L}{\partial\vec{\xi}} & = C\vec{\xi}-\vec{\alpha} = \vec{0}\label{eq:alphaYXi}\\
     \frac{\partial L}{\partial b} & = \sum_{i=1}^{N}j_i\alpha_i = 0
 \end{align}
 con lo que obtenemos 
 \begin{equation}
 g(\vec{\alpha}) = \sum_{i=1}^N \alpha_i -\frac{1}{2}\sum_{i,k=1}^Nj_ij_k\alpha_i\alpha_k\left( \langle\vec{x}_i, \vec{x}_k\rangle + \frac{1}{C}\delta_{ik}  \right).
 \end{equation}
-por lo que lo que el problema de optimización \ref{eq:problemaOptimizacionPrimalMSV} es equivalente el problema de optimización
+por lo que lo que el problema de optimización \ref{eq:problemaOptimizacionPrimalMSV} es equivalente (por haber dualidad fuerte) al problema de optimización
 \begin{equation}\label{eq:problemaOptimizacionDualMSV}
   \begin{aligned}
     & \underset{\vec{\alpha}}{\text{maximizar}}
@@ -306,16 +309,37 @@ por lo que lo que el problema de optimización \ref{eq:problemaOptimizacionPrima
     & & & \alpha_i \geq 0, i = 1,\dots,N,
   \end{aligned}
 \end{equation}
-donde $\delta_{ik}$ es la función delta de Kronecker, $\delta_{ik} = 1$ si $i=k$ y $0$ de lo contrario.La ecuación \ref{eq:vectorPesoEnVarsDuales} se traduce en 
-\begin{equation}
-\vec{w} = \sum_{i=1}^{N}j_i\alpha_i\vec{x}_i
+donde $\delta_{ik}$ es la función delta de Kronecker, $\delta_{ik} = 1$ si $i=k$ y $0$ de lo contrario. Si $\alpha^*$ es la solución al problema \ref{eq:problemaOptimizacionDualMSV}, las condiciones \ref{eq:condicionComplementariedad}, llamadas condiciones de complementariedad, que son en este caso 
+\begin{equation}\label{eq:condicionComplementariedadMSV}
+\alpha_{i}^{*}[j_i(\langle\vec{w},\vec{x}_i\rangle+b)-1+\xi_i] = 0
 \end{equation}
-con lo cual el clasificador \ref{eq:clasificadorLineal} encontrado al solucionar el problema de optimización es 
+nos muestran que para los $\vec{x}_i$ que se encuentran en el margen o mal clasificados $\alpha_i\neq 0$ y de lo contrario $\alpha_i = 0$. Los vectores para los cuales $\alpha_i\neq 0$ son llamados vectores de soporte porque el plano encontrado está únicamente determinado por ellos. Esto se puede ver en la ecuación \ref{eq:vectorPesoEnVarsDuales}, que muestra que los vectores de soporte son los únicos que aportan al vector $\vec{w}$ que define el plano, esto es, 
 \begin{equation}
-g(\vec{x}) = signo\left(\sum_{i=1}^{N}j_i\alpha_i\langle\vec{x}_i,\vec{x}\rangle + b \right)
+\vec{w} = \sum_{i=1}^{N}j_i\alpha_i^*\vec{x}_i = \sum_{i\in vs}j_i\alpha_i^*\vec{x}_i
 \end{equation}
-
-La observación central de MSV es que el problema de optimización \ref{eq:problemaOptimizacionDualMSV} solo depende de los datos $\vec{x}_1,\dots,\vec{x}_N$ a través de la matriz $\left( \langle\vec{x}_i, \vec{x}_k\rangle \right)_{i,k=1}^N$, llamada matriz de Gram. Sea $\mathcal{H}$ un espacio de Hilbert con producto interno $\langle,\rangle_\mathcal{H}$, y $\phi:\mathbb{R}^n\to\mathcal{H}$ una función. Si logramos encontrar una función $K':\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ tal que $K'(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle_{\mathcal{H}}$ podemos resolver el problema de optimización equivalente a \ref{eq:problemaOptimizacionDualMSV} para encontrar el plano de margen maximal en $\mathcal{H}$ usando una representación de los datos en $\mathcal{H}$ a través de $\phi$, es decir, resolver
+donde $i\in vs$ hace referencia a los $\vec{x}_i$ que son vectores de soporte. $b$ es escogido de tal manera que para los vectores de soporte su cumpla  
+\begin{equation}
+  j_i(\langle\vec{w},\vec{x}_i\rangle+b) = 1-\xi_i = 1-\frac{\alpha_i^*}{C}, i\in vs
+\end{equation}
+por las equaciones \ref{eq:condicionComplementariedadMSV} y \ref{eq:alphaYXi}. Con lo anterior el clasificador \ref{eq:clasificadorLineal} encontrado al solucionar el problema de optimización es 
+\begin{equation}\label{eq:clasificadorMargenMaximal}
+g(\vec{x}) = signo\left(\sum_{i\in vs}j_i\alpha^*_i\langle\vec{x}_i,\vec{x}\rangle + b \right)
+\end{equation}
+cuyo margen geométrico $\gamma = \frac{1}{\| \vec{w} \|}$ se puede calcular con
+\begin{equation}
+  \begin{aligned}
+    \langle\vec{w},\vec{w}\rangle &= \sum_{i,k\in vs}j_ij_k\alpha_i\alpha_k\langle\vec{x}_i,\vec{x}_k\rangle\\
+    &= \sum_{i\in vs}j_i\alpha_i\sum_{k\in vs}j_k\alpha_k\langle\vec{x}_i,\vec{x}_k\rangle\\
+    &= \sum_{i\in vs}\alpha_{i}^{*}(1-\xi_i^*-j_ib^*)\\
+    &=  \sum_{i\in vs}\alpha_i^*-\sum_{i\in vs}\alpha^*_i\xi_i^*\\
+    &= \sum_{i\in vs}\alpha_i^*-\frac{1}{C}\langle\vec{\alpha}^*,\vec{\alpha}^*\rangle
+  \end{aligned}
+\end{equation} 
+por lo cual 
+\begin{equation}
+\gamma = \left(\sum_{i\in vs}\alpha_i^*-\frac{1}{C}\langle\vec{\alpha}^*,\vec{\alpha}^*\rangle\right)^{-1/2}
+\end{equation}
+La observación central de MSV es que el problema de optimización \ref{eq:problemaOptimizacionDualMSV} solo depende de los datos $\vec{x}_1,\dots,\vec{x}_N$ a través de la matriz $\left( \langle\vec{x}_i, \vec{x}_k\rangle \right)_{i,k=1}^N$, llamada matriz de Gram. Si podemos calcular la matriz de Gram para una representación de los datos en un espacio con producto interno de dimensión mayor, podemos modificar el problema de optimización \ref{eq:problemaOptimizacionPrimalMSV} para encontrar un plano separador en ese espacio. Sea $\mathcal{H}$ un espacio de Hilbert con producto interno $\langle,\rangle_\mathcal{H}$, y $\phi:\mathbb{R}^n\to\mathcal{H}$ una función. Si logramos encontrar una función $K':\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ tal que $K'(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle_{\mathcal{H}}$ podemos resolver el problema de optimización equivalente a \ref{eq:problemaOptimizacionDualMSV} para encontrar el plano de margen maximal en $\mathcal{H}$ usando una representación de los datos en $\mathcal{H}$ a través de $\phi$, es decir, resolver
 \begin{equation}\label{eq:problemaOptimizacionDualKernelMSV}
   \begin{aligned}
     & \underset{\vec{\alpha}}{\text{maximizar}}
@@ -325,10 +349,14 @@ La observación central de MSV es que el problema de optimización \ref{eq:probl
     & & & \alpha_i \geq 0 , i = 1,\dots,n. 
   \end{aligned}
 \end{equation}
-con $K(\vec{x},\vec{y}) = K'(\vec{x},\vec{y}) + \frac{1}{C}\delta(\vec{x},\vec{y})$, siendo $\delta$ la función delta de Dirac, $\delta(\vec{x},\vec{y}) = 1$ si $\vec{x}=\vec{y}$ y $\delta(\vec{x},\vec{y})= 0$ de lo contrario.
+con $K(\vec{x},\vec{y}) = K'(\vec{x},\vec{y}) + \frac{1}{C}\delta(\vec{x},\vec{y})$, siendo $\delta$ la función delta de Dirac, $\delta(\vec{x},\vec{y}) = 1$ si $\vec{x}=\vec{y}$ y $\delta(\vec{x},\vec{y})= 0$ de lo contrario. En analogía con \ref{eq:clasificadorMargenMaximal}, el clasificador obtenido al resolver el problema de optimización \ref{eq:problemaOptimizacionDualKernelMSV} es 
+\begin{equation}\label{eq:clasificadorMargenMaximalKernel}
+g(\vec{x}) = signo\left(\sum_{i=1}^{N}j_i\alpha_iK\left(\vec{x}_i,\vec{x}\right) + b \right)
+\end{equation}
 
-La condición \ref{eq:condicionComplementariedad}
- 
+Existe un teorema, debido a Mercer (cita, mercer), que da las condiciones necesarias para que $K(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle$ para algún $\phi$, lo cual es computacionalmente eficiente puesto que evita la necesidad de conocer explícitamente el espacio $\mathcal{H}$ y la función $\phi$. 
+
+Ahora bien, como $\langle,\rangle_{\mathcal{H}}$ es un producto interno, la matriz $(K(\vec{x}_i,\vec{x}_j))_{i,j=1}^{N}$ debe ser simétrica semidefinida positiva\footnote{Una matriz A simétrica es positiva semidefinida si cumple que, para todo $\vec{x}$, $\langle\vec{x},A\vec{x}\rangle\geq 0$, lo que es aquivalente a que todos sus autovalores sean positivos.} para cualquier elección de $\{\vec{x}_1, \dots,\vec{x}_N\}\subset\mathbb{R}^n$
 
 \subsection{Árboles de Clasificación y Regresión}
 
