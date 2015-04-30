@@ -1,4 +1,5 @@
 \select@language {spanish}
+\select@language {spanish}
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{5}
 \contentsline {chapter}{\numberline {2}El Problema del Aprendizaje}{9}
 \contentsline {section}{\numberline {2.1}Lulu}{9}
@@ -7,8 +8,8 @@
 \contentsline {section}{\numberline {2.4}Clasificadores}{15}
 \contentsline {subsection}{\numberline {2.4.1}K Vecinos M\IeC {\'a}s Cercanos}{15}
 \contentsline {subsection}{\numberline {2.4.2}M\IeC {\'a}quinas de Soporte Vectorial}{16}
-\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{23}
-\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{23}
+\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{24}
+\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{24}
 \contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{25}
 \contentsline {section}{\numberline {3.1}El conjunto de Datos}{27}
 \contentsline {section}{\numberline {3.2}Caracter\IeC {\'\i }sticas Seleccionadas }{29}

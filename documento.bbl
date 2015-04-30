@@ -11,6 +11,11 @@ Gérard Biau, Luc Devroye, and Gábor Lugosi.
 \newblock Consistency of random forests and other averaging classifiers.
 \newblock {\em The Journal of Machine Learning Research}, 9:2015--2033, 2008.
 
+\bibitem{boyd_convex_2004}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock {\em Convex optimization}.
+\newblock Cambridge university press, 2004.
+
 \bibitem{breiman_bagging_1996}
 Leo Breiman.
 \newblock Bagging predictors.
@@ -30,6 +35,17 @@ Pablo~M. Cincotta, Mariano Mendez, and Josue~A. Nunez.
 \newblock Astronomical time series analysis. {I}. {A} search for periodicity
   using information entropy.
 \newblock {\em The Astrophysical Journal}, 449:231, 1995.
+
+\bibitem{cortes_support-vector_1995}
+Corinna Cortes and Vladimir Vapnik.
+\newblock Support-vector networks.
+\newblock {\em Machine learning}, 20(3):273--297, 1995.
+
+\bibitem{cristianini_introduction_2000}
+Nello Cristianini and John Shawe-Taylor.
+\newblock {\em An introduction to support vector machines and other
+  kernel-based learning methods}.
+\newblock Cambridge university press, 2000.
 
 \bibitem{debosscher_automated_2007}
 Jonas Debosscher, L.~M. Sarro, Conny Aerts, J.~Cuypers, Bart Vandenbussche,
@@ -62,6 +78,14 @@ Hannu Karttunen, Pekka Kröger, Heikki Oja, Markku Poutanen, and Karl~Johan
   Donner, editors.
 \newblock {\em Fundamental {Astronomy}}.
 \newblock Springer, Berlin ; New York, 5th edition edition, August 2007.
+
+\bibitem{mercer_functions_1909}
+James Mercer.
+\newblock Functions of positive and negative type, and their connection with
+  the theory of integral equations.
+\newblock {\em Philosophical transactions of the royal society of London.
+  Series A, containing papers of a mathematical or physical character}, pages
+  415--446, 1909.
 
 \bibitem{mowlavi_searching_2014}
 N.~Mowlavi.

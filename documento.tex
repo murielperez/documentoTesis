@@ -10,6 +10,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsthm}
+\usepackage{babelbib}
 
 \newtheorem{theorem}{Teorema}
 \DeclareMathOperator*{\argmax}{arg\,m\acute{a}x}
@@ -172,8 +173,10 @@ Existen algunas variaciones de knn como knn empaquetado\footnote{En inglés \tex
 
 \subsection{Máquinas de Soporte Vectorial}
 
-Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de dimensión alta. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en (cita vapnik-cortes) basado en utilizar núcleos para para encontrar un plano que maximice la distancia a los puntos de la muestra, o equivalentemente, de margen maximal. Daremos una discusión sobre clasificadores lineales y clasificadores lineales de margen maximal, luego mencionamos los conceptos de optimización convexa que son la base de la utilización de núcleos para MSV y finalmente describimos el algorítmo de Minimización Secuancial Óptima. Seguimos el texto de Cristianini y Shawe-Taylor (cita cristianini) en el que se puede encontrar una introducción completa a MSV.
+%%Introducción
+Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de dimensión alta. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en \cite{cortes_support-vector_1995} basado en utilizar núcleos para para encontrar un plano que maximice la distancia a los puntos de la muestra, o equivalentemente, de margen maximal. Daremos una discusión sobre clasificadores lineales y clasificadores lineales de margen maximal, luego mencionamos los conceptos de optimización convexa que son la base de la utilización de núcleos para MSV y finalmente describimos el algorítmo de Minimización Secuencial Óptima. Seguimos el texto de Cristianini y Shawe-Taylor \cite{cristianini_introduction_2000} en el que se puede encontrar una introducción completa a MSV y la teoría de optimización convexa necesaria para MSV. Para consultas sobre temas adicionales sobre optimización convexa, se puede consultar el libro de Boyd, Vandenberghe y Lieven \cite{boyd_convex_2004}.
 
+%Introducción a los clasificadores lineales%
 Las MSV son clasificadores binarios, es decir, solo pueden distinguir entre dos clases. Para casos en los que se necesita clasificar más de dos clases, es posible implementar esquemas de votación que serán expuestos más adelante. Primero describimos los clasificadores lineales en $\mathbb{R}^n$ en casos en los que se puede escoger un plano que separe perfectamente las dos clases y luego extendemos estos métodos para casos en lo que esto no es posible. Supongamos que se tiene un problema de clasificación binario donde el conjunto de las clases bosibles es $\{-1,1\}$. Consideremos clasificadores lineales de la forma
 \begin{equation}\label{eq:clasificadorLineal}
 g(\vec{x}) = signo( \langle \vec{w}, \vec{x} \rangle + b).
@@ -240,7 +243,7 @@ que es equivalente al mismo problema tras eliminar la restricción $\xi_i>0$, es
     & & & i = 1, \ldots, N,
   \end{aligned}
 \end{equation}
-donde $C$ es un número que debe ser calibrado, utilizando estimaciones del error como validación cruzada. Elegimos la norma 2 como costo porque se pueden dar cotas para el errror de generalización, esto es, el error cometido al clasificar ejemplos que no están incluídos en la muestra de aprendizaje, basadas en la norma 2 del vector de holgura $\vec{\xi}$ (ver cristianini), por lo que minimizar la norma 2 implica disminuir el error de generalización. El problema de optimización \ref{eq:optimizacionLinSep} es también un problema de optimización convexa.
+donde $C$ es un número que debe ser calibrado, utilizando estimaciones del error como validación cruzada. Elegimos la norma 2 como costo porque se pueden dar cotas para el errror de generalización, esto es, el error cometido al clasificar ejemplos que no están incluídos en la muestra de aprendizaje, basadas en la norma 2 del vector de holgura $\vec{\xi}$ (ver \cite{cristianini_introduction_2000}), por lo que minimizar la norma 2 implica disminuir el error de generalización. El problema de optimización \ref{eq:optimizacionLinSep} es también un problema de optimización convexa.
 
 La observación clave para la construcción del método de MSV es observar que el problema dual de \ref{eq:problemaOptimizacionPrimalMSV} solo depende de el ptoducto interno entre los datos $\vec{x}_i, i = 1,\dots,N$. Para ello es necesario definir el lagrangiano y el problema dual de un problema de optimización. Adicionalmente damos lasa condiciones de Karush-Kuhn-Tucker, que tienen como consecuencia el fenómeno que le da el nombre a MSV. Recordemos que para un  problema de optimización de la forma 
 \begin{equation}\label{eq:problemaDeOptimizacionGeneral}
@@ -318,7 +321,7 @@ nos muestran que para los $\vec{x}_i$ que se encuentran en el margen o mal clasi
 \vec{w} = \sum_{i=1}^{N}j_i\alpha_i^*\vec{x}_i = \sum_{i\in vs}j_i\alpha_i^*\vec{x}_i
 \end{equation}
 donde $i\in vs$ hace referencia a los $\vec{x}_i$ que son vectores de soporte. $b$ es escogido de tal manera que para los vectores de soporte su cumpla  
-\begin{equation}
+\begin{equation}\label{eq:eleccionb}
   j_i(\langle\vec{w},\vec{x}_i\rangle+b) = 1-\xi_i = 1-\frac{\alpha_i^*}{C}, i\in vs
 \end{equation}
 por las equaciones \ref{eq:condicionComplementariedadMSV} y \ref{eq:alphaYXi}. Con lo anterior el clasificador \ref{eq:clasificadorLineal} encontrado al solucionar el problema de optimización es 
@@ -336,10 +339,11 @@ cuyo margen geométrico $\gamma = \frac{1}{\| \vec{w} \|}$ se puede calcular con
   \end{aligned}
 \end{equation} 
 por lo cual 
-\begin{equation}
-\gamma = \left(\sum_{i\in vs}\alpha_i^*-\frac{1}{C}\langle\vec{\alpha}^*,\vec{\alpha}^*\rangle\right)^{-1/2}
+\begin{equation}\label{eq:margenGeometrico}
+\gamma = \left(\sum_{i\in vs}\alpha_i^*-\frac{1}{C}\langle\vec{\alpha}^*,\vec{\alpha}^*\rangle\right)^{-1/2}.
 \end{equation}
-La observación central de MSV es que el problema de optimización \ref{eq:problemaOptimizacionDualMSV} solo depende de los datos $\vec{x}_1,\dots,\vec{x}_N$ a través de la matriz $\left( \langle\vec{x}_i, \vec{x}_k\rangle \right)_{i,k=1}^N$, llamada matriz de Gram. Si podemos calcular la matriz de Gram para una representación de los datos en un espacio con producto interno de dimensión mayor, podemos modificar el problema de optimización \ref{eq:problemaOptimizacionPrimalMSV} para encontrar un plano separador en ese espacio. Sea $\mathcal{H}$ un espacio de Hilbert con producto interno $\langle,\rangle_\mathcal{H}$, y $\phi:\mathbb{R}^n\to\mathcal{H}$ una función. Si logramos encontrar una función $K':\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ tal que $K'(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle_{\mathcal{H}}$ podemos resolver el problema de optimización equivalente a \ref{eq:problemaOptimizacionDualMSV} para encontrar el plano de margen maximal en $\mathcal{H}$ usando una representación de los datos en $\mathcal{H}$ a través de $\phi$, es decir, resolver
+
+Ahora tenemos todos los ingredientes encesarios para introducir el uso de núcleos para MSV. La observación central de MSV es que el problema de optimización \ref{eq:problemaOptimizacionDualMSV} solo depende de los datos $\vec{x}_1,\dots,\vec{x}_N$ a través de la matriz $\left( \langle\vec{x}_i, \vec{x}_k\rangle \right)_{i,k=1}^N$, llamada matriz de Gram. Si podemos calcular la matriz de Gram para una representación de los datos en un espacio con producto interno de dimensión mayor, podemos modificar el problema de optimización \ref{eq:problemaOptimizacionPrimalMSV} para encontrar un plano separador en ese espacio. Sea $\mathcal{H}$ un espacio de Hilbert con producto interno $\langle,\rangle_\mathcal{H}$, y $\phi:\mathbb{R}^n\to\mathcal{H}$ una función. Si logramos encontrar una función $K':\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ tal que $K'(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle_{\mathcal{H}}$ podemos resolver el problema de optimización equivalente a \ref{eq:problemaOptimizacionDualMSV} para encontrar el plano de margen maximal en $\mathcal{H}$ usando una representación de los datos en $\mathcal{H}$ a través de $\phi$, es decir, resolver
 \begin{equation}\label{eq:problemaOptimizacionDualKernelMSV}
   \begin{aligned}
     & \underset{\vec{\alpha}}{\text{maximizar}}
@@ -351,12 +355,43 @@ La observación central de MSV es que el problema de optimización \ref{eq:probl
 \end{equation}
 con $K(\vec{x},\vec{y}) = K'(\vec{x},\vec{y}) + \frac{1}{C}\delta(\vec{x},\vec{y})$, siendo $\delta$ la función delta de Dirac, $\delta(\vec{x},\vec{y}) = 1$ si $\vec{x}=\vec{y}$ y $\delta(\vec{x},\vec{y})= 0$ de lo contrario. En analogía con \ref{eq:clasificadorMargenMaximal}, el clasificador obtenido al resolver el problema de optimización \ref{eq:problemaOptimizacionDualKernelMSV} es 
 \begin{equation}\label{eq:clasificadorMargenMaximalKernel}
-g(\vec{x}) = signo\left(\sum_{i=1}^{N}j_i\alpha_iK\left(\vec{x}_i,\vec{x}\right) + b \right)
+g(\vec{x}) = signo\left(\sum_{i=1}^{N}j_i\alpha_i^*K\left(\vec{x}_i,\vec{x}\right) + b \right)
 \end{equation}
+con $b$ elegido como en \ref{eq:eleccionb} y margen geométrico \ref{eq:margenGeometrico}.
 
-Existe un teorema, debido a Mercer (cita, mercer), que da las condiciones necesarias para que $K(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle$ para algún $\phi$, lo cual es computacionalmente eficiente puesto que evita la necesidad de conocer explícitamente el espacio $\mathcal{H}$ y la función $\phi$. 
+Existe un teorema, debido a Mercer \cite{mercer_functions_1909}, que da las condiciones necesarias para que $K(\vec{x},\vec{y}) = \langle\phi(\vec{x}),\phi(\vec{y})\rangle_{\mathcal{H}}$ para algún $\phi$, lo cual es computacionalmente eficiente puesto que evita la necesidad de conocer explícitamente el espacio $\mathcal{H}$ y la función $\phi$. Tal función $K$ es llamada núcleo. Para que $K(\vec{x},\vec{y})$ defina un producto interno es claro que debe ser definida positiva y simétrica. En el caso de dimensión finita, si $K$ es una matriz simétrica semidefinida positiva, entonces podemos escribir $K$ de la forma
+\begin{equation}
+ K =\sum_i\lambda_i v_iv_i^T
+\end{equation}
+por lo que, si escribimos $\vec{x} = (x_1,\dots,x_n)$ y $\vec{y}=(y_1,\dots,y_n)$ en la base normalizada de autovectores de $K$, $K$ define un producto interno $\langle\cdot,\cdot\rangle_{K}$ dado por
+\begin{equation}
+ K(\vec{x},\vec{y}) =x^TKy = \sum_{i,j}\lambda_ix^Tv_iv_i^Ty = \sum_i \lambda_ix_iy_i = \langle x,y\rangle_{K}
+\end{equation}
+siendo $\vec{v}_i$ los autovectores de $K$ y $\lambda_i\geq 0$ sus autovalores. Análogamente, si $\lambda_i$ y $\phi_i$ $i = 1,2,\dots$ son los autovalores y las autofunciones normalizadas del problema
+\begin{equation}
+  \int K(\vec{x},\vec{z})\phi(\vec{z})d\vec{z} = \lambda\phi(\vec{x}), 
+\end{equation}
+el teorema de Mercer da condiciones para que podamos escribir 
+\begin{equation}
+  K(\vec{x},\vec{z}) = \sum_{i=1}^{\infty}\lambda_i\phi_i(\vec{x})\phi_i(\vec{z}) =  \langle \phi(\vec{x}), \phi(\vec{y})\rangle_{\mathcal{H}}
+\end{equation}
+para $\phi(\vec{x}) = (\phi_1(\vec{x}), \phi_2(\vec{x}),\dots)$ y el producto interno definido por $\langle \psi,\varphi \rangle_{\mathcal{H}} = \sum_{i=1}^{\infty}\lambda_i\psi_i\varphi_i$. Sin ir en más detalle en el análisis, citamos el teorema.
+%Teorema de Mercer
+\begin{theorem}[Mercer]
+  Sea $X$ un subconjunto compacto de $\mathbb{R}^n$. Suponga que $K$ es una función simétrica y continua tal que el operador integral $T_K:L_2(X)\to L_2(X)$
+  \begin{equation*}
+    (T_Kf)(\cdot)=\int_{X}K(\cdot,\vec{x})f(\vec{x})d\vec{x}
+  \end{equation*}
+  es positivo, esto es,
+  \begin{equation*}
+    \int_{X\times X}K(\vec{x},\vec{z})f(\vec{x})f(\vec{x})d\vec{x}d\vec{z}\geq 0
+  \end{equation*} 
+  para todo $f\in L_2(X)$. Entonces podemos expandir $K(\vec{x},\vec{z})$ en una serie iniformemente convergente en $X\times X$ en términos de las autofunciones $\phi_i\in L_2(X)$, nor malizadas de tal forma que $\|\phi_i\|_{L_2}=1$ y autovalores positivos $\lambda_i\geq 0$
+  \begin{equation*}
+    K(\vec{x},\vec{z}) = \sum_{i=1}^{\infty}\lambda_i\phi_i(\vec{x})\phi_i(\vec{z})
+  \end{equation*}
+\end{theorem}
 
-Ahora bien, como $\langle,\rangle_{\mathcal{H}}$ es un producto interno, la matriz $(K(\vec{x}_i,\vec{x}_j))_{i,j=1}^{N}$ debe ser simétrica semidefinida positiva\footnote{Una matriz A simétrica es positiva semidefinida si cumple que, para todo $\vec{x}$, $\langle\vec{x},A\vec{x}\rangle\geq 0$, lo que es aquivalente a que todos sus autovalores sean positivos.} para cualquier elección de $\{\vec{x}_1, \dots,\vec{x}_N\}\subset\mathbb{R}^n$
 
 \subsection{Árboles de Clasificación y Regresión}
 

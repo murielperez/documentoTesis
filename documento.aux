@@ -8,6 +8,10 @@
 \@writefile{toc}{\select@language{spanish}}
 \@writefile{lof}{\select@language{spanish}}
 \@writefile{lot}{\select@language{spanish}}
+\select@language{spanish}
+\@writefile{toc}{\select@language{spanish}}
+\@writefile{lof}{\select@language{spanish}}
+\@writefile{lot}{\select@language{spanish}}
 \citation{karttunen_fundamental_2007}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{5}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -75,9 +79,13 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Clasificadores}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}K Vecinos M\IeC {\'a}s Cercanos}{15}}
 \newlabel{eq:knnRule}{{2.14}{15}}
+\citation{cortes_support-vector_1995}
+\citation{cristianini_introduction_2000}
+\citation{boyd_convex_2004}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}M\IeC {\'a}quinas de Soporte Vectorial}{16}}
 \newlabel{eq:clasificadorLineal}{{2.15}{16}}
 \newlabel{eq:linSep}{{2.16}{17}}
+\citation{cristianini_introduction_2000}
 \newlabel{eq:optimizacionLinSep}{{2.19}{18}}
 \newlabel{eq:problemaOptimizacionPrimalMSV}{{2.22}{18}}
 \newlabel{eq:problemaDeOptimizacionGeneral}{{2.23}{19}}
@@ -87,11 +95,14 @@
 \newlabel{eq:alphaYXi}{{2.35}{20}}
 \newlabel{eq:problemaOptimizacionDualMSV}{{2.38}{21}}
 \newlabel{eq:condicionComplementariedadMSV}{{2.39}{21}}
+\newlabel{eq:eleccionb}{{2.41}{21}}
 \newlabel{eq:clasificadorMargenMaximal}{{2.42}{21}}
+\newlabel{eq:margenGeometrico}{{2.44}{22}}
 \newlabel{eq:problemaOptimizacionDualKernelMSV}{{2.45}{22}}
+\citation{mercer_functions_1909}
 \newlabel{eq:clasificadorMargenMaximalKernel}{{2.46}{23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}\IeC {\'A}rboles de Clasificaci\IeC {\'o}n y Regresi\IeC {\'o}n}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.4}Bosques Aleatorios}{24}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Clasificaci\IeC {\'o}n}{25}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -170,39 +181,43 @@
 \newlabel{table:cmCvSvm}{{3.9}{37}}
 \bibcite{beygelzimer_cover_2006}{1}
 \bibcite{biau_consistency_2008}{2}
-\bibcite{breiman_bagging_1996}{3}
-\bibcite{breiman_heuristics_1996}{4}
-\bibcite{bsj_types_2012}{5}
-\bibcite{cincotta_astronomical_1995}{6}
-\bibcite{debosscher_automated_2007}{7}
-\bibcite{devroye_probabilistic_1996}{8}
-\bibcite{fix_discriminatory_1951}{9}
-\bibcite{graczyk_optical_2011}{10}
-\bibcite{karttunen_fundamental_2007}{11}
-\bibcite{mowlavi_searching_2014}{12}
-\bibcite{pawlak_eclipsing_2013}{13}
-\bibcite{poleski_optical_2010}{14}
-\bibcite{richards_machine-learned_2011}{15}
-\bibcite{rodriguez_feliciano_alisis_2012}{16}
-\bibcite{renyi_measures_1961}{17}
-\bibcite{sabogal_search_2014}{18}
-\bibcite{samworth_optimal_2012}{19}
-\bibcite{sarro_automated_2009}{20}
-\bibcite{scargle_studies_1982}{21}
-\bibcite{shannon_mathematical_1948}{22}
-\bibcite{silverman_e._1989}{23}
-\bibcite{soszynski_optical_2011-2}{24}
-\bibcite{soszynski_optical_2008-1}{25}
-\bibcite{soszynski_optical_2010-2}{26}
-\bibcite{soszynski_optical_2011}{27}
-\bibcite{soszynski_optical_2013}{28}
-\bibcite{soszynski_optical_2010}{29}
-\bibcite{soszynski_optical_2008}{30}
-\bibcite{soszynski_optical_2009-1}{31}
-\bibcite{soszynski_optical_2009}{32}
-\bibcite{soszynski_optical_2010-1}{33}
-\bibcite{soszynski_optical_2011-1}{34}
-\bibcite{soszynski_optical_2013-1}{35}
-\bibcite{steinwart_consistency_2005}{36}
-\bibcite{udalski_optical_2004}{37}
-\bibcite{udalski_optical_2008}{38}
+\bibcite{boyd_convex_2004}{3}
+\bibcite{breiman_bagging_1996}{4}
+\bibcite{breiman_heuristics_1996}{5}
+\bibcite{bsj_types_2012}{6}
+\bibcite{cincotta_astronomical_1995}{7}
+\bibcite{cortes_support-vector_1995}{8}
+\bibcite{cristianini_introduction_2000}{9}
+\bibcite{debosscher_automated_2007}{10}
+\bibcite{devroye_probabilistic_1996}{11}
+\bibcite{fix_discriminatory_1951}{12}
+\bibcite{graczyk_optical_2011}{13}
+\bibcite{karttunen_fundamental_2007}{14}
+\bibcite{mercer_functions_1909}{15}
+\bibcite{mowlavi_searching_2014}{16}
+\bibcite{pawlak_eclipsing_2013}{17}
+\bibcite{poleski_optical_2010}{18}
+\bibcite{richards_machine-learned_2011}{19}
+\bibcite{rodriguez_feliciano_alisis_2012}{20}
+\bibcite{renyi_measures_1961}{21}
+\bibcite{sabogal_search_2014}{22}
+\bibcite{samworth_optimal_2012}{23}
+\bibcite{sarro_automated_2009}{24}
+\bibcite{scargle_studies_1982}{25}
+\bibcite{shannon_mathematical_1948}{26}
+\bibcite{silverman_e._1989}{27}
+\bibcite{soszynski_optical_2011-2}{28}
+\bibcite{soszynski_optical_2008-1}{29}
+\bibcite{soszynski_optical_2010-2}{30}
+\bibcite{soszynski_optical_2011}{31}
+\bibcite{soszynski_optical_2013}{32}
+\bibcite{soszynski_optical_2010}{33}
+\bibcite{soszynski_optical_2008}{34}
+\bibcite{soszynski_optical_2009-1}{35}
+\bibcite{soszynski_optical_2009}{36}
+\bibcite{soszynski_optical_2010-1}{37}
+\bibcite{soszynski_optical_2011-1}{38}
+\bibcite{soszynski_optical_2013-1}{39}
+\bibcite{steinwart_consistency_2005}{40}
+\bibcite{udalski_optical_2004}{41}
+\bibcite{udalski_optical_2008}{42}
