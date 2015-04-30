@@ -21,6 +21,12 @@ Leo Breiman.
 \newblock Bagging predictors.
 \newblock {\em Machine learning}, 24(2):123--140, 1996.
 
+\bibitem{breiman_classification_1984}
+Leo Breiman, Jerome Friedman, Charles~J. Stone, and R.~A. Olshen.
+\newblock {\em Classification and {Regression} {Trees}}.
+\newblock Chapman and Hall/CRC, New York, N.Y., 1 edition edition, January
+  1984.
+
 \bibitem{breiman_heuristics_1996}
 Leo Breiman and {others}.
 \newblock Heuristics of instability and stabilization in model selection.
@@ -31,7 +37,7 @@ Leo Breiman and {others}.
 \newblock Types of {Variables}, June 2012.
 
 \bibitem{cincotta_astronomical_1995}
-Pablo~M. Cincotta, Mariano Mendez, and Josue~A. Nunez.
+Pablo~M. Cincotta, Mariano Mendez, and Josue~A. Nuñez.
 \newblock Astronomical time series analysis. {I}. {A} search for periodicity
   using information entropy.
 \newblock {\em The Astrophysical Journal}, 449:231, 1995.

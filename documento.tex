@@ -174,7 +174,7 @@ Existen algunas variaciones de knn como knn empaquetado\footnote{En inglés \tex
 \subsection{Máquinas de Soporte Vectorial}
 
 %%Introducción
-Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de dimensión alta. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en \cite{cortes_support-vector_1995} basado en utilizar núcleos para para encontrar un plano que maximice la distancia a los puntos de la muestra, o equivalentemente, de margen maximal. Daremos una discusión sobre clasificadores lineales y clasificadores lineales de margen maximal, luego mencionamos los conceptos de optimización convexa que son la base de la utilización de núcleos para MSV y finalmente describimos el algorítmo de Minimización Secuencial Óptima. Seguimos el texto de Cristianini y Shawe-Taylor \cite{cristianini_introduction_2000} en el que se puede encontrar una introducción completa a MSV y la teoría de optimización convexa necesaria para MSV. Para consultas sobre temas adicionales sobre optimización convexa, se puede consultar el libro de Boyd, Vandenberghe y Lieven \cite{boyd_convex_2004}.
+Las Máquinas de Soporte Vectorial (MSV) son sistemas de clasificación que utilizan con conjunto de hipótesis las funciones lineales en un espacio de dimensión alta. Las MSV como se conocen hoy en día fueron propuestas por Cortes y Vapnik en \cite{cortes_support-vector_1995} basado en utilizar núcleos para para encontrar un plano que maximice la distancia a los puntos de la muestra, o equivalentemente, de margen maximal. Daremos una discusión sobre clasificadores lineales y clasificadores lineales de margen maximal, luego mencionamos los conceptos de optimización convexa que son la base de la utilización de núcleos para MSV y finalmente referenciamos el algorítmo de Minimización Secuencial Óptima. Seguimos el texto de Cristianini y Shawe-Taylor \cite{cristianini_introduction_2000} en el que se puede encontrar una introducción completa a MSV y la teoría de optimización convexa necesaria para MSV. Para consultas sobre temas adicionales sobre optimización convexa, se puede consultar el libro de Boyd, Vandenberghe y Lieven \cite{boyd_convex_2004}.
 
 %Introducción a los clasificadores lineales%
 Las MSV son clasificadores binarios, es decir, solo pueden distinguir entre dos clases. Para casos en los que se necesita clasificar más de dos clases, es posible implementar esquemas de votación que serán expuestos más adelante. Primero describimos los clasificadores lineales en $\mathbb{R}^n$ en casos en los que se puede escoger un plano que separe perfectamente las dos clases y luego extendemos estos métodos para casos en lo que esto no es posible. Supongamos que se tiene un problema de clasificación binario donde el conjunto de las clases bosibles es $\{-1,1\}$. Consideremos clasificadores lineales de la forma
@@ -261,22 +261,22 @@ podemos definir su lagrangiano
 \end{equation}
 y su función dual 
 \begin{equation}
-  g(\vec{\alpha}, \vec{\beta}) = \inf_{\vec{w}\in\mathcal{D}}L(\vec{w}, \vec{\alpha}, \vec{\beta})
+  W(\vec{\alpha}, \vec{\beta}) = \inf_{\vec{w}\in\mathcal{D}}L(\vec{w}, \vec{\alpha}, \vec{\beta})
 \end{equation}
 para la cual se cumple
 \begin{equation}
-  g(\vec{\alpha}, \vec{\beta}) \leq L(\vec{w}, \vec{\alpha}, \vec{\beta}) \leq f_0(\vec{w})
+  W(\vec{\alpha}, \vec{\beta}) \leq L(\vec{w}, \vec{\alpha}, \vec{\beta}) \leq f_0(\vec{w})
 \end{equation}
 siempre que $\alpha_i\geq 0, i = 1,\dots, m$. Como $g$ es una cota inferior para $f_0$, podemos preguntar si maximizar $g$ y minimizar $f_0$ son problemas equivalentes. Por lo anterior consideramos el problema dual de optimización
 \begin{equation}\label{eq:problemaOptimizacionDualGeneral}
   \begin{aligned}
     & \underset{\vec{\alpha},\vec{\beta}}{\text{maximizar}}
-    & & g(\vec{\alpha}, \vec{\beta})\\
+    & & W(\vec{\alpha}, \vec{\beta})\\
     & \text{sujeto a}
     & & \alpha_i \geq 0 , i = 1,\dots,m.
   \end{aligned}
 \end{equation}
-En general no se tiene que maximizar $g$ y minimizar $f_0$ sean problemas equivalentes. En el caso de que sí lo sean se dice que se hay dualidad fuerte. Sin embargo, es posible probar que, para el caso en el que estamos interesandos, en el que el problema es de la forma \ref{eq:problemaDeOptimizacionGeneral} con $\mathcal{D}$ un dominio convexo\footnote{Un conjunto $\mathcal{D} \subseteq \mathbb{R}^n$ es convexo si para todos $d_1, d_2\in\mathcal{D}$ se cumple $\theta d_1+(1-\theta)d_2\in\mathcal{D}$}, $f_0$ convexa\footnote{Una función $f(\vec{w})$ es convexa si $f(\theta\vec{w}_{1}+(1-\theta)\vec{w}_{2})\leq \theta f(\vec{x}_{1})+(1-\theta)f(\vec{x}_{2})$ para cada $\theta\in[0,1]$} y $f_1,\dots,f_m,g_0,\dots,g_p$ funciones afines\footnote{Una función $h(\vec{w})$ es afín si es de la forma $h(\vec{w}) = A\vec{w}+\vec{v}$, las funciones afines son convexas} entonces hay dualidad fuerte.
+En general no se tiene que maximizar $W$ y minimizar $f_0$ sean problemas equivalentes. En el caso de que sí lo sean se dice que se hay dualidad fuerte. Sin embargo, es posible probar que, para el caso en el que estamos interesandos, en el que el problema es de la forma \ref{eq:problemaDeOptimizacionGeneral} con $\mathcal{D}$ un dominio convexo\footnote{Un conjunto $\mathcal{D} \subseteq \mathbb{R}^n$ es convexo si para todos $d_1, d_2\in\mathcal{D}$ se cumple $\theta d_1+(1-\theta)d_2\in\mathcal{D}$}, $f_0$ convexa\footnote{Una función $f(\vec{w})$ es convexa si $f(\theta\vec{w}_{1}+(1-\theta)\vec{w}_{2})\leq \theta f(\vec{x}_{1})+(1-\theta)f(\vec{x}_{2})$ para cada $\theta\in[0,1]$} y $f_1,\dots,f_m,h_0,\dots,h_p$ funciones afines\footnote{Una función $h(\vec{w})$ es afín si es de la forma $h(\vec{w}) = A\vec{w}+\vec{v}$, las funciones afines son convexas} entonces hay dualidad fuerte.
 
 Si el problema de optimización \ref{eq:problemaDeOptimizacionGeneral} es convexo, es decir, si $f_0,\dots, f_m$ son funciones convexas y $h_0,\dots,h_p$ son afines, en el caso de que $f_0,\dots, f_m$ son diferenciables es posible demostrar que para que $\vec{w}^*$ sea el punto óptimo de problema \ref{eq:problemaDeOptimizacionGeneral} es necesario y suficiente que exista $(\vec{\alpha}^*,\vec{\beta}^*)$ que cumplan las condiciones de Karush-Kuhn-Tucker (KKT)
 
@@ -292,7 +292,7 @@ Ahora retomamos el problema original. El lagrangiano del problema \ref{eq:proble
 \begin{equation}
   L(\vec{w},b,\vec{\xi},\vec{\alpha}) = \frac{1}{2}\langle \vec{w}, \vec{w} \rangle + \frac{C}{2}\sum_{i}^{N}\xi_i^2 + \sum_{i=1}^{N}\alpha_i\left[\gamma_i(\langle \vec{w}, \vec{x}_i \rangle +b) -1 + \xi \right].
 \end{equation}
-Para calcular la función dual $g$ calculamos los puntos críticos de $L$
+Para calcular la función dual $W$ calculamos los puntos críticos de $L$
 \begin{align}
     \frac{\partial L}{\partial\vec{w}} & = \vec{w} - \sum_{i=1}^{N}j_i\alpha_i\vec{x}_i = \vec{0}\label{eq:vectorPesoEnVarsDuales}\\
     \frac{\partial L}{\partial\vec{\xi}} & = C\vec{\xi}-\vec{\alpha} = \vec{0}\label{eq:alphaYXi}\\
@@ -300,7 +300,7 @@ Para calcular la función dual $g$ calculamos los puntos críticos de $L$
 \end{align}
 con lo que obtenemos 
 \begin{equation}
-g(\vec{\alpha}) = \sum_{i=1}^N \alpha_i -\frac{1}{2}\sum_{i,k=1}^Nj_ij_k\alpha_i\alpha_k\left( \langle\vec{x}_i, \vec{x}_k\rangle + \frac{1}{C}\delta_{ik}  \right).
+W(\vec{\alpha}) = \sum_{i=1}^N \alpha_i -\frac{1}{2}\sum_{i,k=1}^Nj_ij_k\alpha_i\alpha_k\left( \langle\vec{x}_i, \vec{x}_k\rangle + \frac{1}{C}\delta_{ik}  \right).
 \end{equation}
 por lo que lo que el problema de optimización \ref{eq:problemaOptimizacionPrimalMSV} es equivalente (por haber dualidad fuerte) al problema de optimización
 \begin{equation}\label{eq:problemaOptimizacionDualMSV}
@@ -316,7 +316,7 @@ donde $\delta_{ik}$ es la función delta de Kronecker, $\delta_{ik} = 1$ si $i=k
 \begin{equation}\label{eq:condicionComplementariedadMSV}
 \alpha_{i}^{*}[j_i(\langle\vec{w},\vec{x}_i\rangle+b)-1+\xi_i] = 0
 \end{equation}
-nos muestran que para los $\vec{x}_i$ que se encuentran en el margen o mal clasificados $\alpha_i\neq 0$ y de lo contrario $\alpha_i = 0$. Los vectores para los cuales $\alpha_i\neq 0$ son llamados vectores de soporte porque el plano encontrado está únicamente determinado por ellos. Esto se puede ver en la ecuación \ref{eq:vectorPesoEnVarsDuales}, que muestra que los vectores de soporte son los únicos que aportan al vector $\vec{w}$ que define el plano, esto es, 
+nos muestran que para los $\vec{x}_i$ que se encuentran en el margen o mal clasificados $\alpha_i\neq 0$ y de lo contrario $\alpha_i = 0$. Los vectores para los cuales $\alpha_i\neq 0$ son llamados vectores de soporte porque el plano encontrado está únicamente determinado por ellos. Por esto, se dice que la solución es dispersa. Esto se puede ver en la ecuación \ref{eq:vectorPesoEnVarsDuales}, que muestra que los vectores de soporte son los únicos que aportan al vector $\vec{w}$ que define el plano, esto es, 
 \begin{equation}
 \vec{w} = \sum_{i=1}^{N}j_i\alpha_i^*\vec{x}_i = \sum_{i\in vs}j_i\alpha_i^*\vec{x}_i
 \end{equation}
@@ -388,12 +388,25 @@ para $\phi(\vec{x}) = (\phi_1(\vec{x}), \phi_2(\vec{x}),\dots)$ y el producto in
   \end{equation*} 
   para todo $f\in L_2(X)$. Entonces podemos expandir $K(\vec{x},\vec{z})$ en una serie iniformemente convergente en $X\times X$ en términos de las autofunciones $\phi_i\in L_2(X)$, nor malizadas de tal forma que $\|\phi_i\|_{L_2}=1$ y autovalores positivos $\lambda_i\geq 0$
   \begin{equation*}
-    K(\vec{x},\vec{z}) = \sum_{i=1}^{\infty}\lambda_i\phi_i(\vec{x})\phi_i(\vec{z})
+    K(\vec{x},\vec{z}) = \sum_{i=1}^{\infty}\lambda_i\phi_i(\vec{x})\phi_i(\vec{z}).
   \end{equation*}
 \end{theorem}
 
+Con las condiciones anteriores, podemos encontrar el núcleo $K$, para encontrar el plano de margen maximal en el $\mathcal{H}$ resolviendo el problema de optimización \ref{eq:problemaOptimizacionDualKernelMSV} sin siquiera conocer explícitamente la función de representación $\phi$ ni $\mathcal{H}$. Si $K_1$, y $K_2$ son núcleos es posible demostrar que cualquier núcleo definifo por un polinomio de dos variables $K(\vec{x},\vec{z}) = p(K_1(\vec{x},\vec{z}),K_2(\vec{x},\vec{z}))$ también es un núcleo, así como $K(\vec{x},\vec{z})=\exp{(K_1(\vec{x},\vec{z}))}$. Un núcleo popular es el núcleo radial
+\begin{equation}
+K(x,y) = e^{-\gamma\|\vec{x}-\vec{y}\|^2},
+\end{equation}
+ que ha sido utilizado en gran variedad de aplicaciones \cite{cristianini_introduction_2000}. Al utilizar el núcleo radial se debe calibrar tanto como el costo $C$ y el ancho del núcleo $\gamma$ para minimizar la tasa clasificación errónea utilizando, por ejemplo, validación cruzada.
+
+En el caso de clasificación en $M>2$ categorías se pueden implementar esquemas de votación. Una posible aproximación, llamada uno-contra-uno\footnote{En inglés \textit{one-against-one}}, es entrenar  $\frac{M(M-1)}{2}$ clasificadores que discriminen entre cada par de clases. Se escoge entonces la clase que haya sido decidida por la mayoría de clasificadores y en caso de empate se elige la que tenga índice menor. Otra aproximación, llamada uno-contra-resto\footnote{En inglés \textit{one-against-rest}} es entrenar $M$ clasificadores que discriminen entre cada clase y su complemento. Se elige la clase en que de la clasificación con el mayor margen.
+
+El problema \ref{eq:problemaOptimizacionDualKernelMSV} es un problema de optimización convexa. Estos problemas han sido estudiados extensamente y existen formas eficientes de encontrar las soluciones que pueden ser aplicadas directamente. El principal obstáculo para utilizar estas aproximaciones es que el espacio necesario para almacenar la  matriz de Gram del problema crece cuadráticamente con el tamaño de la muestra dado que, en general, no es una matriz dispersa. Sin embargo se pueden explotar algunas características del problema, como el hecho de que la solución es dispersa para crear algorítmos eficientes. 
+
+Optimización Secuencial Minimal (OSM) es un algorítmo utilizado para resolver el problema de optimización \ref{eq:problemaOptimizacionDualKernelMSV}. Se basa en el el requerimiento de que $\sum_i\alpha_ij_i = 0$ en todas las iteraciones del algorítmo, por lo que se deben actualizar a lo sumo dos $\alpha_i$ en cada paso. En cada paso OSM utiliza eurísticas para eligir dos $\alpha_i, \alpha_k$ para optimizar y utiliza el hecho de que este subproblema puede ser resuelto analíticamente, lo que elimina la necesidad de realizar operaciones con matrices. Este algorítmo logra reducciones en el tiempo de ejecución de varios órdenes de magnitud con respecto a algorítmos como el del gradiente. Existen implementaciones disponibles, como la librería libsvm escrita en C++ por Chih-Chung Chang and Chih-Jen Lin (cita libsvm) para la cual existe una interfaz para R en el paquete e1071 (cita e1071). Para clasificación en múltiples clases, libsvm utiliza el esquema de votación uno-contra-uno porque, basado en el análisis de (comparison, chin-wei) los resultados con ambas aproximaciones son comparables y el método uno-contra-uno toma menos tiempo de entrenamiento.
 
 \subsection{Árboles de Clasificación y Regresión}
+
+Árboles de Clasificación y Regresión (CART, por sus siglas en inglés) es un método de clasificación que utiliza el conjunto de los árboles de decisión binarios como conjunto de hipótesis. Este método fue propuesto por Breiman, Friedman, Olshen y Stone a lo largo de varios trabajos, que luego fueron condesados en \cite{breiman_classification_1984}. La metodología consiste en hacer crecer árboles de clasificación lo suficientemente grandes, creando nuevas ramas que maximicen cierto criterio de pureza de las divisiones, para luego podarlos y obtener un árbol que tenga las mejores propiedades de generalización posible ya que n árbol demasiado grande corre el riesgo de sobreajustarse a la muestra.
 
 \subsection{Bosques Aleatorios}
 
