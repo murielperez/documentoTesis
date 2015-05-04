@@ -21,6 +21,11 @@ Leo Breiman.
 \newblock Bagging predictors.
 \newblock {\em Machine learning}, 24(2):123--140, 1996.
 
+\bibitem{breiman_random_2001}
+Leo Breiman.
+\newblock Random forests.
+\newblock {\em Machine learning}, 45(1):5--32, 2001.
+
 \bibitem{breiman_classification_1984}
 Leo Breiman, Jerome Friedman, Charles~J. Stone, and R.~A. Olshen.
 \newblock {\em Classification and {Regression} {Trees}}.
