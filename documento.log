@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  3 MAY 2015 22:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  4 MAY 2015 19:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -664,15 +664,12 @@ LaTeX Info: Redefining \% on input line 402.
 LaTeX Info: Redefining \. on input line 410.
 LaTeX Info: Redefining \% on input line 410.
  [25]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 LaTeX Info: Redefining \. on input line 416.
 LaTeX Info: Redefining \% on input line 416.
  [26]
 LaTeX Info: Redefining \. on input line 445.
 LaTeX Info: Redefining \% on input line 445.
-
-[27]
+ [27]
 LaTeX Info: Redefining \. on input line 463.
 LaTeX Info: Redefining \% on input line 463.
  [28]
@@ -681,7 +678,8 @@ LaTeX Info: Redefining \% on input line 475.
  [29]
 LaTeX Info: Redefining \. on input line 488.
 LaTeX Info: Redefining \% on input line 488.
- [30]
+
+[30]
 LaTeX Info: Redefining \. on input line 492.
 LaTeX Info: Redefining \% on input line 492.
  [31]
@@ -790,10 +788,10 @@ LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
- 5780 strings out of 493304
- 84090 string characters out of 6139871
- 169340 words of memory out of 5000000
- 9112 multiletter control sequences out of 15000+600000
+ 5781 strings out of 493304
+ 84115 string characters out of 6139871
+ 169345 words of memory out of 5000000
+ 9113 multiletter control sequences out of 15000+600000
  14999 words of font info for 57 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  53i,12n,92p,1744b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -818,7 +816,7 @@ t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on documento.pdf (52 pages, 616058 bytes).
+Output written on documento.pdf (52 pages, 617415 bytes).
 PDF statistics:
  290 PDF objects out of 1000 (max. 8388607)
  202 compressed objects within 3 object streams

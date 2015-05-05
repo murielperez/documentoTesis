@@ -282,6 +282,12 @@ Ingo Steinwart.
   classifiers.
 \newblock {\em Information Theory, IEEE Transactions on}, 51(1):128--142, 2005.
 
+\bibitem{strobl_conditional_2008}
+Carolin Strobl, Anne-Laure Boulesteix, Thomas Kneib, Thomas Augustin, and Achim
+  Zeileis.
+\newblock Conditional variable importance for random forests.
+\newblock {\em BMC bioinformatics}, 9(1):307, 2008.
+
 \bibitem{udalski_optical_2004}
 A.~Udalski.
 \newblock The {Optical} {Gravitational} {Lensing} {Experiment}. {Real} {Time}
