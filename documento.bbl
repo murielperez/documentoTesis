@@ -90,6 +90,11 @@ Hannu Karttunen, Pekka Kröger, Heikki Oja, Markku Poutanen, and Karl~Johan
 \newblock {\em Fundamental {Astronomy}}.
 \newblock Springer, Berlin ; New York, 5th edition edition, August 2007.
 
+\bibitem{randomForest}
+Andy Liaw and Matthew Wiener.
+\newblock Classification and regression by randomforest.
+\newblock {\em R News}, 2(3):18--22, 2002.
+
 \bibitem{mercer_functions_1909}
 James Mercer.
 \newblock Functions of positive and negative type, and their connection with
@@ -97,6 +102,13 @@ James Mercer.
 \newblock {\em Philosophical transactions of the royal society of London.
   Series A, containing papers of a mathematical or physical character}, pages
   415--446, 1909.
+
+\bibitem{e1071}
+David Meyer, Evgenia Dimitriadou, Kurt Hornik, Andreas Weingessel, and
+  Friedrich Leisch.
+\newblock {\em e1071: Misc Functions of the Department of Statistics (e1071),
+  TU Wien}, 2014.
+\newblock R package version 1.6-4.
 
 \bibitem{mowlavi_searching_2014}
 N.~Mowlavi.
@@ -119,6 +131,11 @@ R.~Poleski, I.~Soszyński, A.~Udalski, M.~K. Szymański, M.~Kubiak,
   {OGLE}-{III} {Catalog} of {Variable} {Stars}. {VI}. {Delta} {Scuti} {Stars}
   in the {Large} {Magellanic} {Cloud}.
 \newblock {\em Acta Astronomica}, 60:1--16, March 2010.
+
+\bibitem{rbase}
+{R Core Team}.
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria, 2014.
 
 \bibitem{richards_machine-learned_2011}
 Joseph~W. Richards, Dan~L. Starr, Nathaniel~R. Butler, Joshua~S. Bloom, John~M.
@@ -287,6 +304,11 @@ Carolin Strobl, Anne-Laure Boulesteix, Thomas Kneib, Thomas Augustin, and Achim
   Zeileis.
 \newblock Conditional variable importance for random forests.
 \newblock {\em BMC bioinformatics}, 9(1):307, 2008.
+
+\bibitem{rpart}
+Terry Therneau, Beth Atkinson, and Brian Ripley.
+\newblock {\em rpart: Recursive Partitioning and Regression Trees}, 2014.
+\newblock R package version 4.1-8.
 
 \bibitem{udalski_optical_2004}
 A.~Udalski.
