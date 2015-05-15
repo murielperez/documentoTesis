@@ -4,44 +4,44 @@ The top-level auxiliary file: documento.aux
 The style file: plain.bst
 Database file #1: tesisMatematicas.bib
 Database file #2: rPackagesCitations.bib
-You've used 49 entries,
+You've used 53 entries,
             2118 wiz_defined-function locations,
-            762 strings with 14940 characters,
-and the built_in function-call counts, 19254 in all, are:
-= -- 1803
-> -- 1296
-< -- 4
-+ -- 532
-- -- 464
-* -- 1606
-:= -- 3351
-add.period$ -- 149
-call.type$ -- 49
-change.case$ -- 373
+            781 strings with 15755 characters,
+and the built_in function-call counts, 20686 in all, are:
+= -- 1923
+> -- 1417
+< -- 5
++ -- 580
+- -- 508
+* -- 1723
+:= -- 3611
+add.period$ -- 161
+call.type$ -- 53
+change.case$ -- 404
 chr.to.int$ -- 0
-cite$ -- 49
-duplicate$ -- 564
-empty$ -- 1212
-format.name$ -- 464
-if$ -- 3775
+cite$ -- 53
+duplicate$ -- 605
+empty$ -- 1292
+format.name$ -- 508
+if$ -- 4048
 int.to.chr$ -- 0
-int.to.str$ -- 49
-missing$ -- 49
-newline$ -- 247
-num.names$ -- 99
-pop$ -- 336
+int.to.str$ -- 53
+missing$ -- 52
+newline$ -- 267
+num.names$ -- 107
+pop$ -- 371
 preamble$ -- 1
-purify$ -- 330
+purify$ -- 360
 quote$ -- 0
-skip$ -- 375
+skip$ -- 404
 stack$ -- 0
-substring$ -- 1054
-swap$ -- 79
-text.length$ -- 4
+substring$ -- 1080
+swap$ -- 86
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 184
+type$ -- 198
 warning$ -- 0
-while$ -- 168
-width$ -- 51
-write$ -- 537
+while$ -- 177
+width$ -- 55
+write$ -- 579

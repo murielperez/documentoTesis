@@ -6,6 +6,13 @@ Alina Beygelzimer, Sham Kakade, and John Langford.
 \newblock In {\em Proceedings of the 23rd international conference on {Machine}
   learning}, pages 97--104. ACM, 2006.
 
+\bibitem{FNN}
+Alina Beygelzimer, Sham Kakadet, John Langford, Sunil Arya, David Mount, and
+  Shengqiao Li.
+\newblock {\em FNN: Fast Nearest Neighbor Search Algorithms and Applications},
+  2013.
+\newblock R package version 1.1.
+
 \bibitem{biau_consistency_2008}
 Gérard Biau, Luc Devroye, and Gábor Lugosi.
 \newblock Consistency of random forests and other averaging classifiers.
@@ -41,6 +48,12 @@ Leo Breiman and {others}.
 {BSJ}.
 \newblock Types of {Variables}, June 2012.
 
+\bibitem{chang_libsvm:_2011}
+Chih-Chung Chang and Chih-Jen Lin.
+\newblock {LIBSVM}: a library for support vector machines.
+\newblock {\em ACM Transactions on Intelligent Systems and Technology (TIST)},
+  2(3):27, 2011.
+
 \bibitem{cincotta_astronomical_1995}
 Pablo~M. Cincotta, Mariano Mendez, and Josue~A. Nuñez.
 \newblock Astronomical time series analysis. {I}. {A} search for periodicity
@@ -75,6 +88,14 @@ Evelyn Fix and Joseph~L. Hodges~Jr.
 \newblock Discriminatory analysis-nonparametric discrimination: consistency
   properties.
 \newblock Technical report, DTIC Document, 1951.
+
+\bibitem{caret}
+Max Kuhn.~Contributions from Jed~Wing, Steve Weston, Andre Williams, Chris
+  Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the
+  R~Core~Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, and Luca
+  Scrucca.
+\newblock {\em caret: Classification and Regression Training}, 2015.
+\newblock R package version 6.0-41.
 
 \bibitem{graczyk_optical_2011}
 D.~Graczyk, I.~Soszyński, R.~Poleski, G.~Pietrzyński, A.~Udalski, M.~K.
@@ -181,6 +202,12 @@ Jeffrey~D. Scargle.
 \newblock Studies in astronomical time series analysis. {II}-{Statistical}
   aspects of spectral analysis of unevenly spaced data.
 \newblock {\em The Astrophysical Journal}, 263:835--853, 1982.
+
+\bibitem{scott_multivariate_2009}
+David~W. Scott.
+\newblock {\em Multivariate density estimation: theory, practice, and
+  visualization}, volume 383.
+\newblock John Wiley \& Sons, 2009.
 
 \bibitem{shannon_mathematical_1948}
 C.E. Shannon.
