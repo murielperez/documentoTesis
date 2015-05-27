@@ -1,0 +1,173 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=prv_documento 2015.5.26)  26 MAY 2015 15:40
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**&prv_documento _region_.tex
+(./_region_.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+CUSTOMISED FORMAT. Preloaded files:
+        .
+    book.cls    2007/10/19 v1.4h Standard LaTeX document class
+    bk12.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
+   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   babel.sty    2013/12/03 3.9h The Babel package
+ spanish.ldf
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+appendix.sty    2009/09/02 v1.2b extra appendix facilities
+adjustbox.sty    2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
+ xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
+ xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
+ adjcalc.sty    2012/05/16 v1.1 Provides advanced setlength with multiple back-
+ends (calc, etex, pgfmath)
+trimclip.sty    2012/05/16 v1.0 Trim and clip general TeX material
+collectbox.sty    2012/05/17 v0.4b Collect macro arguments as boxes
+tc-dvips.def    2012/05/13 v1.0 Clipping driver for dvips
+ifoddpage.sty    2011/09/13 v1.0 Conditionals for odd/even page detection
+varwidth.sty    2009/03/30 ver 0.92;  Variable-width minipages
+ caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
+caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+subcaption.sty    2013/02/03 v1.1-62 Sub-captions (AR)
+  amsthm.sty    2004/08/06 v2.20
+babelbib.sty    2012/01/03 v1.31 babelbib: multilingual bibliographies (HH)
+todonotes.sty    2012/07/25
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
+     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
+  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
+  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
+  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+        .
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+(/home/muriel/.emacs.d/elpa/auctex-11.87.3/latex/preview.sty
+Package: preview 2010-02-14 CVS-1.126 (AUCTeX/preview-latex)
+
+(/home/muriel/.emacs.d/elpa/auctex-11.87.3/latex/prtightpage.def
+\PreviewBorder=\dimen177
+)
+(/home/muriel/.emacs.d/elpa/auctex-11.87.3/latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count138
+\hfuzz=\dimen178
+(/home/muriel/.emacs.d/elpa/auctex-11.87.3/latex/prauctex.cfg))
+(/home/muriel/.emacs.d/elpa/auctex-11.87.3/latex/prfootnotes.def)
+\pr@snippet=\count139
+\pr@box=\box39
+\pr@output=\toks40
+
+Preview: Fontsize 12pt
+)
+! Missing = inserted for \ifnum.
+<to be read again> 
+                   -
+l.26 \begin{document}
+                     
+I was expecting to see `<', `=', or `>'. Didn't.
+
+LaTeX Info: Redefining \. on input line 26.
+LaTeX Info: Redefining \% on input line 26.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: Incompatible package detected (regarding \caption).
+(caption)             \caption = \protected\long macro:->\pr@protect@domacro {}
+{##1{}}\pr@\caption .
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+
+! Package caption Error: The `subcaption' package does not work correctly
+(caption)                in compatibility mode.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 \begin{document}
+                     
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Package caption Info: End \AtBeginDocument code.
+babelbib: Use citation-dependent languages in bibliography
+babelbib: Set bibliography fall-back language to spanish
+(/usr/share/texlive/texmf-dist/tex/latex/babelbib/spanish.bdf
+File: spanish.bdf 2012/01/03 v1.31 babelbib: multilingual bibliographies (HH)
+
+babelbib extension \bibsspanish added to \extrasspanish
+babelbib extension \btxifchangecaseoff added to \extrasspanish
+)
+LaTeX Info: Redefining \. on input line 26.
+LaTeX Info: Redefining \% on input line 26.
+ ABD: EveryShipout initializing macros  !name(documento.tex) !offset(735) 
+
+LaTeX Warning: Citation `rodriguez_feliciano_alisis_2012' on page 1 undefined o
+n input line 32.
+
+ !name(documento.tex) !offset(1197) 
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 428 strings out of 480340
+ 6106 string characters out of 5906426
+ 292408 words of memory out of 5000000
+ 16555 multiletter control sequences out of 15000+600000
+ 10424 words of font info for 39 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 22i,5n,22p,237b,170s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+No pages of output.

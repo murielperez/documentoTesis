@@ -24,7 +24,6 @@
 Adolfo Quiroz \\
 Alejandro García}
 \begin{document}
-\maketitle
 
 \begin{titlepage}
 \begin{center}
@@ -560,7 +559,7 @@ Subsecuentemente llamaremos $g:\mathbb{R}^{n}\rightarrow \{VLP,\dots, BeEC\}$ al
 
 Para estimar la probabilidad de que la función de decisión entrenada por un algorítmo de aprendizaje con la totalidad de los datos se equivoque al realizar futuras clasificaciones, utilizamos validación cruzada de $v$ iteraciones. Este procedimiento constiste en dividir la muestra $\mathcal{L}$ en $v$ muestras de prueba $\mathcal{L}_{k}$, $k=1,\dots,v$ con el mismo número de elementos (o lo más próximo posible) y definimos la $k$-ésima muestra de entrenamiento como $\mathcal{L}^{k} = \mathcal{L}\setminus \mathcal{L}_{k}$. Utilizando cada una de las $v$ muestras de entrenamiento $\mathcal{L}^{k}$  entrenamos una regla de decisión utilizando el algorítmo de aprendizaje en cuestión, con ella clasificamos los elementos de la muestra de prueba $\mathcal{L}^{k}$ y calculamos $N_{ij}^{k}$ el número de elementos de de la clase $j$ clasificado como $i$. Definimos $N_{ij}=\sum_{k}N_{ij}^{k}$ el número total de elementos de la clase $j$ clasificado como $i$. Estimamos la probabilidad de que un elemento de la clase $j$ sea clasificado como $i$, $P^{VC}(g(\vec{x})=i|j)$, con $N_{ij}/N_{j}$, donde $N_{j}$ es el número de elementos pretenecientes a la clase $j$ en la muestra $\mathcal{L}$. Intuitivamente, si la muestra es grande tendremos aproximadamente el mismo poder para clasificar con la muestra completa que con una fracción $\frac{v-1}{v}$ de ella, por lo cual $P^{VC}$ será una buena aproximación a la probabilidad real de clasificación. Tomamos $v=10$ siguiendo la popularidad de este valor en la literatura. La estimación de la probabilidad de que un elmento cualquiera sea clasificado correctamente, llamada precisión,  será $\sum_{i}P^{VC}(g(\vec{x}=)i|i)P(i)$. $P(i)$ es la probabilidad \textit{a priori} de encontrar un objeto del tipo de variabilidad $i$. Como nuestra muestra no es representativa de las poblaciones de estrellas observadas y no existen estudios al respecto en la literatura para todos los tipos de variabilidad, tomamos $P(i)$ uniforme, es decir, $P(i) = 1/7$ para cada $i$ (hay 7 tipos de variabilidad estelar en la muestra).
 
-Con frecuencia es necesario ajustar algún parámetro para un algorítmo de aprendizaje. Este es el caso de Máquinas de Soporte Vectorial, donde es necesario ajustar el parámetro de costo y, si se utiliza un núcleo gaussiano, el ancho $\gamma$ de éste. Utilizamos la maximización de la precisión como criterio para elegir los parámetros óptimos. Adicionalmente analizamos para cada clase la sensibilidad $p(g(\vec{x})=i|i)$ (tasa de verdaderos positivos),  la especificidad $P(g(\vec{x})\neq i|i^c)$ (tasa de verdaderos negativos), el poder de predicción positiva $p(i|g(\vec{x})=i)$ (probabilidad de que una vez clasificado, la clasifición sea correccta) y el poder de predicción negativa $p(i^c|g(\vec{x})\neq i)$. El poder de predicción positiva juega un papel importante en este análisis puesto que, dada una nueva base de datos cuya clasificación no se conoce, si aplicamos el clasificador entrenado con nuestra muestra, esta es la estimación de la probabilidad de que esa clasificación sea correcta, lo cual corresponde a las situaciones reales que se encontrarán una vez se hagan públicos nuevas curvas de luz de estrellas variables sin clasificar. 
+Con frecuencia es necesario ajustar algún parámetro para un algorítmo de aprendizaje. Este es el caso de Máquinas de Soporte Vectorial, donde es necesario ajustar el parámetro de costo y, si se utiliza un núcleo gaussiano, el ancho $\gamma$ de éste. Utilizamos la maximización de la precisión como criterio para elegir los parámetros óptimos. Adicionalmente analizamos para cada clase la sensibilidad $p(g(\vec{x})=i|i)$ (tasa de verdaderos positivos) y  la especificidad $P(g(\vec{x})\neq i|i^c)$ (tasa de verdaderos negativos).
 
 
 
@@ -662,7 +661,7 @@ Idealmente, el vector de características debe ser fácil de cálcular y debe ca
 \end{equation*}  
 Luego los autores utilizan estos coeficientes para dar una descripción de $y(t)$ que es independiente de traslaciones temporales. Lo importante no es entrear en los detalles de esta elección de parámetros sino resaltar que la búsqueda de estos es computacionalmente intensiva. Los autores de \cite{debosscher_automated_2007} utilizan el periodograma de Lomb-Scargle \cite{scargle_studies_1982} con el cual se obtiene una potencia para cada periodo posible. Predefinir los periodos posibles es un reto si no se tiene más información que la curva de luz de un objeto. Por ejemplo para clasificar las curvas de luz de Cefeidas Clásicas para el catálogo de OGLE-III \cite{soszynski_optical_2008-1} los autores probaron frecuencias entre 0.0 y 24.0 ciclos por día en aumentos de frecuencias de 0.0001 para 32 millones de objetos, para lo cual utilizaron supercomputadores del  \textit{Centre for Mathematical and Computational Modeling} de la Universidad de Varsovia, siguido de un análisis que llevó a la inspección manual de decenas de miles de curvas de luz. En este trabajo, basado en los hallazgos de \cite{rodriguez_feliciano_alisis_2012} y \cite{sabogal_search_2014}, proponemos utilizar en lugar de estos coeficientes, variables descriptivas de la serie de magnitudes  que pueden ser calculadas en tiempos abrumadoramente menores, con menos poder computacional y sin intervención manual.
 
-Bajo este punto de vista, las magnitudes son vistas como una variable aleatoria y las cantidades de la tabla \ref{cuadro:variablesUtilizadas} son variables descriptivas de su densidad. En la figura \ref{fig:curvaHist} se observa una curva de luz y la densidad estimada de sus magnitudes. Al utilizar la distribución de la serie de magnitudes se asume que el número de observaciones es lo suficientemente grande, que estas son hechas en intervalos que evitan el aliasing y que son hechas durante al menos un periodo del objeto observado. Es de esperar que las curvas que tienen formas similares, es decir, que pertenecen al mismo tipo de variabilidad estelar, tengan densidades de magnitudes similares y que, por ende, los parámetros descriptivos utilizados también sean similares.
+Bajo este punto de vista, las magnitudes son vistas como una variable aleatoria y las cantidades de la tabla \ref{cuadro:variablesUtilizadas2} son variables descriptivas de su densidad. En la figura \ref{fig:curvaHist} se observa una curva de luz y la densidad estimada de sus magnitudes. Al utilizar la distribución de la serie de magnitudes se asume que el número de observaciones es lo suficientemente grande, que estas son hechas en intervalos que evitan el aliasing y que son hechas durante al menos un periodo del objeto observado. Es de esperar que las curvas que tienen formas similares, es decir, que pertenecen al mismo tipo de variabilidad estelar, tengan densidades de magnitudes similares y que, por ende, los parámetros descriptivos utilizados también sean similares.
 
 
 \begin{figure}
@@ -673,7 +672,7 @@ Bajo este punto de vista, las magnitudes son vistas como una variable aleatoria 
   \centering
 \end{figure}
 
-Las caracterísitcas utilizadas se encuentran en la tabla  \ref{cuadro:variablesUtilizadas}. La media, la desviación estándar, el sesgo,la curtosis, el rango y la variación cuadrática son variables bien conocidas de estadística descriptiva y damos sus descripciones más adelente. El valor Abbe $\mathcal{A}$ y el valor Abbe promedio $\bar{\mathcal{A}}_t$ fueron propuestos para el estudio de fenómenos transientes en \cite{mowlavi_searching_2014} y su definición e interpretación son dadas má adelante. La entropía de Rényi es una medida de la incertidumbre propuesta por \cite{renyi_measures_1961} que generaliza la entropía de Shannon \cite{shannon_mathematical_1948} y que le da más peso a los valores más probables de $m_i$. A continuación discutimos cada una de estas variables.
+Se evaluaron dos grupos de características.  Las caracterísitcas utilizadas inicialmente se encuentran en la tabla  \ref{cuadro:variablesUtilizadas1} y el segundo grupo en la tabla (Cuadro de las otras caracterisicas). Las características que fueron estudiadas inicialmente fueron reemplazadas por las segundas puesto que algunas curvas de luz contenían mediciones atípicas, lo que hacía que los estimadores de la media, el sesgo la curtosis y la desviación cuadro \ref{cuadro:variablesUtilizadas1} no fueran confiables. Para ello se utilizaron  las medidas de la tabla \ref{cuadro:variablesUtilizadas2}. La media, la desviación estándar, el sesgo,la curtosis, el rango y la variación cuadrática son variables bien conocidas de estadística descriptiva y damos sus descripciones más adelente. El valor Abbe $\mathcal{A}$ y el valor Abbe promedio $\bar{\mathcal{A}}_t$ fueron propuestos para el estudio de fenómenos transientes en \cite{mowlavi_searching_2014} y su definición e interpretación son dadas má adelante. La entropía de Rényi es una medida de la incertidumbre propuesta por \cite{renyi_measures_1961} que generaliza la entropía de Shannon \cite{shannon_mathematical_1948} y que le da más peso a los valores más probables de $m_i$. A continuación discutimos cada una de estas variables.
 
 \begin{table}[ht]
   \centering
@@ -693,25 +692,103 @@ Las caracterísitcas utilizadas se encuentran en la tabla  \ref{cuadro:variables
     Entropía de Rényi\cite{renyi_measures_1961}& $\frac{1}{1-\alpha}\log_{2}{\sum_{x}p_{i}^{\alpha}}$\\
     \hline
   \end{tabular}
-  \caption{Variables utilizadas como características para la calsificación automática.}
-  \label{cuadro:variablesUtilizadas}
+  \caption{Variables consideradas inicialmente como características para la clasificación automática. }
+  \label{cuadro:variablesUtilizadas1}
+\end{table}
+
+\begin{table}
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Variables de localización & Media \\
+    \hline
+    Variables de escala & Rango Intercuartiles (IQR) \\
+    & Desviación Absoluta Mediana (MAD) \\
+    Medidas de Sesgo & \textit{Medcouple}  (MC)\\
+    & Medidas de peso de colas (OS y CS) \\
+    Medidas de forma & Entropía diferencial (H)\\
+    & Valores Abbe\\
+  \end{tabular}
+  \caption{Variables escogidas}
+  \label{cuadro:variablesUtilizadas2}
 \end{table}
 
 
-La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:variablesUtilizadas})  y el rango son variables descriptivas bien conocidas. En este caso la media es el valor al rededor del cual la serie de magnitudes oscila y tanto como la desviación estándar como el rango son una medida de la amplitud de estas oscilaciones. La figura \ref{fig:mediaDesv} muestra la densidad de cada una de las clases en el plano $\mu$-$\sigma$. Aunque las diferentes clases se superponen en este plano, hay pares de clases que pueden ser distinguidas como $\delta$Sct y RRLyr.
+La media $\mu$ y la desviación estándar $\sigma$ (ver cuadro \ref{cuadro:variablesUtilizadas1})  y el rango son variables descriptivas bien conocidas. En este caso la media es el valor al rededor del cual la serie de magnitudes oscila y tanto como la desviación estándar como el rango son una medida de la amplitud de estas oscilaciones. Es sabido que el promedio muestral, la desviación estándar muestral y el rango pueden ser sensibles a la presencia de datos atípicos, por lo que utilizamos medidas robustas de la escala y la localización de las distribuciones. En lugar de utilizar la desviación estándar como medida de escala utilizamos la desviación absoluta mediana (MAD), que está definida por 
+\begin{equation}
+  MAD = mediana_i(|m_i-mediana_j(m_j)|).
+\end{equation} 
+y el rango intercuartiles (IQR) definido por
+\begin{equation}
+IQR = Q_{0.75}-Q_{0.25}
+\end{equation}
+donde $Q_p$ es el quantil p de la distribución en cuestión. Generalmente las medidas basadas en cuantiles cercanos de la mediana son robustas puesto que sus estimados varían poco ante la presencia de datos atípicos y además por el teorema d Borel-Canteli, se sabe que la función acumulativa de probabilidad empírica
+\begin{equation}
+  \hat{F}_{M}(m) = \frac{1}{n}\{m_i | m_i \leq m \}
+\end{equation}
+tiende a la función acumulativa de probabilidad $F_{M}(m) = P(M\leq m)$ uniformemente en probabilidad, esto es, para todo $\epsilon >0 $ se cumple que 
+\begin{equation}
+  P\left(\sup_m | \hat{F}_{M}(m)-F_M(m) | > \epsilon \right) \to 0
+\end{equation}
+cuando el tamaño de la muestra $n\to\infty$.
+
+Como parámetro de localización utilizamos un m-estimador de la media propuesto por Huber \todo{Cita de Huber}. Los m-estimadores buscan generalizar los estimadores de máxima verosmilitud. En el caso de parámemtros de escala, se basan en elegir la estimación mediante la  minimización de expresiones de la forma
+\begin{equation}\label{eq:mEstimador}
+\sum_i\rho\left(\frac{m_i-\mu}{\sigma}\right) 
+\end{equation}
+para alguna función $\rho$ y alguna medida de escala $\sigma$. En el caso de la media muestral, el estimador de máxima verosimilitud para un modelo normal es el valor de $\mu$ que minimiza la expresión \ref{eq:mEstimador} para 
+\begin{equation}
+  \rho(x) = x^2
+\end{equation}
+siendo $\sigma$ la desviación estándar. Minimizar \ref{eq:mEstimador} es equivalente a resolver 
+\begin{equation}
+  \sum_{i}\psi(x) = 0
+\end{equation}
+si $\psi = \rho'$ y $\rho$ es convexa. Huber propuso la función
+\begin{equation} 
+  \psi(x) = \begin{cases} 
+    -c &\mbox{si } x < -c \\ 
+    x & \mbox{si } |x|<c\\
+    c & \mbox{si } x>c
+  \end{cases}
+\end{equation}
+y usar la MAD como parámetro de escala robusto para estimar la media. Esta elección de $\psi$ corresponde a asignarle un valor de $c$ a los valores que estén a una distancia mayor que $c$ en unidades de $\sigma$ al computar la media muestral. En la figura \ref{fig:mediaDesv} mostramos la densidad de cada una de las clases en el plano $\mu$-$MAD$, con $\mu$ estimado utilizando la propuesta de Huber. Aunque las diferentes clases se superponen en este plano, hay pares de clases que pueden ser distinguidas como $\delta$Sct y RRLyr.
 
 
 \begin{figure}
   \centering
-  \includegraphics[width = \textwidth]{./img/CClasificacion/mediaDesv.pdf}
-  \caption{}
+  \includegraphics[width = \textwidth]{./img/CClasificacion/mediaDesv.png}
+  \caption{Densidad de probabilidad y vectores de características proyectados en el plano $\mu - MAD$}
   \label{fig:mediaDesv}
   \centering
 \end{figure}
 
-Basado en el trabajo de \cite{rodriguez_feliciano_alisis_2012} utilizamos el sesgo y la curtosis como características. El sesgo es el tercer momento central estandarizado \footnote{El k-ésimo momento centrado de una variable aleatoria $X$ (o de su distribución) es $\mu_{k} =E[(X-\mu)^{k}]$, siendo $\mu$ su media. Su k-ésimo momento central estandarizado es $\frac{\mu_k}{\sigma^k}$, siendo $\sigma$ la desviación estándar.} y es una medida de de la asimetría de una distribución. Una distribución es simétrica si su sesgo es $0$, su cola izquierda es más larga si su sesgo es positivo y su cola derecha es más larga si su sesgo es negativo. Por su parte la curtosis es el cuarto momento central estndarizado. Es una medida de qué tan concentrada está la distribución al rededor de la media. La curtosis de una distribución normal es $3$ y con frecuencia se estudia una cantidad llamada exceso de curtosis que es el resultado de restarle $3$ a la curtosis. Los autores de \cite{rodriguez_feliciano_alisis_2012}  encontraron que algunos tipos de variabilidad estelar podían ser distinguidos utilizando clasificadores lineales en el plano sesgo-curtosis.
 
-Dado que la estimación de el sesgo y la curtosis con las fórmulas del cuadro \ref{cuadro:variablesUtilizadas} requiere de calcular las potencias $(\mu-m_i)^3$ y $(\mu-m_i)^4$, son propensas a dar estimaciones erróneas en el caso de que existan datos atípicos. Calculamos también la l-curtosis y el l-sesgo\footnote{Los l-momentos son combinaciones lineales de los estadísticos de orden. Son robustos, toman valores entre 0 y 1, y la interpretación de sus valores es análoga a la de los momentos. De la misma manera en que se define el sesgo y la curtosis muestral, es posible definir la l-curtosis y el l-sesgo. Fuero propuestos en (cita l-momentos) y su cálculo fue realizado utilizando el paquete lmoments (cita paquete l-moments) para R} y reemplazando el sesgo y la curtosis por estas cantidades no encontramos dierencias importantes en el poder para clasificar de los clasificadores que utlizamos. Esto puede ser un indicador de que no existe una proporción grande de datos atípicos en las curvas de luz. Por su simplicidad utilizamos el sesgo y la curtosis.  
+Basado en el trabajo de \cite{rodriguez_feliciano_alisis_2012} consideramos el sesgo y la curtosis como características. El sesgo es el tercer momento central estandarizado \footnote{El k-ésimo momento centrado de una variable aleatoria $X$ (o de su distribución) es $\mu_{k} =E[(X-\mu)^{k}]$, siendo $\mu$ su media. Su k-ésimo momento central estandarizado es $\frac{\mu_k}{\sigma^k}$, siendo $\sigma$ la desviación estándar.} y es una medida de de la asimetría de una distribución. Una distribución es simétrica si su sesgo es $0$, su cola izquierda es más larga si su sesgo es positivo y su cola derecha es más larga si su sesgo es negativo. Por su parte la curtosis es el cuarto momento central estndarizado. Es una medida de qué tan concentrada está la distribución al rededor de la media. La curtosis de una distribución normal es $3$ y con frecuencia se estudia una cantidad llamada exceso de curtosis que es el resultado de restarle $3$ a la curtosis. Los autores de \cite{rodriguez_feliciano_alisis_2012}  encontraron que algunos tipos de variabilidad estelar podían ser distinguidos utilizando clasificadores lineales en el plano sesgo-curtosis.
+
+Dado que la estimación de el sesgo y la curtosis con las fórmulas del cuadro \ref{cuadro:variablesUtilizadas1} requiere de calcular las potencias $(\mu-m_i)^3$ y $(\mu-m_i)^4$, son propensas a dar estimaciones erróneas en el caso de que existan datos atípicos. Calculamos también la l-curtosis y el l-sesgo\footnote{Los l-momentos son combinaciones lineales de los estadísticos de orden. Son robustos, toman valores entre 0 y 1, y la interpretación de sus valores es análoga a la de los momentos. De la misma manera en que se define el sesgo y la curtosis muestral, es posible definir la l-curtosis y el l-sesgo. Fuero propuestos en (cita l-momentos) y su cálculo fue realizado utilizando el paquete lmoments (cita paquete l-moments) para R} y reemplazando el sesgo y la curtosis por estas cantidades, sin embargo encontramos que no tenían la robustez necesaria.   
+
+Utilizamos como medidas robustas de sesgo las medidas propuestas por Hinkley \todo{cita hinkley} que son de la forma
+  \begin{equation}
+    \frac{(Q_{1-p}-Q_{0.5})-(Q_{0.5}-Q_p)}{Q_{1-p}-Q_{p}}
+  \end{equation}
+siendo $Q_p$ el cuantil p de la distribución y $p\in(0,0.5)$. Utilizamos $p = 0.25, 0.125$, en el caso de $p=0.25$ nos referimos a esta candidad como sesgo de cuartil (CS) y en el caso p=0.125, sesgo de octil (OS). Este tipo de medidas dan una comparación entre el largo de la cola derecha y la izquierda de una distribución y dan como resultado un número entre -1 y 1. Brit, Hubert y Struyf propusieron otra medida de sesgo, llamada \textit{medcouple} que se define por 
+\begin{equation}
+  MC = mediana_{m_i\leq Q_{0.5} \leq m_j} h_1(m_i,m_j)
+\end{equation}
+con
+\begin{equation}
+  h_1(m_i,m_j) = \frac{(m_{(j)}-Q_{0.5})-(Q_{0.5}-m_{(i)})}{m_{(j)}-m_{(i)}}
+\end{equation}
+y, si existen $m_{i} = m_{j} = Q_{0.5}$ se define como
+\begin{equation}
+  h_i(m_i,m_j) = \begin{cases} 
+      -1 &\mbox{si } i < j \\ 
+      0 & \mbox{si } i=j\\
+      1 & \mbox{si } i>j.
+    \end{cases}
+\end{equation}
+
 
 El valor Abbe fue propuesto por \cite{mowlavi_searching_2014} para la detección de estrellas que muestran fenómenos transientes. El valor Abe es el cociente de dos cantidades. Por un lado si la medición $m_i=m(t_i)$ es una versión corrupta de la magnitud verdadera $y(t)$ y $m(t) = y(t)+\epsilon$ con $\epsilon$ una variable aleatoria tal que $E(\epsilon)=0$, es posible demostrar que 
 \begin{equation}
@@ -750,7 +827,7 @@ donde $f_M$ es la densidad de la variable $M$, sin embargo esta definición tien
 \begin{equation}
   H(M)\approx-\sum_{k=1}^{n_p}p_i\log_2 p_i.
 \end{equation}
-A esta cantidad nos referimos como entropía de la partición, $H(M,n_p)$. Para realizar estas estimaciones utilizamos $n_p=10$ particiones regulares entre el máximo $m_i$ y el mínimo $m_i$.
+A esta cantidad nos referimos como entropía de la partición, $H(M,n_p)$.
 
 La entropía de Rényi \cite{renyi_measures_1961} es otra medida de la sorpresa causada por una realización de una variable aleatoria que satisface un conjunto de axiomas diferente a la entropía de Shannon \cite{renyi_measures_1961}. Las probabilidades $p_k$ se definen de la misma manera como la probabilidad de pertenecer a una de las $n_p$ particiones y la entropía de Renyí de una partición se definida como 
 \begin{equation}
@@ -762,9 +839,11 @@ $H_\alpha$ tiene propiedades similares a la entropía de shannon: para $\alpha >
 \end{equation}
 Así, a medida que aumenta $\alpha$, $H_\alpha$ está determinada por los valores más probables. Para explorar la posibilidad de utilziar adicionalmente esta caracterísitca para realizar clasificación, utilizamos  $\alpha = 2, 5, 10, \infty$.
 
-Se pueden separar las características en dos grupos: las que dependen de la escala en la que se mide la magnitud y las que no. La media, la desviación estándar y el rango dependen de la escala de las variaciones de la magnitud de las curvas. Por ejemplo las curvas de luz de Cefeidas y de Cefeidas tipo 2 tienen formas muy aprecidas, sin embargo se diferencian en que las Cefeidas son más brillantes, por lo que se espera que las variables que dependen de la escala sirvan para discriminar entre estas dos. Por su parte el sesgo, la curtosis, los valores Abbe y las entropías de Shannon y Rényi dependen únicamente de la forma de la de la denisidad de magnitudes. Como es de esperar que la forma de la distribución de magnitudes de una curva de luz esté relacionada con su morfología, creemos que estos parámetros pueden ayudar a discriminar entre curvas de luz que tienen formas diferentes aunque tomen valores de magnitud similares.
+Las medidas de entropía de Shannon y de Rényi mostraron ser sensibles a la presencia de datos atípicos en cada curva de luz. Al realizar particiones de los valores de magnitud los datos atípicos quedan localizados en particiones aisladas a la que otros datos pertenecon baja probabilidad. Como para estas particiones atípicas el valor de $p_i$ es bajo, el estimado de la entropía $\frac{1/n}\sum_i\log_{s}p_i$ no es confiable. Tomamos para cada curva de luz los datos que se encontraban entre la media robusta con el estimador propuesto por Huber y $\pm 6MAD$. Esta distancia era suficiente para discriminar los puntos atípicos de las curvas de luz imspeccionadas.
 
-Tras calcular estas cantidades obtuvimos un vector de características de 20 componentes, por lo que surge la pregunta de si algunas de estas variables son redundantes. Para decidir si algunas variables son redundantes o no podemos analizar la matriz de correlaciones y Análisis de Componentes Principales (ACP). En la figura \ref{fig:correlacionSpearman} mostramos la matriz de correlaciones de Spearman \footnote{La correlación de Spearman es una medida de correlación que toma valores -1 y 1 cuando dos variables están relacionadas por una función monótona creciente y decreciente respectivamente y valores intermedios en las demás situaciones. Para una dos muestras $\{x_1,\dots,x_n\}$ y $\{y_1,\dots,y_n\}$  la correlación de Spearman es $\frac{6\sum_i (r_i-s_i)}{n(n^2-1)}$ donde $r_i$ y $s_i$ son el lugar que ocupan $x_i$ y $y_i$ al ordenar las muestras  $\{x_1,\dots,x_n\}$ y $\{y_1,\dots,y_n\}$. $r_i$ y $s_i$ son llamados rangos.}. Se ve que las medidas de entropía utilizadas están positivamente correlacionadas entre sí, de la misma forma que los valores Abbe promedio. Por otro lado la curtosis y las medidas de entropía están correlacionadas negativamente. 
+Se pueden separar las características en dos grupos: las que dependen de la escala en la que se mide la magnitud y las que no. La media, las medidas de escala, los valores Abbe y la variación cuadrática dependen de la escala de las variaciones de la magnitud de las curvas. Por ejemplo las curvas de luz de Cefeidas y de Cefeidas tipo 2 tienen formas muy aprecidas, sin embargo se diferencian en que las Cefeidas son más brillantes, por lo que se espera que las variables que dependen de la escala sirvan para discriminar entre estas dos. Por su parte las medidas de sesgo, los valores Abbe y la entropía de Shannon dependen únicamente de la escala y la forma en que varía la magnitud.  Como es de esperar que la forma de la distribución de magnitudes de una curva de luz esté relacionada con su morfología, creemos que estos parámetros pueden ayudar a discriminar entre curvas de luz que tienen formas diferentes aunque tomen valores de magnitud similares.
+
+Tras calcular estas cantidades obtuvimos un vector de características de 17 componentes, por lo que surge la pregunta de si algunas de estas variables son redundantes. Para decidir si algunas variables son redundantes o no podemos analizar la matriz de correlaciones y Análisis de Componentes Principales (ACP). En la figura \ref{fig:correlacionSpearman} mostramos la matriz de correlaciones de Spearman \footnote{La correlación de Spearman es una medida de correlación que toma valores -1 y 1 cuando dos variables están relacionadas por una función monótona creciente y decreciente respectivamente y valores intermedios en las demás situaciones. Para una dos muestras $\{x_1,\dots,x_n\}$ y $\{y_1,\dots,y_n\}$  la correlación de Spearman es $\frac{6\sum_i (r_i-s_i)}{n(n^2-1)}$ donde $r_i$ y $s_i$ son el lugar que ocupan $x_i$ y $y_i$ al ordenar las muestras  $\{x_1,\dots,x_n\}$ y $\{y_1,\dots,y_n\}$. $r_i$ y $s_i$ son llamados rangos.}. 
 
 \begin{figure}
   \centering
@@ -774,23 +853,23 @@ Tras calcular estas cantidades obtuvimos un vector de características de 20 com
   \centering
 \end{figure}
 
-En primera instancia restamos a cada característica su valor medio sobre toda la muestra y la dividimos entre su desviación estándar con el objetivo de ralizar Análisis de Componentes Principales (ACP)\footnote{El Análisis de componentes principales se basa en encontrar una base para el espacio de características que diagonaliza la matriz de covarianzas, la llamada descomposición en valores singulares.}. Al realizar este reescalamiento la analizamos con ACP la matriz de correlaciones, que es independiente de las escalas de las características. Tras realizar la descomposición en varlores singulares de los datos, vemos que se puede retener el 99\% de la variabilidad de los datos con 9 componentes. Esto sugiere que en realidad los datos se encuentran en un subespacio de 9 dimensiones de las 20 dimensiones originales. Para intentar reducir la dimensionalidad de los datos no recurrimos a la proyección de los datos en este subespacio porque esto reduciría la interpretabilidad de los resultados de los clasificadores. Por ejemplo no tendríamos información útil sobre las medidas de importancia que se pueden extraer de bosques aleatorios y árboles de regresión porque esta estaría dada en términos de los componentes principales y no de las variables originales. Como nuestro principal objetivo es la clasificación de los vectores de características evaluamos la redundancia de las variables elegidas utilizando las medidas de importancia de Bosques  Aleatorios (BA) y Árboles de Clasificación (AC).
+En primera instancia restamos a cada característica su valor medio sobre toda la muestra y la dividimos entre su desviación estándar con el objetivo de ralizar Análisis de Componentes Principales (ACP)\footnote{El Análisis de componentes principales se basa en encontrar una base para el espacio de características que diagonaliza la matriz de covarianzas, la llamada descomposición en valores singulares.}. Al realizar este reescalamiento la analizamos con ACP la matriz de correlaciones, que es independiente de las escalas de las características. Tras realizar la descomposición en varlores singulares de los datos, vemos que se puede retener el 99\% de la variabilidad de los datos con 8 componentes. Esto sugiere que en realidad los datos se encuentran en un subespacio de 8 dimensiones de las 20 dimensiones originales. Para intentar reducir la dimensionalidad de los datos no recurrimos a la proyección de los datos en este subespacio porque esto reduciría la interpretabilidad de los resultados de los clasificadores. Por ejemplo no tendríamos información útil sobre las medidas de importancia que se pueden extraer de bosques aleatorios y árboles de regresión porque esta estaría dada en términos de los componentes principales y no de las variables originales. Como nuestro principal objetivo es la clasificación de los vectores de características evaluamos la redundancia de las variables elegidas utilizando las medidas de importancia de Bosques  Aleatorios (BA) y Árboles de Clasificación (AC). Tras analizar las medidas de importancia y estimar el error de clasificación con los clasificadores al utilizar las variables que eran más importantes según este análisis, encontramos que en general se perdía poder de clasificación por lo que optamos por utilizar todas las características propuestas en la tabla  \ref{cuadro:variablesUtilizadas2}, sin embargo presentamos este análisis a continuación.
 
-Para decidir si existen características redundantes podemos construir BA y AC y evaluar las medidas de importancia. La importancia de una variable dada por AC es el promedio sobre todos los nodos del arbol de la  disminución de la impureza de las divisiones sustitutas según la variable en cuestión. En el caso de BA se pueden dar dos medidas de importancia: la disminución de la impureza promedio causada por las divisiones que tienen en cuenta la variable en cuestión  y el resultado de un test de permutación que mide la asociación de la variable con la clasificación correcta. Generamos un AC (mostrado en la figura \ref{fig:arbolTotal}) y BA con la totalidad de los datos y obtuvimos las importancias reportadas en la figura\ref{fig:importancias}.  En la figura \ref{fig:importancias} reescalamos los valores de importancia de forma tal que el máximo sea 1 puesto que sus valores no son relevantes sino las relaciones entre ellos y esto facilita comparar entre métodos. El promedio de la serie de magnitudes es la variable más importante según las medidas de reducción de impureza pero la asociación de la curtosis con la clasificación correcta de los datos es máxima.
+Para decidir si existen características redundantes podemos construir BA y AC y evaluar las medidas de importancia que se pueden obtener de estos métodos. La importancia de una variable dada por AC es el promedio sobre todos los nodos del arbol de la  disminución de la impureza de las divisiones sustitutas según la variable en cuestión. En el caso de BA se pueden dar dos medidas de importancia: la disminución de la impureza promedio causada por las divisiones que tienen en cuenta la variable en cuestión  y el resultado de un test de permutación que mide la asociación de la variable con la clasificación correcta. Generamos un AC (mostrado en la figura \ref{fig:arbolTotal}) y BA con la totalidad de los datos y obtuvimos las importancias reportadas en la figura\ref{fig:importancias}.  En la figura \ref{fig:importancias} reescalamos los valores de importancia de forma tal que el máximo sea 1 puesto que sus valores no son relevantes sino las relaciones entre ellos y esto facilita comparar entre métodos. El promedio de la serie de magnitudes es la variable más importante según las medidas de reducción de impureza.
  
 \begin{figure}
   \centering
   \includegraphics[width = \textwidth]{./img/CClasificacion/arbolTotal.pdf}
-  \caption{Arbol de clasificación construido con todos los datos y todas las variables. Solo se utilizan 4 de las 20 variables originales y el estimado del error por resubstitución es 0.79}
+  \caption{Arbol de clasificación construido con todos los datos y todas las variables. Solo se utilizan 5 de las 17 variables originales y el estimado del error por resubstitución es 21\%}
   \label{fig:arbolTotal}
   \centering
 \end{figure}
 
 Las medidas de importancia nos pueden ayudar a entender la estructura de los datos. La importancia dada por AC puede estar sesgada a sobreestimar la importancia de las variables que están correlacionadas con las variables elegidas en el arbol debido a que, como las variables que no están correlacionadas sirven para clasificar diferentes clases de curvas de luz, es difícil dos variables no correlacionadas produzcan divisiones de los datos. En la figura \ref{importancias} podemos ver que las variables de mayor importancia dadas por el AC son la media, elegida en el arbol; el valor abbe y el valor Abbe promedio en intervalos de 500d, correlacionados con el promedio;  y la variación cuadrática, correlacionada con la variación cuadrática. Por su parte la disminución promedio de la precisión dada por el test de permuntación de BA da como variables más importantes justamente a las que fueron seleccionadas el el AC. Esto muestra que las variables elegidas por el AC son las que están más relacionadas con la clase de variabilidad. Por su parte la disminución promedio del coeficiente de Gini puede no ser satisfactorio puesto que la muestra tiene un gran desbalance entre la cantidad de curvas pertenecientes a cada clase, lo que hace que el coeficiente de Gini esté sesgado hacia las cantidades que sirven para discriminar las clases más numerosas (como LPV). 
 
-Elegimos la reducción de precisión dada por el test de permutación de BA para elegir un subconjunto de las características y evaluamos el desempeño de los clasificadores con este subconjunto de características. Como la medida de importancia dada por AC está sesgada hacia las características que están correlacionadas con las que fueron elegidas como mejores divisiones, y la reducción promedio del coeficiente de Gini no se ajusta bien a la situación en que la muestra no tiene un número similar de representantes, que es nuestro caso, elegimos la variables más importantes según su reducción promedio de la precisión porque no tiene estos problemas.  En este orden dde ideas elegimos inicialmente el sesgo, la media, la variación cuadrática la curtosis y el valor Abbe como subconjunto de características a probar.
+Elegimos la reducción de precisión dada por el test de permutación de BA para elegir un subconjunto de las características y evaluamos el desempeño de los clasificadores con este subconjunto de características. Como la medida de importancia dada por AC está sesgada hacia las características que están correlacionadas con las que fueron elegidas como mejores divisiones, y la reducción promedio del coeficiente de Gini no se ajusta bien a la situación en que la muestra no tiene un número similar de representantes, que es nuestro caso, elegimos la variables más importantes según su reducción promedio de la precisión porque no tiene estos problemas. 
 
-A pesar de los resultados del análisis de las medidas de importancia dadas por AC y BA, la utilización de estas variables exclusivamente no fue satisfactoria pues la precisión de los clasificadores disminuyó. En el caso de MSV, al buscar realizar la búsqueda de parámetros óptimos, encontramos que el error mínimo alcanzado era 32\%, comparado con el 13\% al utilizar todas las variables. En el caso de AC no hubo disminución de la precisión porque los árboles construidos con estas variables son exactamente los mismos para las diez iteraciones de validación cruzada y en el caso de BA esta disminución fue del 2\%. Por esta razón desistimos de intentar esta selección de parámetros. En este grupo inicial de variables no se encuentra ninguna variable relacionada con la entropía. Incluso después de añadir la entropía al subconjunto de variables el desempeño de los clasificadores no mejoró, por lo que elegimos un subconjunto que excluyera variables correlacionadas. Elegimos el promedio, el sesgo, la curtosis, la variación cuadrática, la desviación estándar, el valor Abbe, la entropía, la entropía de Rényi para $\alpha = 2$ y $\alpha = \infty$ y el valor Abbe promedio en subintérvalos de tiempo de 100 y 750 días. Sin embargo la mejor clasificación se obtuvo al utilizar todas las características.
+A pesar de los resultados del análisis de las medidas de importancia dadas por AC y BA, la utilización de estas variables exclusivamente no fue satisfactoria pues la precisión de los clasificadores disminuyó. En el caso de MSV, al buscar realizar la búsqueda de parámetros óptimos, encontramos que el error mínimo alcanzado era 32\%, comparado con el 13\% al utilizar todas las variables. En el caso de AC no hubo disminución de la precisión porque los árboles construidos con estas variables son exactamente los mismos para las diez iteraciones de validación cruzada y en el caso de BA esta disminución fue del 2\%. Por esta razón desistimos de intentar esta selección de parámetros.
 
 \begin{figure}
   \centering
@@ -800,7 +879,7 @@ A pesar de los resultados del análisis de las medidas de importancia dadas por 
   \centering
 \end{figure}
 
-En la siguiente sección reportamos los resultados de estimar los errores de clasificación para máquinas de soporte vectorial (MSV), k vecinos más cercanos (KVMC) , AC y BA tanto como para los datos utilizando todas las características propuestas inicialmente y el subconjunto de ellas seleccionadas utilizando el criterio antes descrito. De la misma forma, como no todos clasificadores logran la misma precisión para clasificar los elementos de cada clase, proponemos un algorítmo que combina varios de los calsificadores para lograr una mayor precisión promedio. 
+En la siguiente sección reportamos los resultados de estimar los errores de clasificación para máquinas de soporte vectorial (MSV), k vecinos más cercanos (KVMC) , AC y BA utilizando todas las características de la tabla \ref{cuadro:variablesUtilizadas2}. De la misma forma, como no todos clasificadores logran la misma precisión para clasificar los elementos de cada clase, proponemos un algorítmo que combina varios de los calsificadores para lograr una mayor precisión promedio. 
 
 
 \section{Clasificación}
@@ -821,9 +900,9 @@ Antes de probar los clasificadores reescalamos las características de forma tal
 
 \subsection{Máquinas de Soporte Vectorial}
 
-Para MSV fue necesario ajustar parámetros para maximizar la precisión. Utilizamos el núcleo gaussiano $K(x,y) = \exp(-\gamma\|\vec{x}-\vec{y}\|^2)$ y la formulación del problema \ref{eq:problemaOptimizacionDualKernelMSV} por lo que hay dos parámetros a ajustar, $\gamma$ y $C$. Este núcleo ha mostrado ser útil en gran cantidad de aplicaciones prácticas \cite{cristianini_introduction_2000} y tiene la ventaja de tener solo un parámetro para ajustar. Para realizar esta búsqueda buscamos sobre el espacio de parámetros utilizando una grilla. Para cada punto $\gamma, C$ de la grila de la grilla estimamos el error de clasificación. Realizar la estimación del error para cada punto de la grilla con validación cruzada de 10 iteraciones no fue posible debido a que exede nuestro poder computacional y tiempo disponible, por lo que utilizamos una submuestra aleatoria fija de entrenamiento de un tamaño de 2/3 del total de la muestra y estimamos el error de clasificación usando el error de clasificación empírica del 1/3 restante de la muestra. Como no se conoce \textit{a priori} el rango en el que los parámetros son óptimos, utilizamos una grilla con espaciamientos exponenciales. Buscamos los valores de $C$ desde 2 hasta 2048 en potencias de 2 y $\gamma$ desde 1/2 hasta 8 también en potencias de 2. Tomamos los valores de C y $\gamma$ que minimizaran estos estimados aunque en ambos existían varios valores de $C$ y $\gamma$ para los cuales las diferencias en el error no eran significativas. Realizamos este proceso utilizando la totalidad de las características propuestas y el subconjunto compuesto por el sesgo,  la media, la variación cuadrática, la curtosis, el valor Abbe y la entropía. En el primer caso encontramos de esta forma que los valores óptimos eran $\gamma = 256$ y $C = 4$ y  en el segundo $\gamma = 2$ y $C= 1024$. Con los parámetros óptimos hicimos validación cruzada de 10 iteraciones para estimar el error del clasificador resultante. 
+Para MSV fue necesario ajustar parámetros para maximizar la precisión. Utilizamos el núcleo gaussiano $K(x,y) = \exp(-\gamma\|\vec{x}-\vec{y}\|^2)$ y la formulación del problema \ref{eq:problemaOptimizacionDualKernelMSV} por lo que hay dos parámetros a ajustar, $\gamma$ y $C$. Este núcleo ha mostrado ser útil en gran cantidad de aplicaciones prácticas \cite{cristianini_introduction_2000} y tiene la ventaja de tener solo un parámetro para ajustar. Para realizar esta búsqueda buscamos sobre el espacio de parámetros utilizando una grilla. Para cada punto $\gamma, C$ de la grila de la grilla estimamos el error de clasificación. Realizar la estimación del error para cada punto de la grilla con validación cruzada de 10 iteraciones no fue posible debido a que exede nuestro poder computacional y tiempo disponible, por lo que utilizamos una submuestra aleatoria fija de entrenamiento de un tamaño de 2/3 del total de la muestra y estimamos el error de clasificación usando el error de clasificación empírica del 1/3 restante de la muestra. Como no se conoce \textit{a priori} el rango en el que los parámetros son óptimos, utilizamos una grilla con espaciamientos exponenciales. Buscamos los valores de $C$ desde 2 hasta 2048 en potencias de 2 y $\gamma$ desde 1/2 hasta 8 también en potencias de 2. Tomamos los valores de C y $\gamma$ que minimizaran estos estimados aunque en ambos existían varios valores de $C$ y $\gamma$ para los cuales las diferencias en el error no eran significativas. Encontramos de esta forma que los valores óptimos eran $\gamma = 4$ y $C = 1024$. 
 
-Tras realizar validación cruzada para MSV encontramos las tasas de clasificación correcta. La matriz $P^{VC}(g_{MSV}(\vec{x})=i|j)$ es mostrada en el cuadro  \ref{cuadro:erroresTodasVariablesSVM} para el caso en que utilizamos todas las variables. El error promedio al utilizar todas las variables es de 14.47\%, y las curvas peor clasificadas son las de tipo CefT2. Al utilizar el subconjunto de variables antes descrito el error promedio estimadi fue de 28\%. Las Cefeidas de tipo 2 son confundidas mayormente con Estrellas Binarias Eclipsantes y estrellas tipo RR Lyrae. La confusión de estrellas CefT2 con Cef es natural puesto que la morfología de sus curvas de luz es muy similar y solo se diferencian por su magnitud promedio, sin embargo no hay razón para que sean clasificadas como RRLyr, lo que puede sugerir que las características propuestas no logran capturar estas diferencias. Los demás clasificadores también clasifican objetos de tipo CefT2 como RRLyr y EBS y son los objetos de la clase RRLyr los que más son clasificados como pertenecientes a otras clases. 
+Tras realizar validación cruzada para MSV encontramos las tasas de clasificación correcta. La matriz $P^{VC}(g_{MSV}(\vec{x})=i|j)$ es mostrada en el cuadro  \ref{cuadro:erroresTodasVariablesSVM}. El error promedio al es  de 15.48\%, y las curvas peor clasificadas son las de tipo CefT2 y $\delta$-Scuti. La confusión de objetos de tipo CefT2 con Cef y RRLyr es natural puesto que la morfología de sus curvas de luz es muy similar; solo se diferencian por su magnitud promedio y su periodo (que no es considerado aquí). Esto puede puede sugerir que las características propuestas no logran capturar estas diferencias entre estas clases y que solo sean útiles para realizar una clasificación preliminar. Los demás clasificadores también clasifican objetos de tipo CefT2 como RRLyr y EBS y son los objetos de la clase RRLyr los que más son clasificados como pertenecientes a otras clases. 
 
 \begin{table}[ht]
   \centering
@@ -833,18 +912,27 @@ Tras realizar validación cruzada para MSV encontramos las tasas de clasificaci�
     Referencia & BeEC & Cef & dSct & SBE & VLP & RRLyr & CefT2 \\ 
     \hline
     \hline
-    BeEC & 0.943 & 0.000 & 0.000 & 0.001 & 0.000 & 0.000 & 0.002 \\ 
-    Cef & 0.002 & 0.874 & 0.003 & 0.001 & 0.000 & 0.016 & 0.119 \\ 
-    dSct & 0.000 & 0.000 & 0.831 & 0.005 & 0.000 & 0.002 & 0.000 \\ 
-    SBE & 0.034 & 0.005 & 0.087 & 0.970 & 0.001 & 0.008 & 0.081 \\ 
-    VLP & 0.021 & 0.004 & 0.005 & 0.011 & 0.999 & 0.001 & 0.068 \\ 
-    RRLyr & 0.000 & 0.115 & 0.074 & 0.012 & 0.000 & 0.973 & 0.312 \\ 
-    CefT2 & 0.000 & 0.002 & 0.000 & 0.001 & 0.000 & 0.000 & 0.418 \\ 
+    BeEC & 0.891 & 0.000 & 0.000 & 0.001 & 0.000 & 0.000 & 0.000 \\ 
+    Cef & 0.002 & 0.869 & 0.002 & 0.002 & 0.000 & 0.016 & 0.128 \\ 
+    dSct & 0.000 & 0.000 & 0.769 & 0.006 & 0.000 & 0.005 & 0.002 \\ 
+    SBE & 0.048 & 0.008 & 0.117 & 0.963 & 0.001 & 0.013 & 0.075 \\ 
+    VLP & 0.053 & 0.004 & 0.005 & 0.016 & 0.999 & 0.001 & 0.070 \\ 
+    RRLyr & 0.006 & 0.115 & 0.107 & 0.012 & 0.000 & 0.964 & 0.265 \\ 
+    CefT2 & 0.000 & 0.004 & 0.000 & 0.001 & 0.000 & 0.001 & 0.461 \\ 
     \hline 
     \hline
-    Error & 0.021 & 0.007 & 0.014 & 0.002 & 0.000 & 0.002 & 0.039 \\ 
+    Sensitividad & 0.891 & 0.869 & 0.769 & 0.963 & 0.999 & 0.964 & 0.461 \\ 
+    \hline
+    Error &0.028 & 0.007 & 0.016 & 0.002 & $\sim 10^{-4}$ & 0.002 & 0.040 \\
     \hline
     \hline
+    Especificidad & 1.000 & 0.975 & 0.998 & 0.956 & 0.975 & 0.916 & 0.999 \\ 
+    \hline
+    \hline
+Valor Pred. Pos. & 0.998 & 0.853 & 0.984 & 0.786 & 0.871 & 0.656 & 0.989 \\ 
+    \hline
+    \hline
+
   \end{tabular}
   \caption{Errores de clasificación estimados por validación cruzada para MSV al utilizar todas las características. En las filas se encuentra el resultado del clasificador y en las columnas las clases de referencia.  }
   \label{cuadro:erroresTodasVariablesSVM}
@@ -852,9 +940,9 @@ Tras realizar validación cruzada para MSV encontramos las tasas de clasificaci�
 
 \subsection{k Vecinos Más cercanos}
 
-Para k vecinos más cercanos debemos ajustar k. Para ajustar k utilizamos validación cruzada. Para cada k entre 0 y 11 estimamos la precisión esperada del clasificador y elegimos el k que minizara este estimado. En el caso en el que utilizamos todas las variables encontramos que  k=1 minimizaba el error esperado que es igual a 24.87\%. Para el subconjunto de variables antes descrito obtuvimos que k=1 minimizaba error esperado y era igual a  Reportamos la tabla $P^{VC}(g_{MSV}(\vec{x})=i|j)$ calculadas con todas las variables. 
+Para k vecinos más cercanos debemos ajustar k. Para ajustar k utilizamos validación cruzada. Para cada k entre 0 y 11 estimamos la precisión esperada del clasificador y elegimos el k que minizara este estimado. Encontramos que  k=1 minimizaba el error esperado que es igual a 22.12\%. Reportamos la tabla $P^{VC}(g_{MSV}(\vec{x})=i|j)$ en \ref{cuadro:resultadosKNN}. 
 
-De la misma forma que MSV, kVMC tiene a clasificar erróneamente los objetos de tipo RRLyr, lo cual apoya la hióptesis de que las caracterísitcas seleccionadas no logran capturar las diferencias entre clases. 
+De la misma forma que MSV, kVMC tiene a clasificar erróneamente los objetos de tipo RRLyr como CefT2 y Cef, lo cual apoya la hipótesis de que las caracterísitcas seleccionadas no logran capturar las diferencias entre Cef, CefT2 y RRLyr. 
 
 Utilizar kVMC para para entrenar reglas de clasificación con muestras que no tienen un número similar de representantes de cada clase puede ser problemáico. En zonas del espacio de características donde se superponen varias clases, puede suceder que kVMC dé como resultado una clase cuya densidad es menor a la de las demás. Esto sucede porque si hay una clase con una proporción de representantes en la muestra mayor que las demás, en las zonas del espacio de caracterísitcas donde la probabilidad de encontrar representantes de esta clase es baja puede haber más representatnes que de otras clases. Para solucionar esto existen esquemas de kVMC que utilizan pesos. En el paquete FNN para R se encuentra un esquema de pesos óptimo dado en . En el paquete knnn se encuentra un es quema de votación que le asigna a un punto a clasificar la clase que alcance la mayor densidad estimada por npucleos usando los vecinos más cercanos pertenecientes a esa clase. No encontramos diferencias significaticas al usar estos dos esquemas de votación. 
 
@@ -866,27 +954,38 @@ Utilizar kVMC para para entrenar reglas de clasificación con muestras que no ti
     Referencia& BeEC & Cef & dSct & SBE & VLP & RRLyr & CefT2 \\ 
     \hline
     \hline
-    BeEC & 0.840 & 0.000 & 0.000 & 0.001 & 0.000 & 0.000 & 0.000 \\ 
-    Cef & 0.000 & 0.727 & 0.002 & 0.010 & 0.000 & 0.048 & 0.177 \\ 
-    dSct & 0.000 & 0.000 & 0.619 & 0.019 & 0.000 & 0.004 & 0.002 \\ 
-    SBE & 0.069 & 0.035 & 0.310 & 0.900 & 0.001 & 0.027 & 0.063 \\ 
-    VLP & 0.091 & 0.013 & 0.003 & 0.028 & 0.998 & 0.005 & 0.177 \\ 
-    RRLyr & 0.000 & 0.215 & 0.065 & 0.041 & 0.000 & 0.914 & 0.320 \\ 
-    CefT2 & 0.000 & 0.009 & 0.000 & 0.001 & 0.000 & 0.003 & 0.260 \\ 
+    BeEC & 0.762 & 0.001 & 0.000 & 0.001 & 0.000 & 0.000 & 0.002 \\ 
+    Cef & 0.061 & 0.832 & 0.004 & 0.005 & 0.000 & 0.041 & 0.166 \\ 
+    dSct & 0.000 & 0.001 & 0.648 & 0.014 & 0.000 & 0.010 & 0.000 \\ 
+    SBE & 0.080 & 0.016 & 0.175 & 0.915 & 0.001 & 0.027 & 0.078 \\ 
+    VLP & 0.076 & 0.007 & 0.003 & 0.022 & 0.998 & 0.001 & 0.090 \\ 
+    RRLyr & 0.021 & 0.139 & 0.169 & 0.041 & 0.000 & 0.920 & 0.289 \\ 
+    CefT2 & 0.000 & 0.004 & 0.000 & 0.001 & 0.000 & 0.002 & 0.376 \\ 
     \hline
     \hline
-    Sensibilidad & 0.840 & 0.727 & 0.619 & 0.900 & 0.998 & 0.914 & 0.260 \\
+    Sensitividad & 0.762 & 0.832 & 0.648 & 0.915 & 0.998 & 0.920 & 0.376 \\ 
     \hline
-    Error & 0.033 & 0.010 & 0.018 & 0.003 & 0.000 & 0.003 & 0.035 \\ 
+    Error & 0.038 & 0.008 & 0.018 & 0.003 & $\sim 10^{-4}$ & 0.003 & 0.039 \\ 
+    \hline
+    \hline
+    Especificidad & 0.999 & 0.954 & 0.996 & 0.937 & 0.967 & 0.890 & 0.999 \\  
+    \hline
+    \hline
+    Valor Pred. Pos. & 0.994 & 0.751 & 0.963 & 0.709 & 0.834 & 0.583 & 0.979 \\
     \hline
     \hline
   \end{tabular}
-  \caption{Estimados de los errores de clasificación para 1 vecino más cercano utilizando todas las características. 0.7512729}
-\end{table} 
+  \caption{Estimados de los errores de clasificación para 1 vecino más cercano utilizando todas las características.}
+  \label{cuadro:resultadosKNN}
+\end{table}
+
+Este clasificador es el peor de los que analizamos a la hora de clasificar objetos de tipo $\delta-$Scuti.A la hora de clasificar objetos de tipo RRLyr el clasificador no es muy específico, por lo que se espera una cantidad alta de falsos positivos para esta clase al utilizar este clasificador.
 
 \subsection{Árboles de Clasificación}
 
-Los árboles de clasificación son clasificadores sencillos que son entrenados en poco tiempo. En este caso obtuvimos el mismo clasificador en las 10 iteraciones de validación cruzada y al usar diferentes conjuntos de características que incluyeran la media, el sesgo, la curtosis y la variación cuadrática.  Este es el clasificador que alcanza la mayor tasa de clasificación correcta para CefT2 y el 94.60\% de los objetos de esta clase son clasificados correctamente o como objetos de tipo Cef o Cef2. Usaremos este hecho para formular un clasificador que usa un AC para distinguir estas dos clases de las demás.
+Los árboles de clasificación son clasificadores sencillos que son entrenados en poco tiempo. En este caso obtuvimos el mismo clasificador en las 10 iteraciones de validación cruzada y al usar diferentes conjuntos de características que incluyeran las variables usadas por el árbol inicial (ver figura \ref{fig:arbolTotal}).  Este es el clasificador que alcanza la mayor tasa de clasificación correcta para CefT2 y el 96.20\% de los objetos de esta clase son clasificados correctamente o como objetos de tipo Cef. Usaremos este hecho para formular un clasificador que usa un AC para distinguir estas dos clases de las demás.
+
+El estimado por validación cruzada del error de clasificación errónea es de 22.80\% y el de resubstitución es de 21.65\%. Aunque no es el clasificador que logra la menor tasa de clasificación errónea promedio, es el mejor para clasificar objetos de tipo BeEC y es competitivo para objetos de tipo $\delta-$Scuti con los métodos que examinamos. 
 
 \begin{table}[ht]
   \centering
@@ -896,99 +995,100 @@ Los árboles de clasificación son clasificadores sencillos que son entrenados e
     & BeEC & Cef & dSct & SBE & VLP & RRLyr & CefT2 \\ 
     \hline
     \hline
-    BeEC & 0.987 & 0.001 & 0.001 & 0.031 & 0.020 & 0.001 & 0.030 \\ 
-    Cef & 0.000 & 0.853 & 0.005 & 0.001 & 0.040 & 0.270 & 0.289 \\ 
-    dSct & 0.000 & 0.004 & 0.900 & 0.172 & 0.000 & 0.037 & 0.002 \\ 
-    SBE & 0.002 & 0.000 & 0.055 & 0.661 & 0.000 & 0.001 & 0.002 \\ 
-    VLP & 0.011 & 0.013 & 0.008 & 0.056 & 0.894 & 0.002 & 0.005 \\ 
-    RRLyr & 0.000 & 0.003 & 0.028 & 0.017 & 0.001 & 0.576 & 0.017 \\ 
-    CefT2 & 0.000 & 0.124 & 0.002 & 0.062 & 0.045 & 0.113 & 0.657 \\ 
+    BeEC & 0.903 & 0.008 & 0.002 & 0.026 & 0.007 & 0.001 & 0.005 \\ 
+    Cef & 0.038 & 0.824 & 0.005 & 0.009 & 0.041 & 0.259 & 0.214 \\ 
+    dSct & 0.000 & 0.003 & 0.907 & 0.165 & 0.000 & 0.079 & 0.002 \\ 
+    SBE & 0.002 & 0.011 & 0.054 & 0.624 & 0.000 & 0.034 & 0.020 \\ 
+    VLP & 0.011 & 0.013 & 0.009 & 0.058 & 0.890 & 0.002 & 0.005 \\ 
+    RRLyr & 0.000 & 0.002 & 0.022 & 0.002 & 0.000 & 0.509 & 0.007 \\ 
+    CefT2 & 0.046 & 0.139 & 0.002 & 0.116 & 0.060 & 0.116 & 0.748 \\ 
     \hline
     \hline
-    Sensibilidad & 0.987 & 0.853 & 0.900 & 0.661 & 0.894 & 0.576 & 0.657 \\
+    Sensitividad & 0.903 & 0.824 & 0.907 & 0.624 & 0.890 & 0.509 & 0.748 \\ 
     \hline
-    Error & 0.010 & 0.008 & 0.011 & 0.005 & 0.001 & 0.005 & 0.038 \\ 
+    Error & 0.027 & 0.008 & 0.011 & 0.005 & 0.001 & 0.005 & 0.035 \\ 
+    \hline
+    \hline
+    Especificidad &  0.992 & 0.906 & 0.958 & 0.980 & 0.984 & 0.995 & 0.920 \\
+    \hline
+    \hline
+Valor Pred. Pos. & 0.949 & 0.593 & 0.784 & 0.837 & 0.902 & 0.939 & 0.609 \\ 
     \hline
     \hline
   \end{tabular}
-  \caption{Estimados de los errores de clasificación para árboles de clasificación al utilizar todas las variables, que son los mismos al utilizar el subconjunto de características antes descrito. 0.7898714 }
+  \caption{Estimados de los errores de clasificación para árboles de clasificación.}
 \end{table}
+
+A pesar de lograr la sensitividad y la sensitividad más alta para objetos de tipo CefT2 tiene el menor valor predictivo positivo para esta clase. 
+
 
 \subsection{Bosques Aleatorios}
 
-Para BA es necesario especificar dos parámetros: el número de variables que son intentadas en cada división y el número de niveles que tendrá cada árbol. Estos parámetros fueron optimizados utilizando validación cruzada. Hallamos que el número de variables a intentar en cada división debía ser 4 y que la profundidad de cada arbol debía ser 6. 
+Para BA es necesario especificar dos parámetros: el número de variables que son intentadas en cada división y el número de niveles que tendrá cada árbol. Estos parámetros fueron optimizados utilizando validación cruzada. Hallamos que el número de variables a intentar en cada división debía ser 4 y que la profundidad de cada arbol debía ser 3. Mostramos los resultados.
+
+El estimado de la probabilidad de clasificación errónea es de 19.19\%. Junto con KVMC es el clasificador que peor se densempeña a la hora de clasificar objetos de tipo CefT2. 
 
 \begin{table}[ht]
   \centering
   \begin{tabular}{rrrrrrrr}
-    \hline
-    \hline
-    Referencia& BeEC & Cef & dSct & SBE & VLP & RRLyr & CefT2 \\ 
-    \hline
-    BeEC & 0.855 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\ 
-    Cef & 0.000 & 0.831 & 0.002 & 0.001 & 0.000 & 0.015 & 0.141 \\ 
-    dSct & 0.002 & 0.000 & 0.733 & 0.004 & 0.000 & 0.002 & 0.000 \\ 
-    SBE & 0.109 & 0.008 & 0.178 & 0.966 & 0.000 & 0.009 & 0.058 \\ 
-    VLP & 0.034 & 0.007 & 0.005 & 0.016 & 1.000 & 0.001 & 0.116 \\ 
-    RRLyr & 0.000 & 0.152 & 0.082 & 0.012 & 0.000 & 0.974 & 0.330 \\ 
-    CefT2 & 0.000 & 0.002 & 0.000 & 0.000 & 0.000 & 0.000 & 0.355 \\ 
-    \hline
-    Sensibilidad & 0.855 & 0.831 & 0.733 & 0.966 & 1.000 & 0.974 & 0.355 \\
-    \hline
-    Error & 0.032 & 0.008 & 0.016 & 0.002 & 0.000 & 0.001 & 0.038 \\ 
-    \hline
-    \hline 
-  \end{tabular}
-  \caption{Estimados de las tasas de clasificación correcta para bosques aleatorios al usar todas las características. La precisión promedio es 0.816}
-\end{table}
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{rrrrrrrr}
-    \hline
     Referencia & BeEC & Cef & dSct & SBE & VLP & RRLyr & CefT2 \\ 
     \hline
-    BeEC & 0.802 & 0.000 & 0.000 & 0.001 & 0.000 & 0.000 & 0.000 \\ 
-    Cef & 0.000 & 0.811 & 0.003 & 0.001 & 0.000 & 0.019 & 0.148 \\ 
-    dSct & 0.000 & 0.000 & 0.740 & 0.005 & 0.000 & 0.002 & 0.000 \\ 
-    SBE & 0.158 & 0.008 & 0.167 & 0.963 & 0.000 & 0.009 & 0.056 \\ 
-    VLP & 0.040 & 0.007 & 0.005 & 0.017 & 1.000 & 0.002 & 0.184 \\ 
-    RRLyr & 0.000 & 0.172 & 0.085 & 0.013 & 0.000 & 0.968 & 0.310 \\ 
-    CefT2 & 0.000 & 0.002 & 0.000 & 0.000 & 0.000 & 0.000 & 0.302 \\ 
+    BeEC & 0.842 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\ 
+    Cef & 0.002 & 0.810 & 0.002 & 0.001 & 0.000 & 0.018 & 0.138 \\ 
+    dSct & 0.000 & 0.000 & 0.738 & 0.004 & 0.000 & 0.004 & 0.000 \\ 
+    SBE & 0.103 & 0.013 & 0.146 & 0.959 & 0.000 & 0.014 & 0.108 \\ 
+    VLP & 0.048 & 0.009 & 0.004 & 0.020 & 1.000 & 0.001 & 0.111 \\ 
+    RRLyr & 0.004 & 0.166 & 0.110 & 0.016 & 0.000 & 0.963 & 0.299 \\ 
+    CefT2 & 0.000 & 0.002 & 0.000 & 0.000 & 0.000 & 0.000 & 0.345 \\
     \hline
     \hline
-    Sensibilidad &0.802 &0.811 & 0.740 & 0.963 & 1.000 &0.968 & 0.302 \\
-    \hline 
-    Error & 0.036 & 0.009 & 0.016 & 0.002 & 0.000 & 0.002 & 0.037 \\ 
+    Sensitividad &  0.842 & 0.810 & 0.738 & 0.959 & 1.000 & 0.963 & 0.345 \\
+    \hline
+    Error & 0.033 & 0.009 & 0.016 & 0.002 & 0.000 & 0.002 & 0.038 \\ 
+    \hline
+    \hline
+    Especificidad &  1.000 & 0.973 & 0.999 & 0.936 & 0.968 & 0.901 & 1.000 \\ 
+    \hline
+    \hline
+Valor Pred. Pos. & 1.000 & 0.834 & 0.989 & 0.714 & 0.837 & 0.619 & 0.994 \\ 
     \hline
     \hline
   \end{tabular}
-  \caption{Estimados de las tasas de clasificación correcta para bosques aleatorios al usar un subconjunto de las caracterísitcas. La precisión promedio es 0.79}
+  \caption{Estimados de las tasas de clasificación correcta para bosques aleatorios.}
 \end{table}
 
+A pesar de no lograr las mayores sensitividades, éste método logra valores de predicción positiva altos para todas las clases. Esto significa que, dado un conjunto de datos sin clasificar cuya clasificación es hecha con el BA entrenado con esta muestra de entrenamiento se espera que la probabilidad  de que la clasificación haya sido hecha correctamente para cada clase es mayor al usar éste método. 
 
 \subsection{Otros Clasificadores}
 
-Con los clasificadores que hemos utilizado no hemos logrado una precisión promedio mayor a la lograda al usar MSV con todas las variables, que fue de 85\. A pesar de esto, es posible clasificar grupos de clases con algunos clasificadores. Por ejemplo, podemos clasificar con un 94\% de éxito las curvas cuyo tipo de variabilidad es Cef o CefT2 utilizando AC.  Surge entonces la pregunta de si es posible utilizar una mezcla de estos clasificadores para lograr una mejor precisión promedio, es decir, clasificar sucesivamente grupos más pequeños de clases utilizando distintos clasificadores. En este orden de ideas implementamos un algorítmo que realiza la clasificación de una curva en dos etapas. Primero se clasifica la curva como Cefeida (Clásica o Tipo 2) u otro (las demás clases de variabilidad) mediante un árbol de decisión. En el caso de ser Cefeida se utiliza una MSV para distinguir entre Cefeidas Clásicas (Cef) y Cefeidas Tipo 2 (CefT2). Entrenamos una MSV para distinguir únicamente entre Cef y CefT2 y estimamos su probabilidad de error con una muestra fija en 6\% al utilizar únicamente los datos de Cefeidas. En el caso de no ser Cefeida, se utiliza una MSV para distinguir entre las clases restantes. Estimamos la probabilidad de error de esta última MSV en 6\% utilizando una muestra fija. El hecho de que podamos discriminar entre Cef y CefT2 y entre las demás clases con probabildades tan altas muestra que para nuestra elección de características son las Cefeidas las que se superponen con los demás tipos de variabilidad.  A pesar de esto, el clasificador resultante al utilizar esta aproximación no es satisfactorio. Mostramos los estimados del error para este clasificador en el cuadro \ref{cuadro:clasificadorriollo}. Otras iteraciones de esta estrategia dieron resultados similares. 
+Con los clasificadores que hemos utilizado no hemos logrado una precisión promedio mayor a la lograda al usar MSV con todas las variables, que fue de 85\. A pesar de esto, es posible clasificar grupos de clases con algunos clasificadores. Por ejemplo, podemos clasificar con un 96\% de éxito las curvas cuyo tipo de variabilidad es Cef o CefT2 utilizando AC.  Surge entonces la pregunta de si es posible utilizar una mezcla de estos clasificadores para lograr una mejor precisión promedio, es decir, clasificar sucesivamente grupos más pequeños de clases utilizando distintos clasificadores. En este orden de ideas implementamos un algorítmo que realiza la clasificación de una curva en dos etapas. Primero se clasifica la curva como Cefeida (Clásica o Tipo 2) u otro (las demás clases de variabilidad) mediante un árbol de decisión. En el caso de ser Cefeida se utiliza una MSV para distinguir entre Cefeidas Clásicas (Cef) y Cefeidas Tipo 2 (CefT2). Entrenamos una MSV para distinguir únicamente entre Cef y CefT2 y estimamos su probabilidad de error con una muestra fija en 6\% al utilizar únicamente los datos de Cefeidas. En el caso de no ser Cefeida, se utiliza una MSV para distinguir entre las clases restantes. Estimamos la probabilidad de error de esta última MSV en 6\% utilizando una muestra fija. El hecho de que podamos discriminar entre Cef y CefT2 y entre las demás clases con probabildades tan altas muestra que para nuestra elección de características son las Cefeidas las que se superponen con los demás tipos de variabilidad.  A pesar de esto, el clasificador resultante al utilizar esta aproximación no es satisfactorio. Mostramos los estimados del error para este clasificador en el cuadro \ref{cuadro:clasificadorriollo}. Otras iteraciones de esta estrategia dieron resultados similares. 
 
 \begin{table}[ht]
   \centering
   \begin{tabular}{rrrrrrrr}
     \hline
+    \hline
     Referencia & BeEC & Cef & dSct & SBE & VLP & RRLyr & CefT2 \\ 
     \hline
-    BeEC & 0.345 & 0.000 & 0.000 & 0.001 & 0.000 & 0.000 & 0.002 \\ 
-    Cef & 0.516 & 0.958 & 0.039 & 0.023 & 0.014 & 0.356 & 0.564 \\ 
-    dSct & 0.000 & 0.001 & 0.805 & 0.004 & 0.000 & 0.002 & 0.000 \\ 
-    SBE & 0.029 & 0.007 & 0.079 & 0.951 & 0.001 & 0.006 & 0.018 \\ 
-    VLP & 0.015 & 0.008 & 0.005 & 0.010 & 0.979 & 0.001 & 0.124 \\ 
-    RRLyr & 0.000 & 0.025 & 0.073 & 0.009 & 0.000 & 0.632 & 0.028 \\ 
-    CefT2 & 0.095 & 0.001 & 0.000 & 0.002 & 0.006 & 0.003 & 0.264 \\ 
+    \hline
+    BeEC & 0.815 & 0.000 & 0.000 & 0.001 & 0.000 & 0.000 & 0.000 \\ 
+    Cef & 0.065 & 0.976 & 0.023 & 0.098 & 0.009 & 0.359 & 0.411 \\ 
+    dSct & 0.000 & 0.000 & 0.769 & 0.006 & 0.000 & 0.005 & 0.000 \\ 
+    SBE & 0.036 & 0.004 & 0.103 & 0.784 & 0.000 & 0.009 & 0.013 \\ 
+    VLP & 0.051 & 0.007 & 0.003 & 0.013 & 0.987 & 0.001 & 0.078 \\ 
+    RRLyr & 0.006 & 0.010 & 0.102 & 0.007 & 0.000 & 0.608 & 0.023 \\ 
+    CefT2 & 0.027 & 0.002 & 0.001 & 0.092 & 0.004 & 0.018 & 0.474 \\  
     \hline
     \hline
-    Sensibilidad & 0.345 & 0.958 & 0.805 & 0.951 & 0.979 & 0.632 & 0.264 \\ 
+    Sensibilidad & 0.815 & 0.976 & 0.769 & 0.784 & 0.987 & 0.608 & 0.474 \\ 
     \hline
-    Error & 0.043 & 0.004 & 0.015 & 0.002 & 0.000 & 0.004 & 0.035 \\
+    Error & 0.035 & 0.003 & 0.016 & 0.004 & $\sim 10^{-4}$ & 0.005 & 0.040 \\ 
+    \hline
+    \hline
+    Especificidad &  1.000 & 0.839 & 0.998 & 0.972 & 0.975 & 0.975 & 0.976 \\ 
+    \hline
+    \hline
+    Valor Pred. Pos. &  0.999 & 0.503 & 0.987 & 0.825 & 0.866 & 0.804 & 0.766 \\ 
     \hline
     \hline
   \end{tabular}
@@ -996,9 +1096,9 @@ Con los clasificadores que hemos utilizado no hemos logrado una precisión prome
   \label{cuadro:clasificadorriollo}
 \end{table} 
 
+A pesar de que AC era el método que era más sensible a los objetos de tipo CefT2, el clasificador construido de esta manera no logra clasificar estos objetos correctamente y los confunde con objetos de tipo RRLyr. Esto se debe a que, aunque su sensibilidad era alta, no era muy específico, lo que hace que muchos objetos de otras clases (mayormente RRLyr) sean clasificados erróneamente como Cef o CefT2. 
 
-
-Para este trabajo nos hemos impuesto condiciones estrictas para la clasificación en cuanto a la información que utilizamos para realizarla. Utilizamos únicamente la serie de magnitudes en la banda I y no utilizamos información espectral sobre estas series. A pesar de que no podemos utiliza un solo método para  clasificar todas las clases con tasas de clasificació
+Creemos que, además de encontrar características que logren diferenciar entre objetos de tipoi Cef, CefT2 y RRLyr, la mejor solución para este problema consiste en encontrar una combinación de clasificadores para clasificar sucesivamente cada una de las clases. Esto se debe a que cada uno de los clasificadores tiene bondades a la hora de clasificar clases específicas, pero ninguno logra un buen desempeño en todas. Este asunto será objeto de estudios subsecuentes.
 
 
 \chapter{Conclusiones}
@@ -1007,11 +1107,11 @@ Propusimos un nuevo conjunto de características para realizar la clasificación
 
 Nos propusimos realizar esta clasificación bajo condiciones estrictas. Utilizamos exclusivamente la información de la banda V de las observaciones y no utilizamos caraterísticas que dependieran del periodo.  
 
-Nuestro major clasificador logra una una probabilidad de error promedio de 14.47 \%. Este clasificador logra una tasa de error inferior al 1\% para estrellas Variables de Largo Periodo, de 3\% para  binarias eclipsantes y RR Lyrae, 12\%para Cefeidas clásicas , 17\% para estrellas $\delta$-Scuti. La clase a la que es menos sensible este clasicador es la de Cefeidas tipo 2, que son confundidas mayoritariamente con Cefeidas clásicas y RR Lyrae 58\%. Como la morfología de las curvas de luz de las Cefeidas tipo 2 y las Cefeidas clásicas es muy similar, es de esperar esta confusión, sin embargo se debe trabajar para mejorar esta clasificación. 
+Nuestro major clasificador logra una una probabilidad de error promedio de 15 \%. Este clasificador logra una tasa de error inferior al 1\% para estrellas Variables de Largo Periodo, de 3\% para  binarias eclipsantes y RR Lyrae, 13\%para Cefeidas clásicas , 13\% para estrellas $\delta$-Scuti. La clase a la que es menos sensible este clasicador es la de Cefeidas tipo 2, que son confundidas mayoritariamente con Cefeidas clásicas y RR Lyrae y su tasa de clasificación errónea es de 53\%. Como la morfología de las curvas de luz de las Cefeidas tipo 2, las Cefeidas clásicas y RRLyr es muy similar, es de esperar esta confusión, sin embargo se debe trabajar para mejorar esta clasificación. 
 
-La estimación del error fue hecha mediante validación cruzada de 10 iteraciones. En estudios reportados en la literatura han estimado el error de clasificación utilizando una muestra de entrenamiento. Esto da como resultado estimados pesimistas de las probabilidad de error, sin embargo esta elección de la muestra de entrenamiento ha sido realizada mediante la inspección manual de las curvas de luz para maximizar la tasa de clasificación correcta. En el catálogo de OGLE-III la mayoría de curvas de luz cuenta con un número grande de observaciones con una frecuencia lo suficientemente alta. Nuestra aproximación al problema solo es sensible a la presencia de observaciones de magnitud atípicas en las series de magnitud. 
+La estimación del error fue hecha mediante validación cruzada de 10 iteraciones. En estudios reportados en la literatura han estimado el error de clasificación utilizando una muestra de entrenamiento. Esto da como resultado estimados pesimistas de las probabilidad de error, sin embargo esta elección de la muestra de entrenamiento ha sido realizada mediante la inspección manual de las curvas de luz para maximizar la tasa de clasificación correcta. En el catálogo de OGLE-III la mayoría de curvas de luz cuenta con un número grande de observaciones con una frecuencia lo suficientemente alta. 
 
-Logramos construir un clasificador con un error aceptable utilizando características tomadas de estadística descriptiva. Aunque la tasa de clasificación lograda no puede competir con la de un experto, mostramos que la utilización de medidas descriptivas tiene el potencial de lograr este objetivo.    
+Logramos construir un clasificador con un error aceptable utilizando características tomadas de estadística descriptiva. Aunque la tasa de clasificación lograda no puede competir con la de la inspección manual por parte de una persona entrenada, mostramos que la combinación de medidas descriptivas y valores Abbe tiene el potencial de lograr este objetivo.    
 
 
 % \subsection{Árboles de Clasificación}
