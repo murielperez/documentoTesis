@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  27 MAY 2015 18:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.1)  19 JAN 2016 22:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -823,309 +823,306 @@ LaTeX Info: Redefining \% on input line 26.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-] [3] [4
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
 
-] (./documento.toc
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3] [4
+
+] [5] [6
+
+]
+(./documento.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
 \tf@toc=\write4
 \openout4 = `documento.toc'.
 
- [5]
-LaTeX Info: Redefining \. on input line 80.
-LaTeX Info: Redefining \% on input line 80.
- [6
+ [7]
+LaTeX Info: Redefining \. on input line 82.
+LaTeX Info: Redefining \% on input line 82.
+ [8
 
 ]
 Cap\'{\i }tulo 1.
-[7]
-LaTeX Info: Redefining \. on input line 93.
-LaTeX Info: Redefining \% on input line 93.
- [8] [9]
-LaTeX Info: Redefining \. on input line 104.
-LaTeX Info: Redefining \% on input line 104.
- [10]
+[9]
+LaTeX Info: Redefining \. on input line 95.
+LaTeX Info: Redefining \% on input line 95.
+ [10] [11]
+LaTeX Info: Redefining \. on input line 106.
+LaTeX Info: Redefining \% on input line 106.
+ [12]
 Cap\'{\i }tulo 2.
 
-Overfull \hbox (7.73468pt too wide) in paragraph at lines 109--110
+Overfull \hbox (7.73468pt too wide) in paragraph at lines 111--112
 []\OT1/cmr/m/n/12 Con la po-pu-la-ri-za-ci^^Son de compu-tado-res electr^^Soni-
 cos, la cons-truc-ci^^Son m^^Saqui-
  []
 
-<./img/CProblema/omicet.jpg, id=46, 144.54pt x 82.6287pt>
+<./img/CProblema/omicet.jpg, id=51, 144.54pt x 82.6287pt>
 File: ./img/CProblema/omicet.jpg Graphic file (type jpg)
 
 <use ./img/CProblema/omicet.jpg>
-Package pdftex.def Info: ./img/CProblema/omicet.jpg used on input line 114.
+Package pdftex.def Info: ./img/CProblema/omicet.jpg used on input line 116.
 (pdftex.def)             Requested size: 195.0pt x 111.48083pt.
 
-<./img/CProblema/sn1987a.jpg, id=47, 144.54pt x 82.6287pt>
+<./img/CProblema/sn1987a.jpg, id=52, 144.54pt x 82.6287pt>
 File: ./img/CProblema/sn1987a.jpg Graphic file (type jpg)
 
 <use ./img/CProblema/sn1987a.jpg>
-Package pdftex.def Info: ./img/CProblema/sn1987a.jpg used on input line 121.
+Package pdftex.def Info: ./img/CProblema/sn1987a.jpg used on input line 123.
 (pdftex.def)             Requested size: 195.0pt x 111.48083pt.
 
-Overfull \hbox (2.61108pt too wide) in paragraph at lines 113--127
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 115--129
  [][] [] 
  []
 
-[11
+[13
 
 ]
 Underfull \vbox (badness 7963) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 133.
-LaTeX Info: Redefining \% on input line 133.
- [12 <./img/CProblema/omicet.jpg> <./img/CProblema/sn1987a.jpg>]
-LaTeX Info: Redefining \. on input line 161.
-LaTeX Info: Redefining \% on input line 161.
- [13]
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
- [14]
-LaTeX Info: Redefining \. on input line 207.
-LaTeX Info: Redefining \% on input line 207.
+LaTeX Info: Redefining \. on input line 135.
+LaTeX Info: Redefining \% on input line 135.
+ [14 <./img/CProblema/omicet.jpg> <./img/CProblema/sn1987a.jpg>]
+LaTeX Info: Redefining \. on input line 163.
+LaTeX Info: Redefining \% on input line 163.
  [15]
+LaTeX Info: Redefining \. on input line 183.
+LaTeX Info: Redefining \% on input line 183.
+ [16]
+LaTeX Info: Redefining \. on input line 209.
+LaTeX Info: Redefining \% on input line 209.
+ [17]
 LaTeX Info: Redefining \. on input line 216.
 LaTeX Info: Redefining \% on input line 216.
- [16]
-LaTeX Info: Redefining \. on input line 229.
-LaTeX Info: Redefining \% on input line 229.
-
-[17]
-LaTeX Info: Redefining \. on input line 245.
-LaTeX Info: Redefining \% on input line 245.
  [18]
-LaTeX Info: Redefining \. on input line 267.
-LaTeX Info: Redefining \% on input line 267.
- [19]
-LaTeX Info: Redefining \. on input line 303.
-LaTeX Info: Redefining \% on input line 303.
- [20]
-LaTeX Info: Redefining \. on input line 336.
-LaTeX Info: Redefining \% on input line 336.
- [21]
-LaTeX Info: Redefining \. on input line 360.
-LaTeX Info: Redefining \% on input line 360.
- [22]
-LaTeX Info: Redefining \. on input line 396.
-LaTeX Info: Redefining \% on input line 396.
- [23]
-LaTeX Info: Redefining \. on input line 413.
-LaTeX Info: Redefining \% on input line 413.
- [24]
-LaTeX Info: Redefining \. on input line 440.
-LaTeX Info: Redefining \% on input line 440.
- [25]
-LaTeX Info: Redefining \. on input line 460.
-LaTeX Info: Redefining \% on input line 460.
- [26]
-LaTeX Info: Redefining \. on input line 468.
-LaTeX Info: Redefining \% on input line 468.
- [27]
-LaTeX Info: Redefining \. on input line 474.
-LaTeX Info: Redefining \% on input line 474.
- [28]
-LaTeX Info: Redefining \. on input line 503.
-LaTeX Info: Redefining \% on input line 503.
- [29]
-LaTeX Info: Redefining \. on input line 521.
-LaTeX Info: Redefining \% on input line 521.
- [30]
-LaTeX Info: Redefining \. on input line 533.
-LaTeX Info: Redefining \% on input line 533.
- [31]
-LaTeX Info: Redefining \. on input line 547.
-LaTeX Info: Redefining \% on input line 547.
+LaTeX Info: Redefining \. on input line 231.
+LaTeX Info: Redefining \% on input line 231.
 
-[32]
-LaTeX Info: Redefining \. on input line 552.
-LaTeX Info: Redefining \% on input line 552.
+[19]
+LaTeX Info: Redefining \. on input line 247.
+LaTeX Info: Redefining \% on input line 247.
+ [20]
+LaTeX Info: Redefining \. on input line 269.
+LaTeX Info: Redefining \% on input line 269.
+ [21]
+LaTeX Info: Redefining \. on input line 305.
+LaTeX Info: Redefining \% on input line 305.
+ [22]
+LaTeX Info: Redefining \. on input line 340.
+LaTeX Info: Redefining \% on input line 340.
+ [23]
+LaTeX Info: Redefining \. on input line 364.
+LaTeX Info: Redefining \% on input line 364.
+ [24]
+LaTeX Info: Redefining \. on input line 400.
+LaTeX Info: Redefining \% on input line 400.
+ [25]
+LaTeX Info: Redefining \. on input line 417.
+LaTeX Info: Redefining \% on input line 417.
+ [26]
+LaTeX Info: Redefining \. on input line 444.
+LaTeX Info: Redefining \% on input line 444.
+ [27]
+LaTeX Info: Redefining \. on input line 464.
+LaTeX Info: Redefining \% on input line 464.
+ [28]
+LaTeX Info: Redefining \. on input line 472.
+LaTeX Info: Redefining \% on input line 472.
+ [29]
+LaTeX Info: Redefining \. on input line 478.
+LaTeX Info: Redefining \% on input line 478.
+ [30]
+LaTeX Info: Redefining \. on input line 507.
+LaTeX Info: Redefining \% on input line 507.
+ [31]
+LaTeX Info: Redefining \. on input line 525.
+LaTeX Info: Redefining \% on input line 525.
+ [32]
+LaTeX Info: Redefining \. on input line 537.
+LaTeX Info: Redefining \% on input line 537.
  [33]
-LaTeX Info: Redefining \. on input line 552.
-LaTeX Info: Redefining \% on input line 552.
- [34
+LaTeX Info: Redefining \. on input line 551.
+LaTeX Info: Redefining \% on input line 551.
+
+[34]
+LaTeX Info: Redefining \. on input line 556.
+LaTeX Info: Redefining \% on input line 556.
+ [35]
+LaTeX Info: Redefining \. on input line 556.
+LaTeX Info: Redefining \% on input line 556.
+ [36
 
 ]
 Cap\'{\i }tulo 3.
-[35]
-LaTeX Info: Redefining \. on input line 561.
-LaTeX Info: Redefining \% on input line 561.
- [36]
-LaTeX Info: Redefining \. on input line 574.
-LaTeX Info: Redefining \% on input line 574.
- [37]
-LaTeX Info: Redefining \. on input line 614.
-LaTeX Info: Redefining \% on input line 614.
+[37]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 565.
+LaTeX Info: Redefining \% on input line 565.
  [38]
-<./img/C2Datos/tiposCefeidas.png, id=147, 634.37pt x 689.57625pt>
+LaTeX Info: Redefining \. on input line 578.
+LaTeX Info: Redefining \% on input line 578.
+
+[39]
+LaTeX Info: Redefining \. on input line 618.
+LaTeX Info: Redefining \% on input line 618.
+ [40] <./img/C2Datos/tiposCefeidas.png, id=153, 634.37pt x 689.57625pt>
 File: ./img/C2Datos/tiposCefeidas.png Graphic file (type png)
 
 <use ./img/C2Datos/tiposCefeidas.png>
-Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 637
+Package pdftex.def Info: ./img/C2Datos/tiposCefeidas.png used on input line 641
 .
 (pdftex.def)             Requested size: 390.0pt x 423.95534pt.
 
-<./img/C2Datos/curvaDeLuz.pdf, id=148, 361.35pt x 216.81pt>
+<./img/C2Datos/curvaDeLuz.pdf, id=154, 361.35pt x 216.81pt>
 File: ./img/C2Datos/curvaDeLuz.pdf Graphic file (type pdf)
 
 <use ./img/C2Datos/curvaDeLuz.pdf>
-Package pdftex.def Info: ./img/C2Datos/curvaDeLuz.pdf used on input line 647.
+Package pdftex.def Info: ./img/C2Datos/curvaDeLuz.pdf used on input line 651.
 (pdftex.def)             Requested size: 312.00119pt x 187.20062pt.
-LaTeX Info: Redefining \. on input line 659.
-LaTeX Info: Redefining \% on input line 659.
- [39]
-LaTeX Info: Redefining \. on input line 659.
-LaTeX Info: Redefining \% on input line 659.
- [40 <./img/C2Datos/tiposCefeidas.png>]
 LaTeX Info: Redefining \. on input line 663.
 LaTeX Info: Redefining \% on input line 663.
+ [41]
+LaTeX Info: Redefining \. on input line 663.
+LaTeX Info: Redefining \% on input line 663.
+ [42 <./img/C2Datos/tiposCefeidas.png>]
+LaTeX Info: Redefining \. on input line 667.
+LaTeX Info: Redefining \% on input line 667.
 
-[41 <./img/C2Datos/curvaDeLuz.pdf>]
-<./img/CClasificacion/curvaHist.pdf, id=164, 361.35pt x 216.81pt>
+[43 <./img/C2Datos/curvaDeLuz.pdf>]
+<./img/CClasificacion/curvaHist.pdf, id=171, 361.35pt x 216.81pt>
 File: ./img/CClasificacion/curvaHist.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/curvaHist.pdf>
 Package pdftex.def Info: ./img/CClasificacion/curvaHist.pdf used on input line 
-669.
+673.
 (pdftex.def)             Requested size: 312.00119pt x 187.20062pt.
-LaTeX Info: Redefining \. on input line 676.
-LaTeX Info: Redefining \% on input line 676.
- [42 <./img/CClasificacion/curvaHist.pdf>]
-LaTeX Info: Redefining \. on input line 718.
-LaTeX Info: Redefining \% on input line 718.
- [43]
-LaTeX Info: Redefining \. on input line 742.
-LaTeX Info: Redefining \% on input line 742.
+LaTeX Info: Redefining \. on input line 722.
+LaTeX Info: Redefining \% on input line 722.
  [44]
-<./img/CClasificacion/mediaDesv.png, id=187, 361.35pt x 216.81pt>
+LaTeX Info: Redefining \. on input line 736.
+LaTeX Info: Redefining \% on input line 736.
+ [45 <./img/CClasificacion/curvaHist.pdf>]
+LaTeX Info: Redefining \. on input line 744.
+LaTeX Info: Redefining \% on input line 744.
+ [46]
+<./img/CClasificacion/mediaDesv.png, id=193, 361.35pt x 216.81pt>
 File: ./img/CClasificacion/mediaDesv.png Graphic file (type png)
 
 <use ./img/CClasificacion/mediaDesv.png>
 Package pdftex.def Info: ./img/CClasificacion/mediaDesv.png used on input line 
-760.
+764.
 (pdftex.def)             Requested size: 390.0pt x 234.00243pt.
-LaTeX Info: Redefining \. on input line 770.
-LaTeX Info: Redefining \% on input line 770.
- [45]
-LaTeX Info: Redefining \. on input line 776.
-LaTeX Info: Redefining \% on input line 776.
- [46 <./img/CClasificacion/mediaDesv.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 808.
-LaTeX Info: Redefining \% on input line 808.
+LaTeX Info: Redefining \. on input line 774.
+LaTeX Info: Redefining \% on input line 774.
  [47]
-LaTeX Info: Redefining \. on input line 822.
-LaTeX Info: Redefining \% on input line 822.
- [48]
-LaTeX Info: Redefining \. on input line 835.
-LaTeX Info: Redefining \% on input line 835.
+LaTeX Info: Redefining \. on input line 780.
+LaTeX Info: Redefining \% on input line 780.
+ [48 <./img/CClasificacion/mediaDesv.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 812.
+LaTeX Info: Redefining \% on input line 812.
  [49]
-LaTeX Info: Redefining \. on input line 847.
-LaTeX Info: Redefining \% on input line 847.
+LaTeX Info: Redefining \. on input line 826.
+LaTeX Info: Redefining \% on input line 826.
  [50]
-<./img/CClasificacion/correlacionSpearman.pdf, id=208, 361.35pt x 361.35pt>
+LaTeX Info: Redefining \. on input line 839.
+LaTeX Info: Redefining \% on input line 839.
+ [51]
+LaTeX Info: Redefining \. on input line 851.
+LaTeX Info: Redefining \% on input line 851.
+ [52]
+<./img/CClasificacion/correlacionSpearman.pdf, id=214, 361.35pt x 361.35pt>
 File: ./img/CClasificacion/correlacionSpearman.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/correlacionSpearman.pdf>
 Package pdftex.def Info: ./img/CClasificacion/correlacionSpearman.pdf used on i
-nput line 850.
+nput line 854.
 (pdftex.def)             Requested size: 390.0pt x 390.00407pt.
-LaTeX Info: Redefining \. on input line 859.
-LaTeX Info: Redefining \% on input line 859.
- [51]
-LaTeX Info: Redefining \. on input line 859.
-LaTeX Info: Redefining \% on input line 859.
- [52 <./img/CClasificacion/correlacionSpearman.pdf>]
-<./img/CClasificacion/arbolTotal.pdf, id=225, 361.35pt x 361.35pt>
+LaTeX Info: Redefining \. on input line 863.
+LaTeX Info: Redefining \% on input line 863.
+ [53]
+LaTeX Info: Redefining \. on input line 863.
+LaTeX Info: Redefining \% on input line 863.
+ [54 <./img/CClasificacion/correlacionSpearman.pdf>]
+<./img/CClasificacion/arbolTotal.pdf, id=231, 361.35pt x 361.35pt>
 File: ./img/CClasificacion/arbolTotal.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/arbolTotal.pdf>
 Package pdftex.def Info: ./img/CClasificacion/arbolTotal.pdf used on input line
- 862.
+ 866.
 (pdftex.def)             Requested size: 390.0pt x 390.00407pt.
-
-
-LaTeX Warning: Reference `importancias' on page 53 undefined on input line 868.
-
-
-LaTeX Info: Redefining \. on input line 872.
-LaTeX Info: Redefining \% on input line 872.
-[53]
-LaTeX Info: Redefining \. on input line 872.
-LaTeX Info: Redefining \% on input line 872.
- [54 <./img/CClasificacion/arbolTotal.pdf>]
-<./img/CClasificacion/importancias.pdf, id=237, 361.35pt x 361.35pt>
+LaTeX Info: Redefining \. on input line 876.
+LaTeX Info: Redefining \% on input line 876.
+ [55]
+LaTeX Info: Redefining \. on input line 876.
+LaTeX Info: Redefining \% on input line 876.
+ [56 <./img/CClasificacion/arbolTotal.pdf>]
+<./img/CClasificacion/importancias.pdf, id=244, 361.35pt x 361.35pt>
 File: ./img/CClasificacion/importancias.pdf Graphic file (type pdf)
 
 <use ./img/CClasificacion/importancias.pdf>
 Package pdftex.def Info: ./img/CClasificacion/importancias.pdf used on input li
-ne 876.
+ne 880.
 (pdftex.def)             Requested size: 390.0pt x 390.00407pt.
-LaTeX Info: Redefining \. on input line 895.
-LaTeX Info: Redefining \% on input line 895.
- [55]
-LaTeX Info: Redefining \. on input line 895.
-LaTeX Info: Redefining \% on input line 895.
- [56 <./img/CClasificacion/importancias.pdf>]
-LaTeX Info: Redefining \. on input line 906.
-LaTeX Info: Redefining \% on input line 906.
+LaTeX Info: Redefining \. on input line 899.
+LaTeX Info: Redefining \% on input line 899.
  [57]
-Overfull \hbox (3.42247pt too wide) in paragraph at lines 909--937
+LaTeX Info: Redefining \. on input line 899.
+LaTeX Info: Redefining \% on input line 899.
+ [58 <./img/CClasificacion/importancias.pdf>]
+LaTeX Info: Redefining \. on input line 910.
+LaTeX Info: Redefining \% on input line 910.
+ [59]
+Overfull \hbox (3.42247pt too wide) in paragraph at lines 913--941
  [][] 
  []
 
-LaTeX Info: Redefining \. on input line 946.
-LaTeX Info: Redefining \% on input line 946.
-[58]
-Overfull \hbox (3.42247pt too wide) in paragraph at lines 951--978
+LaTeX Info: Redefining \. on input line 950.
+LaTeX Info: Redefining \% on input line 950.
+[60]
+Overfull \hbox (3.42247pt too wide) in paragraph at lines 955--982
  [][] 
  []
 
 LaTeX Info: Redefining \. on input line 987.
 LaTeX Info: Redefining \% on input line 987.
-[59]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 1028.
-LaTeX Info: Redefining \% on input line 1028.
- [60]
-LaTeX Info: Redefining \. on input line 1065.
-LaTeX Info: Redefining \% on input line 1065.
-
 [61]
-Overfull \hbox (3.42247pt too wide) in paragraph at lines 1068--1095
+LaTeX Info: Redefining \. on input line 1032.
+LaTeX Info: Redefining \% on input line 1032.
+ [62]
+LaTeX Info: Redefining \. on input line 1069.
+LaTeX Info: Redefining \% on input line 1069.
+ [63]
+Overfull \hbox (3.42247pt too wide) in paragraph at lines 1072--1099
  [][] 
  []
 
-LaTeX Info: Redefining \. on input line 1104.
-LaTeX Info: Redefining \% on input line 1104.
-[62]
-LaTeX Info: Redefining \. on input line 1104.
-LaTeX Info: Redefining \% on input line 1104.
- [63]
-LaTeX Info: Redefining \. on input line 1104.
-LaTeX Info: Redefining \% on input line 1104.
- [64
+LaTeX Info: Redefining \. on input line 1108.
+LaTeX Info: Redefining \% on input line 1108.
+[64]
+LaTeX Info: Redefining \. on input line 1108.
+LaTeX Info: Redefining \% on input line 1108.
+ [65]
+LaTeX Info: Redefining \. on input line 1108.
+LaTeX Info: Redefining \% on input line 1108.
+ [66
 
 ]
 Cap\'{\i }tulo 4.
-[65] (./documento.bbl
+[67] (./documento.bbl
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [66] [67
+ [68] [69
 
 ]
 Underfull \hbox (badness 1194) in paragraph at lines 87--91
@@ -1133,41 +1130,41 @@ Underfull \hbox (badness 1194) in paragraph at lines 87--91
 lysis-
  []
 
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
-[68]
-LaTeX Info: Redefining \. on input line 188.
-LaTeX Info: Redefining \% on input line 188.
- [69]
-LaTeX Info: Redefining \. on input line 249.
-LaTeX Info: Redefining \% on input line 249.
- [70]
-LaTeX Info: Redefining \. on input line 305.
-LaTeX Info: Redefining \% on input line 305.
- [71])
-LaTeX Info: Redefining \. on input line 1275.
-LaTeX Info: Redefining \% on input line 1275.
- [72] (./documento.aux
+LaTeX Info: Redefining \. on input line 124.
+LaTeX Info: Redefining \% on input line 124.
+[70]
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
+ [71]
+LaTeX Info: Redefining \. on input line 251.
+LaTeX Info: Redefining \% on input line 251.
+ [72]
+LaTeX Info: Redefining \. on input line 300.
+LaTeX Info: Redefining \% on input line 300.
+ [73]
+LaTeX Info: Redefining \. on input line 356.
+LaTeX Info: Redefining \% on input line 356.
+ [74])
+LaTeX Info: Redefining \. on input line 1279.
+LaTeX Info: Redefining \% on input line 1279.
+ [75] (./documento.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14448 strings out of 493304
- 257708 string characters out of 6139871
- 316258 words of memory out of 5000000
- 17569 multiletter control sequences out of 15000+600000
+ 14377 strings out of 493304
+ 256134 string characters out of 6139871
+ 317125 words of memory out of 5000000
+ 17498 multiletter control sequences out of 15000+600000
  13800 words of font info for 52 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,13n,92p,2117b,673s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,13n,92p,2136b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/
@@ -1192,10 +1189,10 @@ onts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
 2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
 .pfb>
-Output written on documento.pdf (72 pages, 950751 bytes).
+Output written on documento.pdf (75 pages, 952661 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 264 compressed objects within 3 object streams
+ 392 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  58 words of extra memory for PDF output out of 10000 (max. 10000000)
 

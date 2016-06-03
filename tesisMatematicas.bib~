@@ -971,3 +971,26 @@ We analyze the statistical properties of the sample and present selected interes
 	year = {2008},
 	pages = {307}
 }
+
+@book{huber_robust_2011,
+	title = {Robust statistics},
+	url = {http://link.springer.com/10.1007/978-3-642-04898-2_594},
+	urldate = {2015-05-27},
+	publisher = {Springer},
+	author = {Huber, Peter J.},
+	year = {2011},
+	file = {Snapshot:/home/muriel/.zotero/zotero/u3qzn9qy.default/zotero/storage/2JKR5VID/10.html:text/html}
+}
+
+@article{hinkley_power_1975,
+	title = {On power transformations to symmetry},
+	volume = {62},
+	url = {http://biomet.oxfordjournals.org/content/62/1/101.short},
+	number = {1},
+	urldate = {2015-05-27},
+	journal = {Biometrika},
+	author = {Hinkley, David V.},
+	year = {1975},
+	pages = {101--111},
+	file = {Snapshot:/home/muriel/.zotero/zotero/u3qzn9qy.default/zotero/storage/NTF3AS8U/101.html:text/html}
+}

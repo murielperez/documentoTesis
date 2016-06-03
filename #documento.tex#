@@ -572,7 +572,22 @@ Con frecuencia es necesario ajustar algún parámetro para un algoritmo de apren
 
 \section{El conjunto de Datos\label{cap:losDatos}}
 
-Los datos utilizados en este trabajo provienen de la tercera fase del \textit{Optical Gravitational Lensing Experiment} (OGLE-III). OGLE es un proyecto de larga duración cuyo objetivo principal es  la búsqueda de materia oscura mediante el aprovechamiento de lentes gravitacionales. La tercera fase del proyecto comenzó en 2001 y hace uso de un telescopio de $1.3$m de diámetro localizado en el observatorio de Las Campanas, Chile \cite{udalski_optical_2004}. Uno de los principales resultados de OGLE-III es la reducción y publicación \cite{udalski_optical_2008} de las curvas de luz de objetos en el bulbo de la Galaxia, la Gran Nube de Magallanes y la Pequeña Nube de Magallanes. En este trabajo utilizamos las curvas de luz de $431 653$ objetos del catálogo de estrellas variables de OGLE-III de seis tipos de variabilidad (ver tabla \ref{cuadro:datosUsados}) al cual se puede acceder en la página del proyecto \footnote{http://ogle.astrouw.edu.pl/} y $475$ curvas de luz de estrellas candidatas a ser clasificadas como Be.
+Los datos utilizados en este trabajo provienen de la tercera fase del
+\textit{Optical Gravitational Lensing Experiment} (OGLE-III). OGLE es
+un proyecto de larga duración cuyo objetivo principal es la búsqueda
+de materia oscura mediante el aprovechamiento de lentes
+gravitacionales. La tercera fase del proyecto comenzó en 2001 y hace
+uso de un telescopio de $1.3$m de diámetro localizado en el
+observatorio de Las Campanas, Chile \cite{udalski_optical_2004}. Uno
+de los principales resultados de OGLE-III es la reducción y
+publicación \cite{udalski_optical_2008} de las curvas de luz de
+objetos en el bulbo de la Galaxia, la Gran Nube de Magallanes y la
+Pequeña Nube de Magallanes. En este trabajo utilizamos las curvas de
+luz de $431 653$ objetos del catálogo de estrellas variables de
+OGLE-III de seis tipos de variabilidad (ver tabla
+\ref{cuadro:datosUsados}) al cual se puede acceder en la página del
+proyecto \footnote{http://ogle.astrouw.edu.pl/} y $475$ curvas de luz
+de estrellas candidatas a ser clasificadas como Be.
 
 Las curvas de luz tomadas del catálogo de estrellas variables de OGLE-III se encuentran clasificadas por tipo de variabilidad estelar en un proceso que involucró, en una etapa, la inspección manual de las curvas de luz (ver referencias en la tabla \ref{cuadro:datosUsados}) por lo cual tomaremos esta clasificación como verdadera. En este trabajo utilizamos únicamente las curvas de luz registradas en la banda I \footnote{Los objetos observados emiten radiación en una parte amplia del espectro electromagnético. Los telescopios utilizan filtros para recoger solo la radiación emitida por estos objetos en ciertas partes del espectro electromagnético. El filtro I (infrarrojo) tiene un ancho de banda de 149nm y una longitud de onda efectiva de 797nm (ver \cite{karttunen_fundamental_2007})} a pesar de que también se encuentra disponible información adicional sobre las curvas de luz como sus periodos y algunos coeficientes de Fourier (ver referencias en la tabla \ref{cuadro:datosUsados}). Esta elección se debe a que el cálculo de estas cantidades es computacionalmente intensivo, no siempre se encuentran disponibles datos en diferentes bandas y proponemos hacer la clasificación utilizando variables tomadas de estadística descriptiva.
 

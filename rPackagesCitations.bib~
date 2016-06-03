@@ -46,17 +46,6 @@
     note = {R package version 1.1},
     url = {http://CRAN.R-project.org/package=FNN},
   }
-@Article{karvanen_lmoments2006,
-  title = {Estimation of quantile mixtures via L-moments and
- trimmed L-moments},
-  journal = {Computational Statistics & Data Analysis},
-  author = {Juha Karvanen},
-  year = {2006},
-  volume = {51},
-  number = {2},
-  pages = {947-959},
-}
-
 @Manual{Lmoments,
   title = {Lmoments: L-moments and quantile mixtures},
   author = {Juha Karvanen},

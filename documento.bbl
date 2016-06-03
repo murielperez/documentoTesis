@@ -105,11 +105,38 @@ D.~Graczyk, I.~Soszyński, R.~Poleski, G.~Pietrzyński, A.~Udalski, M.~K.
   {Stars} in the {Large} {Magellanic} {Cloud}.
 \newblock {\em Acta Astronomica}, 61:103--122, June 2011.
 
+\bibitem{hinkley_power_1975}
+David~V. Hinkley.
+\newblock On power transformations to symmetry.
+\newblock {\em Biometrika}, 62(1):101--111, 1975.
+
+\bibitem{hosking_l-moments:_1990}
+J.~R.~M. Hosking.
+\newblock L-{Moments}: {Analysis} and {Estimation} of {Distributions} {Using}
+  {Linear} {Combinations} of {Order} {Statistics}.
+\newblock {\em Journal of the Royal Statistical Society. Series B
+  (Methodological)}, 52(1):105--124, January 1990.
+
+\bibitem{hsu_comparison_2002}
+Chih-Wei Hsu and Chih-Jen Lin.
+\newblock A comparison of methods for multiclass support vector machines.
+\newblock {\em Neural Networks, IEEE Transactions on}, 13(2):415--425, 2002.
+
+\bibitem{huber_robust_2011}
+Peter~J. Huber.
+\newblock {\em Robust statistics}.
+\newblock Springer, 2011.
+
 \bibitem{karttunen_fundamental_2007}
 Hannu Karttunen, Pekka Kröger, Heikki Oja, Markku Poutanen, and Karl~Johan
   Donner, editors.
 \newblock {\em Fundamental {Astronomy}}.
 \newblock Springer, Berlin ; New York, 5th edition edition, August 2007.
+
+\bibitem{Lmoments}
+Juha Karvanen.
+\newblock {\em Lmoments: L-moments and quantile mixtures}, 2014.
+\newblock R package version 1.1-6.
 
 \bibitem{randomForest}
 Andy Liaw and Matthew Wiener.
